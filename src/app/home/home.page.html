@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-title>
       Dose
     </ion-title>
@@ -13,77 +13,92 @@
         <ion-card>
             <ion-card-header><ion-card-title>Inputs</ion-card-title></ion-card-header>
             <ion-item>
-                <ion-label position="floating">Weight (kg)</ion-label>
-                <ion-input clearInput type="number" #weight value="70"></ion-input>
+                <ion-label position="floating" color="primary">Weight (kg)</ion-label>
+                <ion-input clearInput type="number" #weight value="70" min="1"></ion-input>
             </ion-item>
           </ion-card>
         </ion-col>
       </ion-row>
       
       <ion-row>
-        <ion-col size-md='6' offset-md='3'>              
+        <ion-col size-md='8' offset-md='2'>              
           <ion-card>
             <ion-card-header><ion-card-title>Local Anaesthetic</ion-card-title></ion-card-header>
             <ion-item>
-                <ion-label position="floating">Carpule (mL)</ion-label>
+                <ion-label position="floating" color="primary">Carpule (mL)</ion-label>
                 <ion-input clearInput type="number" #carpule value="2.2"></ion-input>
             </ion-item>
-            
-            <ion-card-header><b>2% Lignocaine Plain</b></ion-card-header>
-            <ion-card-content>
-                {{ weight.value * 4.4 }} mg <br />
-                {{ weight.value * 4.4 / (20 * carpule.value) }} carpules
-            </ion-card-content>
 
-            <ion-card-header><b>2% Lignocaine 1:80000 Adrenaline</b></ion-card-header>
+            <ion-card>
+              <ion-card-header color="tertiary"><b>2% Lignocaine Plain</b></ion-card-header>
+              <ion-card-content>
+                  {{ weight.value * 4.4 }} mg <br />
+                  {{ weight.value * 4.4 / (20 * carpule.value) | number:'1.0-0' }} carpules
+              </ion-card-content>
+            </ion-card>
+            
+          <ion-card>
+            <ion-card-header color="tertiary"><b>2% Lignocaine 1:80000 Adrenaline</b></ion-card-header>
             <ion-card-content>
               {{ weight.value * 7 }} mg <br />
-              {{ weight.value * 7 / (20 * carpule.value) }} carpules
-            </ion-card-content>
+              {{ weight.value * 7 / (20 * carpule.value) | number:'1.0-0' }} carpules
+            </ion-card-content>            
+          </ion-card>
 
-            <ion-card-header><b>2% Mepivicaine 1:100000 Adrenaline OR 3% Mepivicaine</b></ion-card-header>
+          <ion-card>
+            <ion-card-header color="tertiary"><b>2% Mepivicaine 1:100000 Adrenaline OR 3% Mepivicaine</b></ion-card-header>
             <ion-card-content>
               3 carpules
             </ion-card-content>
+          </ion-card>
 
-            <ion-card-header><b>3% Prilocaine 0.03IU Felypressin</b></ion-card-header>
+          <ion-card>
+            <ion-card-header color="tertiary"><b>3% Prilocaine 0.03IU Felypressin</b></ion-card-header>
             <ion-card-content>
               {{ weight.value * 9 }} mg <br />
-              {{ weight.value * 9 / (30 * carpule.value) }} carpules
+              {{ weight.value * 9 / (30 * carpule.value) | number:'1.0-0' }} carpules
             </ion-card-content>
+          </ion-card>
 
-            <ion-card-header><b>4% Prilocaine</b></ion-card-header>
+          <ion-card>
+            <ion-card-header color="tertiary"><b>4% Prilocaine</b></ion-card-header>
             <ion-card-content>
               {{ weight.value * 6 }} mg <br />
-              {{ weight.value * 6 / (40 * carpule.value) }} carpules
+              {{ weight.value * 6 / (40 * carpule.value) | number:'1.0-0' }} carpules
             </ion-card-content>
+          </ion-card>
 
-            <ion-card-header><b>4% Articaine 1:100000 Adrenaline</b></ion-card-header>
+          <ion-card>
+            <ion-card-header color="tertiary"><b>4% Articaine 1:100000 Adrenaline</b></ion-card-header>
             <ion-card-content>
               {{ weight.value * 7 }} mg <br />
-              {{ weight.value * 7 / (40 * carpule.value) }} carpules
+              {{ weight.value * 7 / (40 * carpule.value) | number:'1.0-0' }} carpules
             </ion-card-content>
-          
+          </ion-card>
         </ion-card>
       </ion-col>
     </ion-row>
 
     <ion-row>
-        <ion-col size-md="6" offset-md="3">
+        <ion-col size-md="8" offset-md="2">
           <ion-card>
               <ion-card-header><ion-card-title>Analgesics</ion-card-title></ion-card-header>
               
-              <ion-card-header><b>Paracetamol</b></ion-card-header>
-              <ion-card-content>
-                {{ weight.value * 15 }} mg per 4-6 hrs <br />
-                Up to a maxiumum of 4g per 24 hrs
-              </ion-card-content>
+              <ion-card>  
+                <ion-card-header color="secondary"><b>Paracetamol</b></ion-card-header>
+                <ion-card-content>
+                  {{ weight.value * 15 }} mg per 4-6 hrs <br />
+                  Up to a maxiumum of 4g per 24 hrs
+                </ion-card-content>
+              </ion-card>
               
-              <ion-card-header><b>Ibuprofen</b></ion-card-header>
-              <ion-card-content>
-                {{ weight.value * 5 }} to {{ weight.value * 10 }} mg per 6-8 hrs <br />
-                Up to a maxiumum of 2400mg per 24 hrs
-              </ion-card-content>
+              <ion-card>
+                <ion-card-header color="secondary"><b>Ibuprofen</b></ion-card-header>
+                <ion-card-content>
+                  {{ weight.value * 5 }} to {{ weight.value * 10 }} mg per 6-8 hrs <br />
+                  Up to a maxiumum of 2400mg per 24 hrs
+                </ion-card-content>
+              </ion-card>
 
             </ion-card>
           </ion-col>

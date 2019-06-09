@@ -8,11 +8,5 @@ import { Component } from '@angular/core';
 export class HomePage {
 
   constructor() {}
-
-  calculate() {
-    console.log(this.value);
-  };
-
   
-
 }
