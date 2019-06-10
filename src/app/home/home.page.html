@@ -32,7 +32,7 @@
             <ion-card>
               <ion-card-header color="tertiary"><b>2% Lignocaine Plain</b></ion-card-header>
               <ion-card-content>
-                  {{ weight.value * 4.4 }} mg <br />
+                  {{ weight.value * 4.4 | number:'1.0-2' }} mg <br />
                   {{ weight.value * 4.4 / (20 * carpule.value) | number:'1.0-0' }} carpules
               </ion-card-content>
             </ion-card>
@@ -40,7 +40,7 @@
           <ion-card>
             <ion-card-header color="tertiary"><b>2% Lignocaine 1:80000 Adrenaline</b></ion-card-header>
             <ion-card-content>
-              {{ weight.value * 7 }} mg <br />
+              {{ weight.value * 7 | number:'1.0-2' }} mg <br />
               {{ weight.value * 7 / (20 * carpule.value) | number:'1.0-0' }} carpules
             </ion-card-content>            
           </ion-card>
@@ -48,14 +48,15 @@
           <ion-card>
             <ion-card-header color="tertiary"><b>2% Mepivicaine 1:100000 Adrenaline OR 3% Mepivicaine</b></ion-card-header>
             <ion-card-content>
-              3 carpules
+              3 carpules <br />
+              3-6yo max 1.8mL; 6-14yo max 2.7mL
             </ion-card-content>
           </ion-card>
 
           <ion-card>
             <ion-card-header color="tertiary"><b>3% Prilocaine 0.03IU Felypressin</b></ion-card-header>
             <ion-card-content>
-              {{ weight.value * 9 }} mg <br />
+              {{ weight.value * 9 | number:'1.0-2' }} mg <br />
               {{ weight.value * 9 / (30 * carpule.value) | number:'1.0-0' }} carpules
             </ion-card-content>
           </ion-card>
@@ -63,7 +64,7 @@
           <ion-card>
             <ion-card-header color="tertiary"><b>4% Prilocaine</b></ion-card-header>
             <ion-card-content>
-              {{ weight.value * 6 }} mg <br />
+              {{ weight.value * 6 | number:'1.0-2' }} mg <br />
               {{ weight.value * 6 / (40 * carpule.value) | number:'1.0-0' }} carpules
             </ion-card-content>
           </ion-card>
@@ -71,7 +72,7 @@
           <ion-card>
             <ion-card-header color="tertiary"><b>4% Articaine 1:100000 Adrenaline</b></ion-card-header>
             <ion-card-content>
-              {{ weight.value * 7 }} mg <br />
+              {{ weight.value * 7 | number:'1.0-2' }} mg <br />
               {{ weight.value * 7 / (40 * carpule.value) | number:'1.0-0' }} carpules
             </ion-card-content>
           </ion-card>
@@ -85,17 +86,17 @@
               <ion-card-header><ion-card-title>Analgesics</ion-card-title></ion-card-header>
               
               <ion-card>  
-                <ion-card-header color="secondary"><b>Paracetamol</b></ion-card-header>
+                <ion-card-header color="primary"><b>Paracetamol</b></ion-card-header>
                 <ion-card-content>
-                  {{ weight.value * 15 }} mg per 4-6 hrs <br />
+                  {{ weight.value * 15 | number:'1.0-2' }} mg per 4-6 hrs <br />
                   Up to a maxiumum of 4g per 24 hrs
                 </ion-card-content>
               </ion-card>
               
               <ion-card>
-                <ion-card-header color="secondary"><b>Ibuprofen</b></ion-card-header>
+                <ion-card-header color="primary"><b>Ibuprofen</b></ion-card-header>
                 <ion-card-content>
-                  {{ weight.value * 5 }} to {{ weight.value * 10 }} mg per 6-8 hrs <br />
+                  {{ weight.value * 5 | number:'1.0-2' }} to {{ weight.value * 10 | number:'1.0-2' }} mg per 6-8 hrs <br />
                   Up to a maxiumum of 2400mg per 24 hrs
                 </ion-card-content>
               </ion-card>

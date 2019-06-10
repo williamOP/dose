@@ -1,5 +1,7 @@
 {
   "name": "dose",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
