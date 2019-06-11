@@ -88,15 +88,15 @@
               <ion-card>  
                 <ion-card-header color="primary"><b>Paracetamol</b></ion-card-header>
                 <ion-card-content>
-                  {{ weight.value * 15 | number:'1.0-2' }} mg per 4-6 hrs <br />
-                  Up to a maxiumum of 4g per 24 hrs
+                  {{ weight.value * 15 > 4000 && 4000 || weight.value * 15 | number:'1.0-2' }} mg per 4-6 hrs <br />
+                  Up to a maxiumum of 4000mg per 24 hrs
                 </ion-card-content>
               </ion-card>
               
               <ion-card>
                 <ion-card-header color="primary"><b>Ibuprofen</b></ion-card-header>
                 <ion-card-content>
-                  {{ weight.value * 5 | number:'1.0-2' }} to {{ weight.value * 10 | number:'1.0-2' }} mg per 6-8 hrs <br />
+                  {{ weight.value * 5 > 2400 && 2400 || weight.value * 5 | number:'1.0-2' }} to {{ weight.value * 10 > 2400 && 2400 || weight.value * 10 | number:'1.0-2' }} mg per 6-8 hrs <br />
                   Up to a maxiumum of 2400mg per 24 hrs
                 </ion-card-content>
               </ion-card>
@@ -104,6 +104,23 @@
             </ion-card>
           </ion-col>
         </ion-row>
+
+        <ion-row>
+          <ion-col size-md="8" offset-md="2">
+            <ion-card>
+                <ion-card-header><ion-card-title>Miscellaneous</ion-card-title></ion-card-header>
+                
+                <ion-card>  
+                  <ion-card-header color="danger"><b>Adrenaline 1:1000</b></ion-card-header>
+                  <ion-card-content>
+                    {{ weight.value * 0.01 > 0.5 && 0.5 || weight.value * 0.01 | number:'1.0-2' }} mg <br />
+                    Up to a maxiumum of 0.5mg (0.5mL) every 3-5 mins
+                  </ion-card-content>
+                </ion-card>
+                
+              </ion-card>
+            </ion-col>
+          </ion-row>
 
   </ion-grid>
 </ion-content>
