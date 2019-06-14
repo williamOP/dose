@@ -1,0 +1,16 @@
+<ion-card>  
+  <ion-card-header color="primary"><b> {{ analgesicItem.analgesicName }} </b></ion-card-header>
+  <ion-card-content>
+    {{ weight * analgesicItem.maxMgPerKg > analgesicItem.maxPer24 && analgesicItem.maxPer24 || weight * analgesicItem.maxMgPerKg | number:'1.0-2' }}mg per {{ analgesicItem.frequency }} hrs <br />
+    Up to a maxiumum of {{ analgesicItem.maxPer24 }}mg per 24 hrs
+    <!-- TODO upper lethal dose -->
+  </ion-card-content>
+</ion-card>
+
+<!-- <ion-card>
+  <ion-card-header color="primary"><b>Ibuprofen</b></ion-card-header>
+  <ion-card-content>
+    {{ weight.value * 5 > 2400 && 2400 || weight.value * 5 | number:'1.0-2' }} to {{ weight.value * 10 > 2400 && 2400 || weight.value * 10 | number:'1.0-2' }} mg per 6-8 hrs <br />
+    Up to a maxiumum of 2400mg per 24 hrs
+  </ion-card-content>
+</ion-card> -->
