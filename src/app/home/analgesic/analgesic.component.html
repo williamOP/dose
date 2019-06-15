@@ -1,9 +1,16 @@
 <ion-card>  
   <ion-card-header color="primary"><b> {{ analgesicItem.analgesicName }} </b></ion-card-header>
   <ion-card-content>
-    {{ weight * analgesicItem.maxMgPerKg > analgesicItem.maxPer24 && analgesicItem.maxPer24 || weight * analgesicItem.maxMgPerKg | number:'1.0-2' }}mg per {{ analgesicItem.frequency }} hrs <br />
-    Up to a maxiumum of {{ analgesicItem.maxPer24 }}mg per 24 hrs
-    <!-- TODO upper lethal dose -->
+    {{ weight * analgesicItem.maxMgPerKg > analgesicItem.maxPer24 ?
+      analgesicItem.maxPer24 :
+      weight * analgesicItem.maxMgPerKg | number:'1.0-2' }} 
+    {{ analgesicItem.maxMgPerKgUpper ? ' to' : ' mg' }}
+    {{ weight * analgesicItem.maxMgPerKgUpper > analgesicItem.maxPer24 ? 
+      analgesicItem.maxPer24 :
+      weight * analgesicItem.maxMgPerKgUpper | number:'1.0-2' }}
+    {{ analgesicItem.maxMgPerKgUpper ? ' mg' : null }}
+    per {{ analgesicItem.frequency }} hrs <br />
+    Up to a maxiumum of {{ analgesicItem.maxPer24 }} mg per 24 hrs
   </ion-card-content>
 </ion-card>
 

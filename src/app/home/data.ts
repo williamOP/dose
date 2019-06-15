@@ -2,6 +2,7 @@ export class La {
     laName: string;
     laPercentage: number;
     maxMgPerKg: number;
+    carpuleException?: number;
     exception?: string;
 }
 
@@ -43,7 +44,8 @@ export const laList: La[] = [
         laName: '2% Mepivicaine 1:100000 Adrenaline OR 3% Mepivicaine',
         laPercentage: null,
         maxMgPerKg: null,
-        exception: '3 carpules <br /> 3-6yo max 1.8mL; 6-14yo max 2.7mL'
+        carpuleException: 3,
+        exception: '3-6yo max 1.8mL; 6-14yo max 2.7mL'
     }
 ];
 

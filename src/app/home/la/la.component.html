@@ -1,7 +1,11 @@
 <ion-card>
   <ion-card-header color="tertiary"><b>{{ laItem.laName }}</b></ion-card-header>
   <ion-card-content>
-      {{ weight * laItem.maxMgPerKg | number:'1.0-2' }}mg <br />
-      {{ weight * laItem.maxMgPerKg / ( laItem.laPercentage * 10 * carpule) | number:'1.0-0' }} carpules
+    {{ laItem.exception ? null :
+      weight * laItem.maxMgPerKg | number:'1.0-2' }}
+    {{ laItem.exception ? laItem.exception : 'mg' }} <br/>
+    {{ laItem.carpuleException ? laItem.carpuleException :
+      weight * laItem.maxMgPerKg / ( laItem.laPercentage * 10 * carpule) | 
+      number:'1.0-0' }} carpules
   </ion-card-content>
 </ion-card>
