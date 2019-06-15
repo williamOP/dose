@@ -3,8 +3,11 @@
     <ion-title>
       Lethal Dose
     </ion-title>
+    <ion-searchbar placeholder='Filter Drugs' (ionInput)='filterList($event)' animated=true></ion-searchbar>
   </ion-toolbar>
 </ion-header>
+
+
 
 <ion-content>
   <ion-grid>
