@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
 import { La, Analgesic, Misc } from './data';
+import { ageWeight } from './ageWeight';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   laList: La[];
   laListAll: La[];
   analgesicList: Analgesic[];
@@ -20,12 +21,14 @@ export class HomePage {
 
   weight = 70;
   carpule = 2.2;
-  i = 0;
-  j = 0;
+  age = null;
+  gender = null;
+
+  // i = 0;
+  // j = 0;
 
   constructor(private dataService: DataService) {}
 
-// tslint:disable-next-line: use-life-cycle-interface
   ngOnInit() {
     // list of all LA
     this.laListAll = this.dataService.getLa();
@@ -101,6 +104,29 @@ export class HomePage {
     //     return false;
     //   }
     // });
+  }
+
+  updateWeight(evt: any) {
+    if (evt.srcElement.innerText === 'Gender') {
+      this.gender = evt.srcElement.value;
+    }
+
+    if (this.age > -1) {
+      for (const ageForWeight of ageWeight) {
+          if (Math.floor(this.age) === ageForWeight.age) {
+            if (this.gender === 'male' && ageForWeight.male) {
+              this.weight = ageForWeight.weight;
+            } else if (this.gender === 'female' && !ageForWeight.male) {
+              this.weight = ageForWeight.weight;
+            }
+          }
+      }
+    }
+  }
+
+  clearAgeWeight() {
+    this.age = null;
+    // this.gender = null;
   }
 
 }
