@@ -1,7 +1,9 @@
 <ion-card>  
-  <ion-card-header color="danger"><b>Adrenaline 1:1000</b></ion-card-header>
+  <ion-card-header color="danger"><b> test {{ miscItem.miscName }} </b></ion-card-header>
   <ion-card-content>
-    {{ weight * 0.01 > 0.5 ? 0.5 : weight * 0.01 | number:'1.0-2' }} mg <br />
-    Up to a maxiumum of 0.5 mg (0.5mL) every 3-5 mins
+    {{ weight * miscItem.maxMgPerKg > miscItem.maxDoseMg ? 
+      miscItem.maxDoseMg : 
+      weight * miscItem.maxMgPerKg | number:'1.0-2' }} mg <br />
+    {{ miscItem.maxMsg }}
   </ion-card-content>
 </ion-card>

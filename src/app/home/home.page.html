@@ -131,7 +131,7 @@
             <ion-card>
                 <ion-card-header><ion-card-title>Miscellaneous</ion-card-title></ion-card-header>
                 
-                <app-misc [weight]='this.weight'></app-misc>
+                <app-misc *ngFor="let misc of miscList" [miscItem]='misc' [weight]='this.weight' [carpule]='this.carpule'></app-misc>
                 
               </ion-card>
             </ion-col>

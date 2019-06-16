@@ -14,6 +14,13 @@ export class Analgesic {
     frequency: string;
 }
 
+export class Misc {
+    miscName: string;
+    maxMgPerKg: number;
+    maxDoseMg: number;
+    maxMsg: string;
+}
+
 export const laList: La[] = [
     {
         laName: '2% Lignocaine Plain',
@@ -62,5 +69,14 @@ export const analgesicList: Analgesic[] = [
         maxMgPerKgUpper: 10,
         maxPer24: 2400,
         frequency: '6-8'
+    }
+];
+
+export const miscList: Misc[] = [
+    {
+        miscName: 'Adrenaline: 1:1000',
+        maxMgPerKg: 0.01,
+        maxDoseMg: 0.5,
+        maxMsg: 'Up to a maxiumum of 0.5 mg (0.5mL) every 3-5 mins'
     }
 ];

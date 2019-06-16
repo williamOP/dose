@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from './data.service';
-import { La, Analgesic } from './data';
+import { La, Analgesic, Misc } from './data';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +12,9 @@ export class HomePage {
   laListAll: La[];
   analgesicList: Analgesic[];
   analgesicListAll: Analgesic[];
+  miscList: Misc[];
+  miscListAll: Misc[];
+
   dataList: any[];
   loadedDataList: any[];
 
@@ -30,19 +33,21 @@ export class HomePage {
     this.laList = this.laListAll;
     this.analgesicListAll = this.dataService.getAnalgesic();
     this.analgesicList = this.analgesicListAll;
+    this.miscListAll = this.dataService.getMisc();
+    this.miscList = this.miscListAll;
 
-    // list of names of drugs
-    this.dataList = [];
-    this.loadedDataList = [];
+    // // list of names of drugs
+    // this.dataList = [];
+    // this.loadedDataList = [];
 
-    while (this.laList[this.i]) {
-      this.dataList.push(this.laList[this.i].laName);
-      this.i++;
-    }
-    while (this.analgesicList[this.j]) {
-      this.dataList.push(this.analgesicList[this.j].analgesicName);
-      this.j++;
-    }
+    // while (this.laList[this.i]) {
+    //   this.dataList.push(this.laList[this.i].laName);
+    //   this.i++;
+    // }
+    // while (this.analgesicList[this.j]) {
+    //   this.dataList.push(this.analgesicList[this.j].analgesicName);
+    //   this.j++;
+    // }
   }
 
   initialiseItems(): void {
@@ -50,6 +55,7 @@ export class HomePage {
     this.dataList = this.loadedDataList;
     this.laList = this.laListAll;
     this.analgesicList = this.analgesicListAll;
+    this.miscList = this.miscListAll;
   }
 
   filterList(evt: any) {
@@ -65,13 +71,22 @@ export class HomePage {
         if (currentLa.laName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
           return true;
         }
-        // continue
+        return false;
       }
     });
 
     this.analgesicList = this.analgesicList.filter(currentAnalgesic => {
       if (currentAnalgesic.analgesicName && searchTerm) {
         if (currentAnalgesic.analgesicName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+
+    this.miscList = this.miscList.filter(currentMisc => {
+      if (currentMisc.miscName && searchTerm) {
+        if (currentMisc.miscName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
           return true;
         }
         return false;
