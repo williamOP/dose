@@ -26,10 +26,10 @@ export class HomePage implements OnInit {
   }
 
   filterList(evt: any) {
-    const searchTerm = evt.srcElement.value;
+    const searchTerm = evt.srcElement.value.toLowerCase();
 
     for (const drug of this.drugList) {
-      if (drug.name.toLowerCase().search(searchTerm.toLowerCase()) > -1) {
+      if (drug.name.toLowerCase().search(searchTerm) > -1) {
         drug.hide = false;
       } else {
         drug.hide = true;

@@ -1,4 +1,4 @@
-<ion-card>
+<ion-card *ngIf="!drug.hide">
   <ion-card-header color="{{ drug.type.replace(' ','-') }}"><b>{{ drug.name }}</b></ion-card-header>
   <ion-card-content>
     <div>
