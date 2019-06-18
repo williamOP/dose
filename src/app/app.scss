@@ -4,3 +4,21 @@
 // styles are for the entire app and not just one component. Additionally, this 
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
+
+// Local Anaesthetic
+.ion-color-Local-Anaesthetic {
+    --ion-color-base: #a109a1;
+    --ion-color-contrast: #ffffff;
+}
+
+// Analgesic
+.ion-color-Analgesic {
+    --ion-color-base: #1d1daf;
+    --ion-color-contrast: #ffffff;
+}
+
+// Miscellaneous
+.ion-color-Miscellaneous {
+    --ion-color-base: #2a7e10;
+    --ion-color-contrast: #ffffff;
+}

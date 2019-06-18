@@ -1,0 +1,16 @@
+<ion-row *ngFor="let drugType of drugTypesList">
+  <ion-col size-md='8' offset-md='2'>
+    <ion-card>
+      <ion-card-header><ion-card-title> {{ drugType }} </ion-card-title></ion-card-header>
+      <ion-item *ngIf="drugType === 'Local Anaesthetic'">
+          <ion-label position="floating" color="primary">Carpule (mL)</ion-label>
+          <ion-input clearInput type="number" [(ngModel)]="this.inputs.carpule" value="2.2"></ion-input>
+      </ion-item>
+
+      <ng-container *ngFor="let drug of drugList">
+        <app-drug-card *ngIf="drugType === drug.type" [inputs]="this.inputs" [drug]="drug"></app-drug-card>
+      </ng-container>
+
+    </ion-card>
+  </ion-col>
+</ion-row>

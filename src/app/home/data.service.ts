@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { laList, analgesicList, miscList } from './data';
+import { drugList } from './data';
 
 @Injectable({
   providedIn: 'root'
@@ -7,15 +7,8 @@ import { laList, analgesicList, miscList } from './data';
 export class DataService {
 
   constructor() { }
-  getLa() {
-    return laList;
-  }
 
-  getAnalgesic() {
-    return analgesicList;
-  }
-
-  getMisc() {
-    return miscList;
+  getDrug() {
+    return drugList;
   }
 }

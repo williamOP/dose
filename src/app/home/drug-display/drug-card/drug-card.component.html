@@ -1,0 +1,62 @@
+<ion-card>
+  <ion-card-header color="{{ drug.type.replace(' ','-') }}"><b>{{ drug.name }}</b></ion-card-header>
+  <ion-card-content>
+    <div>
+      <ng-container *ngIf="drug.maxMgPerKg || drug.carpuleException">
+
+        <span *ngIf="!drug.carpuleException">
+          
+          <span *ngIf="drug.maxDoseForPeriod; else noMaxDoseForPeriod">
+            <!-- return max dose unless greater than maxDoseForPeriod -->
+            {{ inputs.weight * drug.maxMgPerKg > drug.maxDoseForPeriod ?
+              drug.maxDoseForPeriod :
+              inputs.weight * drug.maxMgPerKg | number:'1.0-2' }} 
+
+              <span *ngIf="drug.maxMgPerKgUpper">
+                to 
+                <!-- return upper limit max dose unless greater than maxDoseForPeriod -->
+                {{ inputs.weight * drug.maxMgPerKgUpper > drug.maxDoseForPeriod ? 
+                  drug.maxDoseForPeriod :
+                  inputs.weight * drug.maxMgPerKgUpper | number:'1.0-2' }}
+              </span>
+          </span>
+
+          <ng-template #noMaxDoseForPeriod>
+            <!-- return max dose (mg) -->
+            {{ inputs.weight * drug.maxMgPerKg | number:'1.0-2' }}  
+          </ng-template>
+
+        </span>
+        
+        <span *ngIf="drug.exception; else mg">
+          {{ drug.exception }}
+        </span>
+        <ng-template #mg>
+          mg
+        </ng-template>
+        
+        <span *ngIf="drug.doseFrequency">
+          per {{ drug.doseFrequency }} as required
+        </span>
+
+      </ng-container>
+    </div>
+
+    <div>
+      <span *ngIf="drug.carpuleException">
+        {{ drug.carpuleException }} carpules
+      </span>
+      <span *ngIf="drug.percentage">
+        <!-- return max number of carpules for weight -->
+        {{ inputs.weight * drug.maxMgPerKg / ( drug.percentage * 10 * inputs.carpule) | number:'1.0-0' }} carpules
+      </span>
+    </div>
+
+    <div>
+      <span *ngIf="drug.doseFrequency">
+        Up to a maximum of {{ drug.maxDoseForPeriod }} mg per {{ drug.doseFrequency }}
+      </span>
+    </div>
+  </ion-card-content>
+</ion-card>
+  

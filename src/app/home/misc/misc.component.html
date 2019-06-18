@@ -1,9 +1,0 @@
-<ion-card>  
-  <ion-card-header color="danger"><b> {{ miscItem.miscName }} </b></ion-card-header>
-  <ion-card-content>
-    {{ weight * miscItem.maxMgPerKg > miscItem.maxDoseMg ? 
-      miscItem.maxDoseMg : 
-      weight * miscItem.maxMgPerKg | number:'1.0-2' }} mg <br />
-    {{ miscItem.maxMsg }}
-  </ion-card-content>
-</ion-card>

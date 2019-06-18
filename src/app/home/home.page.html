@@ -1,13 +1,11 @@
 <ion-header>
   <ion-toolbar color="dark">
-    <ion-title>
+    <ion-title padding>
       Lethal Dose
     </ion-title>
     <ion-searchbar placeholder='Filter Drugs' (ionInput)='filterList($event)' animated=true></ion-searchbar>
   </ion-toolbar>
 </ion-header>
-
-
 
 <ion-content>
   <ion-grid>
@@ -17,7 +15,7 @@
             <ion-card-header><ion-card-title>Inputs</ion-card-title></ion-card-header>
             <ion-item>
               <ion-label position="floating" color="primary">Lean Mass (kg)</ion-label>
-              <ion-input clearInput type="number" [(ngModel)]='weight' min="1" (ionInput)="clearAgeWeight()"></ion-input>
+              <ion-input clearInput type="number" [(ngModel)]='this.inputs.weight' min="1" (ionInput)="clearAgeWeight()"></ion-input>
             </ion-item>
             <ion-item>
               <ion-row>
@@ -25,7 +23,7 @@
                   <div>
                     <ion-note>Children Aged 1-20</ion-note>
                     <ion-label position="floating" color="primary">Age</ion-label>
-                    <ion-input clearInput type="number" [(ngModel)]='age' min="0" (ionChange)="updateWeight($event)"></ion-input>
+                    <ion-input clearInput type="number" [(ngModel)]='this.inputs.age' min="0" max="20" (ionChange)="updateWeight($event)"></ion-input>
                   </div>
                 </ion-col>
                 <ion-col size="6">
@@ -50,120 +48,8 @@
           </ion-card>
         </ion-col>
       </ion-row>
-      
-      <!-- <ion-row>
-        <ion-col size-md='8' offset-md='2'>              
-          <ion-card>
-            <ion-card-header><ion-card-title>Local Anaesthetic</ion-card-title></ion-card-header>
-            <ion-item>
-                <ion-label position="floating" color="primary">Carpule (mL)</ion-label>
-                <ion-input clearInput type="number" #carpule value="2.2"></ion-input>
-            </ion-item>
 
-            <ion-card>
-              <ion-card-header color="tertiary"><b>2% Lignocaine Plain</b></ion-card-header>
-              <ion-card-content>
-                  {{ weight.value * 4.4 | number:'1.0-2' }} mg <br />
-                  {{ weight.value * 4.4 / (20 * carpule.value) | number:'1.0-0' }} carpules
-              </ion-card-content>
-            </ion-card>
-            
-          <ion-card>
-            <ion-card-header color="tertiary"><b>2% Lignocaine 1:80000 Adrenaline</b></ion-card-header>
-            <ion-card-content>
-              {{ weight.value * 7 | number:'1.0-2' }} mg <br />
-              {{ weight.value * 7 / (20 * carpule.value) | number:'1.0-0' }} carpules
-            </ion-card-content>            
-          </ion-card>
-
-          <ion-card>
-            <ion-card-header color="tertiary"><b>2% Mepivicaine 1:100000 Adrenaline OR 3% Mepivicaine</b></ion-card-header>
-            <ion-card-content>
-              3 carpules <br />
-              3-6yo max 1.8mL; 6-14yo max 2.7mL
-            </ion-card-content>
-          </ion-card>
-
-          <ion-card>
-            <ion-card-header color="tertiary"><b>3% Prilocaine 0.03IU Felypressin</b></ion-card-header>
-            <ion-card-content>
-              {{ weight.value * 9 | number:'1.0-2' }} mg <br />
-              {{ weight.value * 9 / (30 * carpule.value) | number:'1.0-0' }} carpules
-            </ion-card-content>
-          </ion-card>
-
-          <ion-card>
-            <ion-card-header color="tertiary"><b>4% Prilocaine</b></ion-card-header>
-            <ion-card-content>
-              {{ weight.value * 6 | number:'1.0-2' }} mg <br />
-              {{ weight.value * 6 / (40 * carpule.value) | number:'1.0-0' }} carpules
-            </ion-card-content>
-          </ion-card>
-
-          <ion-card>
-            <ion-card-header color="tertiary"><b>4% Articaine 1:100000 Adrenaline</b></ion-card-header>
-            <ion-card-content>
-              {{ weight.value * 7 | number:'1.0-2' }} mg <br />
-              {{ weight.value * 7 / (40 * carpule.value) | number:'1.0-0' }} carpules
-            </ion-card-content>
-          </ion-card>
-        </ion-card>
-      </ion-col>
-    </ion-row> -->
-
-
-    <ion-row>
-      <ion-col size-md='8' offset-md='2'>              
-        <ion-card>
-          <ion-card-header><ion-card-title>Local Anaesthetic</ion-card-title></ion-card-header>
-          <ion-item>
-              <ion-label position="floating" color="primary">Carpule (mL)</ion-label>
-              <ion-input clearInput type="number" [(ngModel)]="carpule" value="2.2"></ion-input>
-          </ion-item>
-    
-          <app-la *ngFor="let la of laList" [laItem]='la' [weight]='this.weight' [carpule]='this.carpule'></app-la>
-
-        </ion-card>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-        <ion-col size-md="8" offset-md="2">
-          <ion-card>
-              <ion-card-header><ion-card-title>Analgesics</ion-card-title></ion-card-header>
-
-              <app-analgesic *ngFor="let analgesic of analgesicList" [analgesicItem]='analgesic' [weight]='this.weight' [carpule]='this.carpule'></app-analgesic>
-              
-              <!-- <ion-card>  
-                <ion-card-header color="primary"><b>Paracetamol</b></ion-card-header>
-                <ion-card-content>
-                  {{ weight.value * 15 > 4000 && 4000 || weight.value * 15 | number:'1.0-2' }} mg per 4-6 hrs <br />
-                  Up to a maxiumum of 4000mg per 24 hrs
-                </ion-card-content>
-              </ion-card>
-              
-              <ion-card>
-                <ion-card-header color="primary"><b>Ibuprofen</b></ion-card-header>
-                <ion-card-content>
-                  {{ weight.value * 5 > 2400 && 2400 || weight.value * 5 | number:'1.0-2' }} to {{ weight.value * 10 > 2400 && 2400 || weight.value * 10 | number:'1.0-2' }} mg per 6-8 hrs <br />
-                  Up to a maxiumum of 2400mg per 24 hrs
-                </ion-card-content>
-              </ion-card> -->
-
-            </ion-card>
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col size-md="8" offset-md="2">
-            <ion-card>
-                <ion-card-header><ion-card-title>Miscellaneous</ion-card-title></ion-card-header>
-                
-                <app-misc *ngFor="let misc of miscList" [miscItem]='misc' [weight]='this.weight' [carpule]='this.carpule'></app-misc>
-                
-              </ion-card>
-            </ion-col>
-          </ion-row>
+      <app-drug-display [drugList]="this.drugList" [inputs]="this.inputs"></app-drug-display>
 
   </ion-grid>
 </ion-content>

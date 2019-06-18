@@ -5,9 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
-import { LaComponent } from './la/la.component';
-import { AnalgesicComponent } from './analgesic/analgesic.component';
-import { MiscComponent } from './misc/misc.component';
+import { DrugDisplayComponent } from './drug-display/drug-display.component';
+import { DrugCardComponent } from './drug-display/drug-card/drug-card.component';
 
 @NgModule({
   imports: [
@@ -21,6 +20,6 @@ import { MiscComponent } from './misc/misc.component';
       }
     ])
   ],
-  declarations: [HomePage, LaComponent, AnalgesicComponent, MiscComponent]
+  declarations: [HomePage, DrugDisplayComponent, DrugCardComponent]
 })
 export class HomePageModule {}
