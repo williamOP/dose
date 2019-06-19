@@ -3,7 +3,7 @@
     <ion-title padding>
       William's Dating App
     </ion-title>
-    <ion-searchbar placeholder='Search' animated=true></ion-searchbar>
+    <ion-searchbar placeholder='Search' (ionInput)='filterList($event)' animated=true></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -11,10 +11,12 @@
     <ion-grid>
         <ion-row>
           <ion-col size-md="6" offset-md="3">
-            <ion-card *ngFor="let module of modulesList" routerLink= "{{ '/'+module.page }}">
+            <ng-container *ngFor="let module of modulesList">
+            <ion-card *ngIf="!module.hide" routerLink= "{{ '/'+module.path }}">
                 <ion-card-header><ion-card-title>{{ module.title }}</ion-card-title></ion-card-header>
-                <!-- <ion-card-content>{{ modulesList.anaesthetics.title }}</ion-card-content> -->
+                <ion-card-content>{{ module.description }}</ion-card-content>
               </ion-card>
+            </ng-container>
             </ion-col>
           </ion-row>    
       </ion-grid>
