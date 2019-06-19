@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
 import { Drug } from './data';
 import { ageWeight } from './age-weight';
+import { moduleLibrary } from '../moduleLibrary';
 
 @Component({
   selector: 'app-anaesthetics',
@@ -10,6 +11,7 @@ import { ageWeight } from './age-weight';
 })
 
 export class AnaestheticsPage implements OnInit {
+  title: string;
   drugList: Drug[];
 
   // default inputs
@@ -23,6 +25,8 @@ export class AnaestheticsPage implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
+    this.title = moduleLibrary.get('anaesthetics').title;
+
     this.drugList = this.dataService.getDrug();
   }
 

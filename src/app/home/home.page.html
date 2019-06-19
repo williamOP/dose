@@ -8,4 +8,14 @@
 </ion-header>
 
 <ion-content>
+    <ion-grid>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-card *ngFor="let module of modulesList" routerLink= "{{ '/'+module.page }}">
+                <ion-card-header><ion-card-title>{{ module.title }}</ion-card-title></ion-card-header>
+                <!-- <ion-card-content>{{ modulesList.anaesthetics.title }}</ion-card-content> -->
+              </ion-card>
+            </ion-col>
+          </ion-row>    
+      </ion-grid>
 </ion-content>
