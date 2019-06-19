@@ -16,6 +16,18 @@ export class HomePage implements OnInit {
     }
   }
 
+  filterList(evt: any) {
+    const searchTerm = evt.srcElement.value.toLowerCase();
+
+    for (const module of this.modulesList) {
+      if (module.title.toLowerCase().search(searchTerm) > -1) {
+        module.hide = false;
+      } else {
+        module.hide = true;
+      }
+    }
+  }
+
 }
 
 // this.title = moduleLibrary.get('anaesthetics').title;
