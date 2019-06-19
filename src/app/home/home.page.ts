@@ -1,63 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from './data.service';
-import { Drug } from './data';
-import { ageWeight } from './age-weight';
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  drugList: Drug[];
-
-  // default inputs
-  inputs = {
-    weight: 70,
-    carpule: 2.2,
-    age: null,
-    gender: null
-  };
-
-  constructor(private dataService: DataService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.drugList = this.dataService.getDrug();
-  }
-
-  filterList(evt: any) {
-    const searchTerm = evt.srcElement.value.toLowerCase();
-
-    for (const drug of this.drugList) {
-      if (drug.name.toLowerCase().search(searchTerm) > -1) {
-        drug.hide = false;
-      } else {
-        drug.hide = true;
-      }
-    }
-  }
-
-  updateWeight(evt: any) {
-    if (evt.srcElement.innerText === 'Gender') {
-      this.inputs.gender = evt.srcElement.value;
-    }
-
-    if (this.inputs.age > -1) {
-      for (const ageForWeight of ageWeight) {
-          if (Math.floor(this.inputs.age) === ageForWeight.age) {
-            if (this.inputs.gender === 'male' && ageForWeight.male) {
-              this.inputs.weight = ageForWeight.weight;
-            } else if (this.inputs.gender === 'female' && !ageForWeight.male) {
-              this.inputs.weight = ageForWeight.weight;
-            }
-          }
-      }
-    }
-  }
-
-  clearAgeWeight() {
-    this.inputs.age = null;
-    // this.gender = null;
   }
 
 }
