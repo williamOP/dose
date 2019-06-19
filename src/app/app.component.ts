@@ -14,14 +14,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private router: Router
   ) {
     this.initializeApp();
-
-    // adds paths and directorys of modules to router from moduleLibrary data
-    for (const moduleData of moduleLibrary.values()) {
-    router.config.unshift({path: moduleData.path, loadChildren: moduleData.directory});
-  }
   }
 
   initializeApp() {
