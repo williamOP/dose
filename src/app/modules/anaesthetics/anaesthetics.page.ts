@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from './data.service';
 import { Drug } from './data';
 import { ageWeight } from './age-weight';
 import { moduleLibrary } from '../moduleLibrary';
+import { IonSearchbar, IonBackButton, IonCard } from '@ionic/angular';
 
 @Component({
   selector: 'app-anaesthetics',
@@ -11,8 +12,10 @@ import { moduleLibrary } from '../moduleLibrary';
 })
 
 export class AnaestheticsPage implements OnInit {
+
   title: string;
   drugList: Drug[];
+  searchActive: boolean;
 
   // default inputs
   inputs = {
@@ -26,7 +29,6 @@ export class AnaestheticsPage implements OnInit {
 
   ngOnInit() {
     this.title = moduleLibrary.get('anaesthetics').title;
-
     this.drugList = this.dataService.getDrug();
   }
 
@@ -43,10 +45,6 @@ export class AnaestheticsPage implements OnInit {
   }
 
   updateWeight(evt: any) {
-    if (evt.srcElement.innerText === 'Gender') {
-      this.inputs.gender = evt.srcElement.value;
-    }
-
     if (this.inputs.age > -1) {
       for (const ageForWeight of ageWeight) {
           if (Math.floor(this.inputs.age) === ageForWeight.age) {
@@ -62,7 +60,7 @@ export class AnaestheticsPage implements OnInit {
 
   clearAgeWeight() {
     this.inputs.age = null;
-    // this.gender = null;
+    // this.inputs.gender = null;
   }
 
 }

@@ -8,14 +8,9 @@ export class ModuleData {
 
 export const moduleLibrary = new Map<string, ModuleData>([
     ['anaesthetics', {
-        title: 'Lethal Dose (Test text 1)',
+        title: 'Lethal Dose',
         path: 'anaesthetics',
         description: 'Calculate max dose for drugs.'
-    }
-    ],
-    ['anaesthetics2', {
-        title: 'Lethal Dose (Test text 2)',
-        path: 'anaesthetics',
     }
     ]
 ]);

@@ -1,5 +1,5 @@
 {
-  "appId": "com.williamhong.dose",
+  "appId": "com.dose.app",
   "appName": "dose",
   "bundledWebRuntime": false,
   "npmClient": "npm",

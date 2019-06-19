@@ -1,20 +1,26 @@
 <ion-header>
-  <ion-toolbar color="dark">
-    <ion-title padding>
-      William's Dating App
-    </ion-title>
+    <ion-toolbar color="primary">
     <ion-searchbar placeholder='Search' (ionInput)='filterList($event)' animated=true></ion-searchbar>
-  </ion-toolbar>
+    <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" name="settings"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <ion-grid>
         <ion-row>
-          <ion-col size-md="6" offset-md="3">
+          <ion-col>
             <ng-container *ngFor="let module of modulesList">
-            <ion-card *ngIf="!module.hide" routerLink= "{{ '/'+module.path }}">
-                <ion-card-header><ion-card-title>{{ module.title }}</ion-card-title></ion-card-header>
-                <ion-card-content>{{ module.description }}</ion-card-content>
+              <ion-card *ngIf="!module.hide" routerLink= "{{ '/'+module.path }}">
+                  <ion-card-header>
+                    <ion-card-title class="module-name">
+                      {{ module.title }}
+                    </ion-card-title>
+                  </ion-card-header>
+                <ion-card-content class="module-description">{{ module.description }}</ion-card-content>
               </ion-card>
             </ng-container>
             </ion-col>
