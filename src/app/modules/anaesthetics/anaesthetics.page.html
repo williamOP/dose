@@ -16,39 +16,35 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col size-md="6" offset-md="3">
-        <ion-card>
-            <ion-card-header><ion-card-title>Inputs</ion-card-title></ion-card-header>
-            <!-- Weight -->
-            <ion-item>
-              <ion-label position="stacked" color="primary">Lean Mass (kg)</ion-label>
-              <ion-input clearInput type="number" [(ngModel)]='this.inputs.weight' min="1" (ionInput)="clearAgeWeight()"></ion-input>
-            </ion-item>
-            <!-- Age + Gender -->
-            <!-- Age -->
-            <ion-item>
-              <ion-label position="stacked" color="primary">Age (1-20)</ion-label>
-              <ion-input clearInput type="number" [(ngModel)]='this.inputs.age' min="0" max="20" (ionChange)="updateWeight($event)"></ion-input>
-            </ion-item>
-            <!-- Gender -->
-            <ion-item>
-            <ion-label position="stacked" color="primary">Gender</ion-label>
-            <ion-segment [(ngModel)]='this.inputs.gender' (ionChange)="updateWeight($event)">
-                <ion-segment-button value="male">
-                    <ion-icon name="male"></ion-icon>
-                </ion-segment-button>
-                <ion-segment-button value="female">
-                    <ion-icon name="female"></ion-icon>
-                </ion-segment-button>
-            </ion-segment>              
-          </ion-item>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-
-      <app-drug-display [drugList]="this.drugList" [inputs]="this.inputs"></app-drug-display>
-
-  </ion-grid>
+  <!-- Inputs card -->
+  <ion-col>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Inputs</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <!-- Weight -->
+        <ion-label position="stacked" color="primary">Lean Mass (kg)</ion-label>
+        <ion-input clearInput type="number" [(ngModel)]='this.inputs.weight' min="1" (ionInput)="clearAgeWeight()"></ion-input>
+        <!-- Age -->
+        <ion-label position="stacked" color="primary">Age (1-20)</ion-label>
+        <ion-input clearInput type="number" [(ngModel)]='this.inputs.age' min="1" max="20" (ionChange)="updateWeight($event)"></ion-input>
+        <!-- Gender, shows if age is inputted -->
+        <div *ngIf="this.inputs.age">
+          <ion-label position="stacked" color="primary">Gender</ion-label>
+          <ion-segment [(ngModel)]='this.inputs.gender' (ionChange)="updateWeight($event)">
+            <ion-segment-button value="male">
+              <ion-icon name="male"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="female">
+              <ion-icon name="female"></ion-icon>
+            </ion-segment-button>
+          </ion-segment>              
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+  <!-- Drugs lists -->
+  <app-drug-display [drugList]="this.drugList" [inputs]="this.inputs"></app-drug-display>
 </ion-content>
