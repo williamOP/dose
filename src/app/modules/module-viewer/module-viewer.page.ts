@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Module } from '../moduleLibrary';
+import { Module } from '../module';
 import { IonRouterOutlet } from '@ionic/angular';
 
 @Component({
@@ -10,9 +9,11 @@ import { IonRouterOutlet } from '@ionic/angular';
 })
 export class ModuleViewerPage implements OnInit {
   @ViewChild(IonRouterOutlet) loadedModule: Module;
+
   moduleActive = false;
 
-  constructor(private route: ActivatedRoute) {
+
+  constructor() {
    }
 
   ngOnInit() {
@@ -22,5 +23,10 @@ export class ModuleViewerPage implements OnInit {
     this.loadedModule = evt;
     this.loadedModule.inViewer = true;
     this.moduleActive = true;
+  }
+
+  openLink(link) {
+    console.log(link);
+    window.open(link, '_system');
   }
 }

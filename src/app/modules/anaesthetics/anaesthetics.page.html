@@ -4,7 +4,7 @@
           <ion-back-button defaultHref = "/home"></ion-back-button>
     </ion-buttons>
     <ion-title>
-        {{ moduleData.title }}
+        {{ metadata.title }}
     </ion-title>
   </ion-toolbar>
 
@@ -25,7 +25,7 @@
       <ion-card-content>
         <!-- Weight -->
         <ion-label position="stacked" color="primary">Lean Mass (kg)</ion-label>
-        <ion-input clearInput type="number" [(ngModel)]='this.inputs.weight' min="1"></ion-input>
+        <ion-input clearInput type="number" [(ngModel)]='this.inputs.weight' min="1" (ionInput)="inputs.age = null"></ion-input>
         <!-- Age -->
         <ion-label position="stacked" color="primary">Age (1-20)</ion-label>
         <ion-input clearInput type="number" [(ngModel)]='this.inputs.age' min="1" max="20" (ionChange)="updateWeight($event)"></ion-input>

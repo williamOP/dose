@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { moduleLibrary } from '../modules/moduleLibrary';
+import { moduleLibrary } from '../modules/module';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,11 +19,7 @@ export class HomePage implements OnInit {
     const searchTerm = evt.srcElement.value.toLowerCase();
 
     for (const module of this.modulesList) {
-      if (module.title.toLowerCase().search(searchTerm) > -1) {
-        module.hide = false;
-      } else {
-        module.hide = true;
-      }
-    }
+      module.hide = !(module.title.toLowerCase().search(searchTerm) > -1);
   }
+}
 }
