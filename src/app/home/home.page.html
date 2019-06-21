@@ -2,6 +2,12 @@
     <ion-toolbar color="primary">
       <!-- Search Bar -->
     <ion-searchbar placeholder='Search' (ionInput)='filterList($event)' animated=true></ion-searchbar>
+    <!-- Settings button -->
+    <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" name="settings"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -9,7 +15,7 @@
   <!-- Modules -->
 <ion-col>
     <div *ngFor="let module of modulesList">
-      <ion-card *ngIf="!module.hide" routerLink= "{{ '/'+module.path }}">
+      <ion-card *ngIf="!module.hide" routerLink= "{{ '/'+module.id }}">
           <ion-card-header>
             <ion-card-title class="module-name">
               {{ module.title }}

@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from './data.service';
 import { Drug } from './data';
-import { ageWeight } from './age-weight';
-import { moduleLibrary } from '../moduleLibrary';
-import { IonSearchbar, IonBackButton, IonCard } from '@ionic/angular';
+import { getWeight } from './age-weight';
+import { Module, getModuleData } from '../moduleLibrary';
 
 @Component({
   selector: 'app-anaesthetics',
@@ -11,11 +10,9 @@ import { IonSearchbar, IonBackButton, IonCard } from '@ionic/angular';
   styleUrls: ['anaesthetics.page.scss'],
 })
 
-export class AnaestheticsPage implements OnInit {
-
+export class AnaestheticsPage extends Module implements OnInit {
   title: string;
   drugList: Drug[];
-  searchActive: boolean;
 
   // default inputs
   inputs = {
@@ -25,10 +22,12 @@ export class AnaestheticsPage implements OnInit {
     gender: null
   };
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService) {
+    super();
+  }
 
   ngOnInit() {
-    this.title = moduleLibrary.get('anaesthetics').title;
+    this.moduleData = getModuleData('anaesthetics');
     this.drugList = this.dataService.getDrug();
   }
 
@@ -45,22 +44,8 @@ export class AnaestheticsPage implements OnInit {
   }
 
   updateWeight(evt: any) {
-    if (this.inputs.age > -1) {
-      for (const ageForWeight of ageWeight) {
-          if (Math.floor(this.inputs.age) === ageForWeight.age) {
-            if (this.inputs.gender === 'male' && ageForWeight.male) {
-              this.inputs.weight = ageForWeight.weight;
-            } else if (this.inputs.gender === 'female' && !ageForWeight.male) {
-              this.inputs.weight = ageForWeight.weight;
-            }
-          }
-      }
+    if (this.inputs.age && this.inputs.gender) {
+      this.inputs.weight = getWeight(this.inputs.gender, this.inputs.age);
     }
   }
-
-  clearAgeWeight() {
-    this.inputs.age = null;
-    // this.inputs.gender = null;
-  }
-
 }
