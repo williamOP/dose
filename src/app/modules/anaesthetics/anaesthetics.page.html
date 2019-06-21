@@ -1,18 +1,17 @@
 <ion-header>
-  <ion-toolbar color="dark">
-      <!-- back button -->
+  <ion-toolbar *ngIf="!inViewer" color="dark">
     <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
+          <ion-back-button defaultHref = "/home"></ion-back-button>
     </ion-buttons>
-    <!-- title -->
     <ion-title>
-      {{ title }}
+        {{ moduleData.title }}
     </ion-title>
-    <!-- search button -->
   </ion-toolbar>
+
   <ion-toolbar color="dark">
-  <ion-searchbar placeholder='Filter Drugs' (ionInput)='filterList($event)' animated=true showCancelButton='true'></ion-searchbar>
-</ion-toolbar>
+    <!-- Searchbar -->
+    <ion-searchbar placeholder='Filter Drugs' (ionInput)='filterList($event)' animated=true showCancelButton='true'></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -26,7 +25,7 @@
       <ion-card-content>
         <!-- Weight -->
         <ion-label position="stacked" color="primary">Lean Mass (kg)</ion-label>
-        <ion-input clearInput type="number" [(ngModel)]='this.inputs.weight' min="1" (ionInput)="clearAgeWeight()"></ion-input>
+        <ion-input clearInput type="number" [(ngModel)]='this.inputs.weight' min="1"></ion-input>
         <!-- Age -->
         <ion-label position="stacked" color="primary">Age (1-20)</ion-label>
         <ion-input clearInput type="number" [(ngModel)]='this.inputs.age' min="1" max="20" (ionChange)="updateWeight($event)"></ion-input>

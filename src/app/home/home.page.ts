@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { moduleLibrary, ModuleData } from '../modules/moduleLibrary';
+import { moduleLibrary } from '../modules/moduleLibrary';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  modulesList: ModuleData[] = [];
+  modulesList = moduleLibrary;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    for (const moduleData of moduleLibrary.values()) {
-      this.modulesList.push(moduleData);
-    }
   }
 
   filterList(evt: any) {
@@ -27,7 +26,4 @@ export class HomePage implements OnInit {
       }
     }
   }
-
 }
-
-// this.title = moduleLibrary.get('anaesthetics').title;

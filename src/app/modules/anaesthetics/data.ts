@@ -8,7 +8,7 @@ export class Drug {
     exception?: string;         // exception message
     doseFrequency?: string;     // frequency of dose written as 'x-y time'
     maxDoseForPeriod?: number;  // maximum dose per doseFrequency
-    hide?: boolean;             // flag for filter
+    hide ? = false;             // flag for filter
 }
 
 export const drugList: Drug[] = [
