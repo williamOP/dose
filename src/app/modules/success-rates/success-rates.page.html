@@ -1,36 +1,36 @@
 <ion-header>
   <ion-toolbar *ngIf="!inViewer" color="primary">
     <ion-buttons slot="start">
-          <ion-back-button defaultHref = "/home"></ion-back-button>
+      <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      {{ moduleData.title }}
+      {{ metadata.title }}
     </ion-title>
-    </ion-toolbar>
+  </ion-toolbar>
 </ion-header>
 
-  <ion-content>
+<ion-content>
   <ion-col>
     <ion-card>
       <ion-card-header>
         <ion-card-title>Inputs</ion-card-title>
       </ion-card-header>
-      
+
       <ion-card-content>
-        <!-- Weight -->
-        <ion-label position="stacked" color="primary">Lean Mass (kg)</ion-label>
-        <ion-input clearInput type="number"></ion-input>
-        <!-- Age -->
-        <ion-label position="stacked" color="primary">Age (1-20)</ion-label>
-        <ion-input clearInput type="number"></ion-input>
       </ion-card-content>
     </ion-card>
   </ion-col>
 
-  <ion-col *ngFor="let procedure of procedureList">
-    <ion-card>
-      <ion-card-header><ion-card-title> {{ procedure.name }} </ion-card-title></ion-card-header>
-      <ion-card-content></ion-card-content>
+  <ion-col>
+    <ion-card *ngFor="let procedure of procedureList">
+      <ion-card-header color='secondary'>
+        {{ procedure.name }}
+      </ion-card-header>
+      <ion-card-content>
+        <div *ngFor="let procedureStat of procedure.procedureStats">
+          {{ procedureStat.type }}: {{ procedureStat.percentage }}% at {{ procedureStat.years }} years.
+        </div>
+      </ion-card-content>
     </ion-card>
   </ion-col>
 </ion-content>

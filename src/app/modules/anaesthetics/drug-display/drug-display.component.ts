@@ -10,14 +10,11 @@ export class DrugDisplayComponent implements OnInit {
   @Input() inputs;
   @Input() drugList;
 
-  drugTypesList = new Set();  // list of drug types
+  drugTypesList = new Set(drugList.map(drug => drug.type));  // list of drug types
 
   constructor() { }
 
   ngOnInit() {
-    for (const drug of drugList) {
-      this.drugTypesList.add(drug.type);
-    }
   }
 
 }

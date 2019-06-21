@@ -1,28 +1,28 @@
 <ion-header>
-    <ion-toolbar color="primary">
-      <!-- Search Bar -->
+  <ion-toolbar color="primary">
+    <!-- Search Bar -->
     <ion-searchbar placeholder='Search' (ionInput)='filterList($event)' animated=true></ion-searchbar>
     <!-- Settings button -->
     <ion-buttons slot="end">
-        <ion-button>
-          <ion-icon slot="icon-only" name="settings"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
+      <ion-button>
+        <ion-icon slot="icon-only" name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <!-- Modules -->
-<ion-col>
+  <ion-col>
     <div *ngFor="let module of modulesList">
-      <ion-card *ngIf="!module.hide" routerLink= "{{ '/'+module.id }}">
-          <ion-card-header>
-            <ion-card-title class="module-name">
-              {{ module.title }}
-            </ion-card-title>
-          </ion-card-header>
-        <ion-card-content class="module-description">{{ module.description }}</ion-card-content>
+      <ion-card *ngIf="!module.hide" routerLink="{{ '/'+module.id }}">
+        <ion-card-header>
+          <ion-card-title class="module-name">
+            {{ module.title }}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="module-description">{{ module.shortDescription }}</ion-card-content>
       </ion-card>
     </div>
-  </ion-col>    
+  </ion-col>
 </ion-content>

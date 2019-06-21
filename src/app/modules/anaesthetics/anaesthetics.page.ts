@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
 import { Drug } from './data';
 import { getWeight } from './age-weight';
-import { Module, getModuleData } from '../moduleLibrary';
+import { Module, getModuleMetadata } from '../module';
 
 @Component({
   selector: 'app-anaesthetics',
@@ -27,7 +27,7 @@ export class AnaestheticsPage extends Module implements OnInit {
   }
 
   ngOnInit() {
-    this.moduleData = getModuleData('anaesthetics');
+    this.metadata = getModuleMetadata('anaesthetics');
     this.drugList = this.dataService.getDrug();
   }
 
@@ -35,11 +35,7 @@ export class AnaestheticsPage extends Module implements OnInit {
     const searchTerm = evt.srcElement.value.toLowerCase();
 
     for (const drug of this.drugList) {
-      if (drug.name.toLowerCase().search(searchTerm) > -1) {
-        drug.hide = false;
-      } else {
-        drug.hide = true;
-      }
+      drug.hide = !(drug.name.toLowerCase().search(searchTerm) > -1);
     }
   }
 

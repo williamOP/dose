@@ -7,18 +7,18 @@
 
 // Local Anaesthetic
 .ion-color-Local-Anaesthetic {
-    --ion-color-base: #a109a1;
-    --ion-color-contrast: #ffffff;
+    --ion-color-base: var(--ion-color-tertiary);
+    --ion-color-contrast: var(--ion-color-primary-contrast);
 }
 
 // Analgesic
 .ion-color-Analgesic {
-    --ion-color-base: #1d1daf;
-    --ion-color-contrast: #ffffff;
+    --ion-color-base: var(--ion-color-primary);
+    --ion-color-contrast: var(--ion-color-primary-contrast);
 }
 
 // Miscellaneous
 .ion-color-Miscellaneous {
-    --ion-color-base: #2a7e10;
-    --ion-color-contrast: #ffffff;
+    --ion-color-base: var(--ion-color-secondary);
+    --ion-color-contrast: var(--ion-color-secondary-contrast);
 }

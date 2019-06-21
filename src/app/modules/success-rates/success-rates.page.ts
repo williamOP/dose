@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Procedure, ProcedureService } from 'src/app/dataServices/procedures';
-import { getModuleData, Module } from '../moduleLibrary';
+import { ProcedureService } from 'src/app/dataServices/procedures';
+import { getModuleMetadata, Module } from '../module';
 
 @Component({
   selector: 'app-success-rates',
@@ -8,14 +8,13 @@ import { getModuleData, Module } from '../moduleLibrary';
   styleUrls: ['./success-rates.page.scss'],
 })
 export class SuccessRatesPage extends Module implements OnInit {
-  procedureList: Procedure[];
+  procedureList = this.procedureService.getProcedures();
 
   constructor(private procedureService: ProcedureService) {
     super();
   }
 
   ngOnInit() {
-    this.moduleData = getModuleData('success-rates');
-    this.procedureList = this.procedureService.getProcedures();
+    this.metadata = getModuleMetadata('success-rates');
   }
 }
