@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
 import { Drug } from './data';
 import { getWeight } from './age-weight';
-import { Module, getModuleMetadata } from '../module';
+import { Module } from '../module';
 
 @Component({
   selector: 'app-anaesthetics',
@@ -23,11 +23,10 @@ export class AnaestheticsPage extends Module implements OnInit {
   };
 
   constructor(private dataService: DataService) {
-    super();
+    super('anaesthetics');
   }
 
   ngOnInit() {
-    this.metadata = getModuleMetadata('anaesthetics');
     this.drugList = this.dataService.getDrug();
   }
 

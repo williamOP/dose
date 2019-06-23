@@ -22,3 +22,7 @@
     --ion-color-base: var(--ion-color-secondary);
     --ion-color-contrast: var(--ion-color-secondary-contrast);
 }
+
+ion-searchbar {
+    height: 24px !important;
+}

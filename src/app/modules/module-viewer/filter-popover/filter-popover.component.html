@@ -1,0 +1,11 @@
+<ion-header><ion-toolbar><ion-title>Filters</ion-title></ion-toolbar></ion-header>
+
+<ion-list *ngFor="let category of filterCategories">
+  <ion-list-header>{{ category | uppercase }}</ion-list-header>
+  <div *ngFor="let filter of this.filters" button>
+    <ion-item *ngIf="filter.category === category">
+      <ion-label> {{ filter.name }} </ion-label>
+      <ion-checkbox [(ngModel)]="filter.shown"></ion-checkbox>
+    </ion-item>
+  </div>
+</ion-list>

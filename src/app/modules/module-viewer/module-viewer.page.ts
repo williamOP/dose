@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, } from '@angular/core';
 import { Module } from '../module';
-import { IonRouterOutlet } from '@ionic/angular';
+import { IonRouterOutlet, PopoverController } from '@ionic/angular';
+import { FilterPopoverComponent } from './filter-popover/filter-popover.component';
 
 @Component({
   selector: 'app-module-viewer',
@@ -9,14 +10,23 @@ import { IonRouterOutlet } from '@ionic/angular';
 })
 export class ModuleViewerPage implements OnInit {
   @ViewChild(IonRouterOutlet) loadedModule: Module;
-
   moduleActive = false;
+  showResultDescription = false;
 
-
-  constructor() {
+  constructor(private popoverController: PopoverController) {
    }
 
   ngOnInit() {
+  }
+
+  async presentFilter(event: Event) {
+    const popover = await this.popoverController.create({
+      component: FilterPopoverComponent,
+      componentProps: {filters: this.loadedModule.filters},
+      event
+    });
+    await popover.present();
+    popover.onWillDismiss().then(() => this.loadedModule.updateFilter());
   }
 
   onActivate(evt: any) {
@@ -26,7 +36,6 @@ export class ModuleViewerPage implements OnInit {
   }
 
   openLink(link) {
-    console.log(link);
     window.open(link, '_system');
   }
 }

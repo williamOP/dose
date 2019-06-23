@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar *ngIf="!inViewer" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ metadata.title }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let prognosis of prognosisList">
+    <ion-card-header color="tertiary">
+      <!-- i.e. perio/restorative/endo/occlusal -->
+      <ion-card-title> {{ prognosis.category }} </ion-card-title>
+    </ion-card-header>
+    <ion-list>
+      <ion-radio-group [(ngModel)]="classScores[prognosis.category]" (ionChange)="radioChange()">
+        <ion-item *ngFor="let class of ['A', 'B', 'C', 'D', 'X']" button
+          [class.highlighted]="classScores[prognosis.category]===class">
+          <!-- Prognosis description -->
+          <ion-label text-wrap>{{ prognosis[class] }}</ion-label>
+          <!-- Invisible radio button (css) -->
+          <ion-radio slot="end" [value]="class"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </ion-card>
+</ion-content>
