@@ -20,7 +20,7 @@ export class SuccessRatesPage extends Module implements OnInit {
   ngOnInit() {
     // Adds procedure types to filters[] under 'Field'
     for (const procedureType of new Set(this.procedureList.map(procedure => procedure.type))) {
-      this.filters.push({category: 'Field', name: procedureType, shown: true});
+      this.addToFilter('Field', procedureType);
     }
   }
 

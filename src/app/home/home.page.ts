@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { moduleLibrary } from '../modules/module';
-import { Router } from '@angular/router';
+import { ModuleDataService } from '../modules/moduleData.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  modulesList = moduleLibrary;
+  modulesList = this.moduleDataService.getModuleLibrary();
 
-  constructor(private router: Router) {}
+  constructor(private moduleDataService: ModuleDataService) {}
 
   ngOnInit() {
   }

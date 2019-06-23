@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
 
-interface ProcedureStat {
-    type: 'Survival' | 'Success';
-    years: number;
-    percentage: number;
-    note ?: string;
-}
-
 interface ToothPrognosis {
     category: string;
     A: string;

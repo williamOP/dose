@@ -31,7 +31,6 @@ export class ModuleViewerPage implements OnInit {
 
   onActivate(evt: any) {
     this.loadedModule = evt;
-    this.loadedModule.inViewer = true;
     this.moduleActive = true;
   }
 

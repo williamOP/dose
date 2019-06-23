@@ -15,7 +15,7 @@
   <!-- Modules -->
   <ion-col>
     <div *ngFor="let module of modulesList">
-      <ion-card *ngIf="!module.hide" routerLink="{{ '/'+module.id }}">
+      <ion-card *ngIf="!module.hide" routerLink="{{ '/module/'+module.id }}">
         <ion-card-header>
           <ion-card-title class="module-name">
             {{ module.title }}
