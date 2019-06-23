@@ -3,3 +3,9 @@ ion-card-subtitle {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+super-tab-button {
+  border-top: 1px solid #3949AB; 
+  height: 36px !important;
+  background-color: #3F51B5; //var(--ion-color-primary-shade);
+}

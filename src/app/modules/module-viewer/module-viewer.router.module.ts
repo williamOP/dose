@@ -15,6 +15,10 @@ const routes: Routes = [
           {
             path: getModuleMetadata('success-rates').id,
             loadChildren: '../success-rates/success-rates.module#SuccessRatesPageModule'
+          },
+          {
+            path: getModuleMetadata('prognosis').id,
+            loadChildren: '../prognosis/prognosis.module#PrognosisPageModule'
           }
         ]
     }

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { ModuleViewerPage } from './module-viewer.page';
 import { SuperTabsModule } from '@ionic-super-tabs/angular';
+import { FilterPopoverComponent } from './filter-popover/filter-popover.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { SuperTabsModule } from '@ionic-super-tabs/angular';
     ModuleViewerRoutingModule,
     SuperTabsModule
   ],
-  declarations: [ModuleViewerPage]
+  declarations: [ModuleViewerPage, FilterPopoverComponent],
+  entryComponents: [FilterPopoverComponent]
 })
 export class ModuleViewerPageModule {
   constructor() {}

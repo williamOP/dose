@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+
 import { IonicModule } from '@ionic/angular';
-import { SuccessRatesPage } from './success-rates.page';
+
+import { PrognosisPage } from './prognosis.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: SuccessRatesPage
+    component: PrognosisPage
   }
 ];
 
@@ -19,7 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [SuccessRatesPage]
+  declarations: [PrognosisPage]
 })
-export class SuccessRatesPageModule {}
-
+export class PrognosisPageModule {}

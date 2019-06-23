@@ -1,0 +1,10 @@
+$procedures: (
+  endodontics: #e91e63,
+  prosthodontics: #00bcd4,
+);
+
+@each $procedureType, $value in map-remove($procedures) {
+  ion-card[procedureType='#{$procedureType}'] {
+    border-left: 4px solid $value;
+  }
+}

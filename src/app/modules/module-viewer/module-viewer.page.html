@@ -8,13 +8,19 @@
     <ion-title>
       {{ moduleActive ? loadedModule.metadata.title : "Module Viewer" }}
     </ion-title>
+    <!-- filter button -->
+    <ion-buttons *ngIf="loadedModule.filters && loadedModule.filters.length != 0" slot="end">
+        <ion-button (click)="presentFilter($event)">
+          <ion-icon slot="icon-only" name="options"></ion-icon>
+        </ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <super-tabs>
     <!-- Tab buttons -->
-    <super-tabs-toolbar slot="bottom">
+    <super-tabs-toolbar slot="top">
       <super-tab-button>
         <ion-label>Calculator</ion-label>
       </super-tab-button>
@@ -35,7 +41,8 @@
               About
             </ion-card-title>
           </ion-card-header>
-          <ion-card-content>{{ loadedModule.metadata.longDescription }}</ion-card-content>
+          <ion-card-content [innerHTML]="loadedModule.metadata.longDescription">
+          </ion-card-content>
         </ion-card>
         <ion-card *ngIf="loadedModule.metadata.references">
           <ion-card-header>
@@ -44,16 +51,26 @@
             </ion-card-title>
           </ion-card-header>
           <ion-card-content>
-              <ion-card *ngFor="let reference of loadedModule.metadata.references" button lines="full" (click)="openLink(reference.link)">
-                <ion-card-header>
-                <ion-card-title>{{ reference.description }}</ion-card-title>
-                <ion-card-subtitle>{{ reference.referenceName }}</ion-card-subtitle>
-              </ion-card-header>
+              <ion-item *ngFor="let reference of loadedModule.metadata.references" button lines="full" (click)="openLink(reference.link)">
+                <ion-label>
+                <h2>{{ reference.description }}</h2>
+                <p>{{ reference.referenceName }}</p>
+              </ion-label>
                 <!-- {{ reference.link }} -->
-              </ion-card>
+              </ion-item>
           </ion-card-content>
         </ion-card>
       </super-tab>
     </super-tabs-container>
   </super-tabs>
 </ion-content>
+
+<ion-footer *ngIf="loadedModule.displayedResult !== ''"  (click)="showResultDescription = !showResultDescription">
+    <ion-item button color="secondary">
+      <ion-title [innerHTML]="loadedModule.displayedResult">
+      </ion-title>
+    </ion-item>
+    <ion-item *ngIf="showResultDescription" button color="secondary">
+        <div [innerHTML]="loadedModule.displayedResultDescription"></div>
+    </ion-item>
+  </ion-footer>
