@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ModuleViewerPage } from './module-viewer.page';
-import { getModuleMetadata } from '../module';
+import { getModuleMetadata } from '../moduleData.service';
 
 const routes: Routes = [
     {

@@ -1,13 +1,4 @@
 <ion-header>
-  <ion-toolbar *ngIf="!inViewer" color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
-    </ion-buttons>
-    <ion-title>
-      {{ metadata.title }}
-    </ion-title>
-  </ion-toolbar>
-
   <ion-toolbar color='primary'>
     <!-- Searchbar -->
     <ion-searchbar placeholder='Filter' (ionInput)='updateFilter()' animated=true showCancelButton='true'></ion-searchbar>
