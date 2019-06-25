@@ -45,15 +45,11 @@ const toothPrognosisList: ToothPrognosis[] = [
     category: 'Endodontic condition',
     A: `A tooth that can receive a straightforward primary endodontic treatment, or already has good
         endodontic therapy`,
-    B: `50% to 80% bone support, which can be well maintained with rigorous periodontal and
-        maintenance therapy. Vertical defects or furcations that can be periodontally treated
-        to become easily cleansable or treated predictably with regenerative therapy. Molars
-        are at higher risk than single-rooted teeth.`,
-    C: `30% to 50% remaining sound coronal tooth structure. Or a tooth with so little tooth structure
-        that achieving adequate ferrule would result in compromising the crown-root ratio to some extent,
-        and/or may affect adjacent structures.`,
+    B: `A failing endodontic treatment with obvious causes of failure and that can  be predictably retreated,
+        Or atooth that requires a difficult primar y endodontic treatment.`,
+    C: `An acute/chronic failing endodontic treatment that presents difficulty to predictably retreat.`,
     D: `A tooth with a failing endodontic treatment that cannot predictably be retreated`,
-    X: `A vertical root fracture,3,68 or a tooth that has been retreated several times endodontically
+    X: `A vertical root fracture, or a tooth that has been retreated several times endodontically
         and/or surgically without resolution.`
 },
 {
@@ -75,7 +71,7 @@ const toothPrognosisList: ToothPrognosis[] = [
 
 const prognosisInterpretation: ToothPrognosis = {
     category: 'Interpretation',
-    A: `A tooth in this category is one that is considered to have a <b>good prognosis</b>. Such a tooth is
+    A: `A tooth in this category is one that is considered to have a <b>good</b> prognosis. Such a tooth is
         assumed to have minimal risk of being lost in the foreseen future`,
     B: `A tooth in this category has a <b>fair</b> prognosis such that treatment outcome is considered
         predictable. Such a tooth poses a low risk of being lost in the foreseen future`,
@@ -95,11 +91,11 @@ const prognosisInterpretation: ToothPrognosis = {
 export class ToothPrognosisService {
   constructor() { }
 
-  getToothPrognosisList() {
+  getToothPrognosisList(): ToothPrognosis[] {
     return (toothPrognosisList);
   }
 
-  getPrognosisInterpretation(toothClass: string) {
+  getPrognosisInterpretation(toothClass: string): string {
     return prognosisInterpretation[toothClass];
   }
 }

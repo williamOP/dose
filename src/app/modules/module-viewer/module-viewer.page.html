@@ -10,69 +10,68 @@
     </ion-title>
     <!-- filter button -->
     <ion-buttons *ngIf="loadedModule.filters && loadedModule.filters.length != 0" slot="end">
-        <ion-button (click)="presentFilter($event)">
-          <ion-icon slot="icon-only" name="options"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+      <ion-button (click)="presentFilter($event)">
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <super-tabs>
-    <!-- Tab buttons -->
-    <super-tabs-toolbar slot="top">
-      <super-tab-button>
-        <ion-label>Calculator</ion-label>
-      </super-tab-button>
-      <super-tab-button>
-        <ion-label>Information</ion-label>
-      </super-tab-button>
-    </super-tabs-toolbar>
-    <!-- Tab contents -->
-    <super-tabs-container>
-      <super-tab>
-        <ion-router-outlet (activate)="onActivate($event)"></ion-router-outlet>
-      </super-tab>
-      <super-tab *ngIf="moduleActive">
-        <ion-content>
-        <!-- About card -->
-        <ion-card *ngIf="loadedModule.metadata.longDescription">
-          <ion-card-header>
-            <ion-card-title>
-              About
-            </ion-card-title>
-          </ion-card-header>
-          <ion-card-content [innerHTML]="loadedModule.metadata.longDescription">
-          </ion-card-content>
-        </ion-card>
-        <ion-card *ngIf="loadedModule.metadata.references">
-          <ion-card-header>
-            <ion-card-title>
-              References
-            </ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-              <ion-item *ngFor="let reference of loadedModule.metadata.references" button lines="full" (click)="openLink(reference.link)">
-                <ion-label>
-                <h2>{{ reference.description }}</h2>
-                <p>{{ reference.referenceName }}</p>
-              </ion-label>
-                <!-- {{ reference.link }} -->
-              </ion-item>
-          </ion-card-content>
-        </ion-card>
-      </ion-content>
-      </super-tab>
-    </super-tabs-container>
-  </super-tabs>
+  <!-- Primary container is the module, hidden if not selected -->
+  <div [class.hidden]="activeView !== 'primary'">
+    <ion-router-outlet (activate)="onActivate($event)"></ion-router-outlet>
+  </div>
+
+  <!-- Information container, hidden if not selected -->
+  <div *ngIf="moduleActive && activeView === 'information'">
+    <ion-card *ngIf="loadedModule.metadata.longDescription">
+      <ion-card-header>
+        <ion-card-title>
+          About
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content [innerHTML]="loadedModule.metadata.longDescription">
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="loadedModule.metadata.references">
+      <ion-card-header>
+        <ion-card-title>
+          References
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item *ngFor="let reference of loadedModule.metadata.references" button lines="full"
+          (click)="openLink(reference.link)">
+          <ion-label>
+            <h2>{{ reference.description }}</h2>
+            <p>{{ reference.referenceName }}</p>
+          </ion-label>
+          <!-- {{ reference.link }} -->
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
 
-<ion-footer *ngIf="loadedModule.displayedResult !== ''"  (click)="showResultDescription = !showResultDescription">
-    <ion-item button color="secondary">
-      <ion-title [innerHTML]="loadedModule.displayedResult">
-      </ion-title>
-    </ion-item>
-    <ion-item *ngIf="showResultDescription" color="secondary">
-        <div [innerHTML]="loadedModule.displayedResultDescription"></div>
-    </ion-item>
-  </ion-footer>
+<ion-footer>
+  <!-- Results display -->
+    <div *ngIf="loadedModule.displayedResult !== ''" (click)="showResultDescription = !showResultDescription">
+  <ion-item button color="primary">
+    <ion-title [innerHTML]="loadedModule.displayedResult">
+    </ion-title>
+  </ion-item>
+  <ion-item *ngIf="showResultDescription" color="primary">
+    <div [innerHTML]="loadedModule.displayedResultDescription"></div>
+  </ion-item>
+  </div>
+  <!-- Tabs -->
+  <ion-segment [(ngModel)]='this.activeView' color='primary' mode='ios'>
+      <ion-segment-button value="primary" mode='md'> 
+        <ion-label>Calculator</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="information" mode='md'>
+        <ion-label>Information</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+</ion-footer>

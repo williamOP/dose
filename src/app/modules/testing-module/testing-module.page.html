@@ -1,0 +1,80 @@
+<ion-content>
+  <!-- Metadata -->
+  <ion-col>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Metadata</ion-card-title>
+        <ion-card-subtitle>
+            <p>
+              Metadata is automatically pulled from the moduleData.service file when the constructor is called with the
+              associated id.
+            </p>
+              <p>
+              Metadata is visible in the header and in the information tab.
+            </p>
+          </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Title -->
+        <ion-label position="stacked" color="primary">this.metadata.title: string</ion-label>
+        <ion-input clearInput type="text" [(ngModel)]='this.metadata.title' placeholder='this.metadata.title: string'>
+        </ion-input>
+        <!-- Long description-->
+        <ion-label position="stacked" color="primary">this.metadata.longDescription: string (html supported)</ion-label>
+        <ion-textarea clearInput type="text" [(ngModel)]='this.metadata.longDescription'
+          placeholder='this.metadata.longDescription: string'></ion-textarea>
+        <!-- References -->
+        <ion-label position="stacked" color="primary">this.metadata.references: Object[]</ion-label>
+        <ion-input clearInput type="text" [(ngModel)]='referenceDescription' placeholder='description: string'></ion-input>
+        <ion-input clearInput type="text" [(ngModel)]='referenceReferenceName' placeholder='referenceName: string'></ion-input>
+        <ion-input clearInput type="text" [(ngModel)]='referenceLink' placeholder='link: string'></ion-input>
+        <ion-button (click)="addReference()">Add to this.metadata.references</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+  <!-- Results -->
+  <ion-col>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Results</ion-card-title>
+        <ion-card-subtitle>
+            If displayedResult is not empty, results footer should show. Footer is clicable to show
+            displayedResultDescription
+          </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Result -->
+        <ion-label position="stacked" color="primary">this.metadata.displayedResult: string</ion-label>
+        <ion-input clearInput type="text" [(ngModel)]='this.displayedResult'
+          placeholder='this.displayedResult'></ion-input>
+        <!-- Result Description -->
+        <ion-label position="stacked" color="primary">this.displayedResultDescription: string (html supported)</ion-label>
+        <ion-textarea clearInput type="text" [(ngModel)]='this.displayedResultDescription'
+          placeholder='this.displayedResultDescription'></ion-textarea>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+  <!-- Filters -->
+  <ion-col>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Filters</ion-card-title>
+        <ion-card-subtitle>
+            <p>updateFilter() is called when the filter button is dismissed and so the expected behaviour should be defined
+              under a function of this name in the module.</p>
+            <p>shownInFilter() returns checks the filter category for a matching filter name and returns true if it is
+              chekced (shown is true)</p>
+          </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Filters -->
+        <ion-label position="stacked" color="primary">this.filters: Object[]</ion-label>
+        <ion-input clearInput type="text" [(ngModel)]='filterCategory' placeholder='category: string'></ion-input>
+        <ion-input clearInput type="text" [(ngModel)]='filterName' placeholder='name: string'></ion-input>
+        <ion-input clearInput type="text" [(ngModel)]='filterShown' placeholder='shown: boolean (defaults to true)'>
+        </ion-input>
+        <ion-button (click)="addFilter()">Add to this.filters</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-content>

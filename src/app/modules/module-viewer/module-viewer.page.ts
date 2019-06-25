@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Module } from '../module';
 import { IonRouterOutlet, PopoverController } from '@ionic/angular';
 import { FilterPopoverComponent } from './filter-popover/filter-popover.component';
@@ -12,6 +12,7 @@ export class ModuleViewerPage implements OnInit {
   @ViewChild(IonRouterOutlet) loadedModule: Module;
   moduleActive = false;
   showResultDescription = false;
+  activeView = 'primary';
 
   constructor(private popoverController: PopoverController) {
    }

@@ -56,7 +56,7 @@ export class ProcedureService {
 
   constructor() { }
 
-  getProcedures() {
+  getProcedures(): Procedure[] {
     return procedureList;
   }
 }

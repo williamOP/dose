@@ -11,8 +11,6 @@ import { ToothPrognosisService } from 'src/app/dataServices/tooth-prognosis.serv
 export class PrognosisPage extends Module implements OnInit {
   prognosisList = this.toothPrognosisService.getToothPrognosisList();
   classScores = {};
-  formComplete = false;
-  lowestScore: string;
 
   constructor(private toothPrognosisService: ToothPrognosisService) {
     super('prognosis');
@@ -27,9 +25,9 @@ export class PrognosisPage extends Module implements OnInit {
   radioChange() {
     if (Object.values(this.classScores).filter(classScore => classScore === '').length === 0) {
       const scores: string[] = Object.values(this.classScores);
-      this.lowestScore = (scores.sort().reverse()[0]);
-      this.displayedResult = 'Prognosis: ' + this.lowestScore;
-      this.displayedResultDescription = this.toothPrognosisService.getPrognosisInterpretation(this.lowestScore);
+      const lowestScore = (scores.sort().reverse()[0]);
+      this.displayedResult = 'Prognosis: ' + lowestScore;
+      this.displayedResultDescription = this.toothPrognosisService.getPrognosisInterpretation(lowestScore);
     }
 
   }
