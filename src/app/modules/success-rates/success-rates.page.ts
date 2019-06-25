@@ -22,12 +22,13 @@ export class SuccessRatesPage extends Module implements OnInit {
     for (const procedureType of new Set(this.procedureList.map(procedure => procedure.type))) {
       this.addToFilter('Field', procedureType);
     }
+    this.sortArrayByProperty(this.procedureList, 'name');
   }
 
   updateFilter() {
     for (const procedure of this.procedureList) {
       // Hide if searchbar does not match a procedure name
-      if (!(procedure.name.toLowerCase().search(this.searchBar.value.toLowerCase()) > -1)) {
+      if (this.searchBar.value && !procedure.name.toLowerCase().includes(this.searchBar.value.toLowerCase())) {
         procedure.hide = true;
       } else {
         // If the category is unticked, hide procedures of that category (unless already hidden)

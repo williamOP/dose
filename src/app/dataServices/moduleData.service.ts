@@ -1,3 +1,4 @@
+// Data for each module, usable across app.
 import { Injectable } from '@angular/core';
 
 interface Reference {
@@ -6,14 +7,13 @@ interface Reference {
     link ?: string;                 // URL of reference
 }
 
-// Data for each module, usable across app.
 export interface ModuleMetadata {
-    title: string;                              // Title of module displayed in app
-    id: string;                                 // unique id
-    shortDescription?: string;                      // Description of module
-    longDescription?: string;                  // Long description (shown in module viewer)
+    title: string;                              // Title of module
+    id: string;                                 // unique id (used as path by router)
     hide?: boolean;                             // Whether module will be hidden
-    references?: Reference[];                    // Reference data
+    shortDescription?: string;                  // Description of module
+    longDescription?: string;                   // Long description
+    references?: Reference[];                   // Reference data
 }
 
 const moduleLibrary: ModuleMetadata[] = [
@@ -37,7 +37,7 @@ const moduleLibrary: ModuleMetadata[] = [
         ]
     },
     {
-        title: 'Tooth classification and Prognosis',
+        title: 'Tooth Classification and Prognosis',
         id: 'prognosis',
         shortDescription: 'Individual tooth classification and prognosis',
         longDescription: `Each tooth is evaluated for each of the 4 criteria independently. The level
@@ -64,7 +64,13 @@ const moduleLibrary: ModuleMetadata[] = [
             link: 'https://www.researchgate.net/publication/26652014_Classification_and_prognosis_evaluation_of_\
             individual_teeth_-_a_comprehensive_approach'}
         ]
-    }
+    },
+    {   title: 'Testing Playground',
+        id: 'test',
+        shortDescription: 'Test tools',
+        longDescription: `This module serves as documentation for the module viewer. The properties described can be \
+accessed by any module that extends the Module class`
+    },
 ];
 
 @Injectable({providedIn: 'root'})
@@ -72,14 +78,10 @@ export class ModuleDataService {
     constructor() { }
 
     getModuleMetadata(id: string): ModuleMetadata {
-        return(getModuleMetadata(id));
+        return(moduleLibrary.filter((module) => module.id === id)[0]);
     }
 
-    getModuleLibrary() {
+    getModuleLibrary(): ModuleMetadata[] {
         return moduleLibrary;
     }
   }
-
-export function getModuleMetadata(id: string): ModuleMetadata {
-    return(moduleLibrary.filter((module) => module.id === id)[0]);
-}

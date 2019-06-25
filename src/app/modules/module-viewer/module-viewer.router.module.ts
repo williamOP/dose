@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ModuleViewerPage } from './module-viewer.page';
-import { getModuleMetadata } from '../moduleData.service';
 
 const routes: Routes = [
     {
@@ -9,16 +8,20 @@ const routes: Routes = [
         component: ModuleViewerPage,
         children: [
           {
-            path: getModuleMetadata('anaesthetics').id,
+            path: 'anaesthetics',
             loadChildren: '../anaesthetics/anaesthetics.module#AnaestheticsPageModule'
           },
           {
-            path: getModuleMetadata('success-rates').id,
+            path: 'success-rates',
             loadChildren: '../success-rates/success-rates.module#SuccessRatesPageModule'
           },
           {
-            path: getModuleMetadata('prognosis').id,
+            path: 'prognosis',
             loadChildren: '../prognosis/prognosis.module#PrognosisPageModule'
+          },
+          {
+            path: 'test',
+            loadChildren: '../testing-module/testing-module.module#TestingModulePageModule'
           }
         ]
     }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { drugList } from './data';
+import { drugList, Drug } from './data';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ export class DataService {
 
   constructor() { }
 
-  getDrug() {
+  getDrug(): Drug[] {
     return drugList;
   }
 }
