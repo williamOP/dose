@@ -1,5 +1,20 @@
 <ion-header><ion-toolbar><ion-title>Filters</ion-title></ion-toolbar></ion-header>
 
+<!-- Sort by -->
+<ion-list *ngIf="sortByList.length > 1">
+  <ion-radio-group [(ngModel)]="sortByList[0].propertyName">
+  <ion-list-header>SORT BY</ion-list-header>
+  <div *ngFor="let sortByItem of this.sortByList" button>
+    <ion-item *ngIf="sortByItem.displayName !== 'CurrentSort'">
+      <ion-label> {{ sortByItem.displayName }}  </ion-label>
+      <ion-radio slot="end" [value]="sortByItem.propertyName"></ion-radio>
+      <!-- <ion-checkbox [(ngModel)]="filter.shown"></ion-checkbox> -->
+    </ion-item>
+  </div>
+</ion-radio-group>
+</ion-list>
+
+<!-- Filters -->
 <ion-list *ngFor="let category of filterCategories">
   <ion-list-header>{{ category | uppercase }}</ion-list-header>
   <div *ngFor="let filter of this.filters" button>

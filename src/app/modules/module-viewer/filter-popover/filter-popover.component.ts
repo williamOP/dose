@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { Filter } from '../../module';
-import { EventEmitter } from 'events';
+import { Component, OnInit, Input } from '@angular/core';
+import { Filter, SortByItem } from '../../module';
 
 @Component({
   selector: 'app-filter-popover',
@@ -8,6 +7,7 @@ import { EventEmitter } from 'events';
   styleUrls: ['./filter-popover.component.scss'],
 })
 export class FilterPopoverComponent implements OnInit {
+  @Input() sortByList: SortByItem[];
   @Input() filters: Filter[];
   filterCategories: Set<string>;
 
@@ -15,5 +15,6 @@ export class FilterPopoverComponent implements OnInit {
 
   ngOnInit() {
     this.filterCategories = new Set(this.filters.map(filter => filter.category));
+    this.filters.sort((a, b) => a.name.localeCompare(b.name));
   }
 }

@@ -1,28 +1,34 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <!-- Search Bar -->
-    <ion-searchbar placeholder='Search' (ionInput)='filterList($event)' animated=true></ion-searchbar>
-    <!-- Settings button -->
-    <ion-buttons slot="end">
+  <ion-toolbar>
+    <!-- title -->
+    <ion-title [class.hidden]='searchActive || searchbarText != ""'>
+      Dental Tools
+    </ion-title>
+    <ion-buttons [class.hidden]='searchActive' slot="end">
+      <!-- search button -->
+      <ion-button [class.hidden]='searchbarText !== ""' (click)="openSearchBar()">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <!-- settings button -->
       <ion-button (click)="presentSettings($event)">
         <ion-icon slot="icon-only" name="settings"></ion-icon>
       </ion-button>
     </ion-buttons>
+    <!-- Search bar -->
+    <ion-searchbar [(ngModel)]="searchbarText" [class.hidden]='!searchActive && searchbarText === ""'
+      (ionBlur)='searchActive = false' (ionFocus)='searchActive = true'
+      (ionChange)='filterList($event.srcElement.value)' placeholder='Search Tools' animated=true></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <!-- Modules -->
-  <ion-col>
-    <div *ngFor="let module of modulesList">
-      <ion-card *ngIf="!module.hide" routerLink="{{ '/module/'+module.id }}">
-        <ion-card-header>
-          <ion-card-title class="module-name">
-            {{ module.title }}
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content class="module-description">{{ module.shortDescription }}</ion-card-content>
-      </ion-card>
-    </div>
-  </ion-col>
+  <div *ngFor="let module of modulesList">
+    <ion-item *ngIf="!module.hide" routerLink="{{ '/module/'+module.id }}" lines='none'>
+      <ion-label>
+        <h2>{{ module.title }}</h2>
+        <p>{{ module.shortDescription }}</p>
+      </ion-label>
+    </ion-item>
+  </div>
 </ion-content>

@@ -32,3 +32,16 @@ ion-searchbar {
     // margin-left: auto !important;
     // margin-right: auto !important;
 // }
+
+ion-popover .popover-wrapper .popover-content {
+    width: 70vw;
+    max-width: 500px;
+}
+
+.hidden {
+    display: none;
+}
+
+// ion-header {
+//     position: static !important;
+// }

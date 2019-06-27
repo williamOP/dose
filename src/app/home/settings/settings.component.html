@@ -13,9 +13,9 @@
 </ion-header>
 
 <ion-content fullscreen>
-    <ion-item>
+    <ion-item lines='full'>
       <ion-icon slot="start" name="moon"></ion-icon>
       <ion-label>Dark mode</ion-label>
-      <ion-toggle [(ngModel)]="darkMode" (ionChange)="toggleDarkMode()"></ion-toggle>
+      <ion-toggle [(ngModel)]="settingsService.isDark" (ionChange)="settingsService.setDarkMode(settingsService.isDark)"></ion-toggle>
     </ion-item>
 </ion-content>

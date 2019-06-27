@@ -1,30 +1,15 @@
-<ion-header>
-  <ion-toolbar color='primary'>
-    <!-- Searchbar -->
-    <ion-searchbar placeholder='Filter' (ionInput)='updateFilter()' animated=true showCancelButton='true'></ion-searchbar>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-col>
     <div *ngFor="let procedure of procedureList">
-      <ion-card *ngIf="!procedure.hide" [attr.procedureType]="procedure.type | lowercase">
-        <ion-card-content>
-          <h2>
-            <b>{{ procedure.name }}</b>
-          </h2>
-          <br />
+      <ion-item *ngIf="!procedure.hide" [attr.procedureType]="procedure.type.replace(' ', '-') | lowercase" lines='full'>
+        <ion-label text-wrap>
+          <h2><b>{{ procedure.name }}</b></h2><br />
           <p *ngFor="let procedureStat of procedure.procedureStats">
             {{ procedureStat.type }}: {{ procedureStat.percentage }}% at {{ procedureStat.years }} years.
           </p>
-          <div *ngIf="procedure.procedureStatNote">
-            <br />
-            <p>
-              {{ procedure.procedureStatNote }}
-            </p>
-          </div>
-        </ion-card-content>
-      </ion-card>
+          <ng-container *ngIf="procedure.procedureStatNote">
+            <br /><p>{{ procedure.procedureStatNote }}</p>
+          </ng-container>
+        </ion-label>
+      </ion-item>
     </div>
-  </ion-col>
-  </ion-content>
+</ion-content>

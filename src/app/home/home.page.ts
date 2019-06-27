@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModuleDataService } from '../dataServices/moduleData.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, IonSearchbar } from '@ionic/angular';
 import { SettingsComponent } from './settings/settings.component';
 import { SettingsService } from '../dataServices/settings.service';
 
@@ -10,6 +10,11 @@ import { SettingsService } from '../dataServices/settings.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  @ViewChild(IonSearchbar) searchBar: IonSearchbar;
+
+  searchActive = false;
+  searchbarText = '';
+
   modulesList = this.moduleDataService.getModuleLibrary();
 
   constructor(private moduleDataService: ModuleDataService,
@@ -18,15 +23,13 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     // Sorts Modules alphatetically by title
-    this.sortArrayByProperty(this.modulesList, 'title');;
+    this.sortArrayByProperty(this.modulesList, 'title');
     this.settingsService.applySettingsFromStorage();
   }
 
-  filterList(evt: any) {
-    const searchTerm = evt.srcElement.value.toLowerCase();
-
+  filterList(searchTerm: string) {
     for (const module of this.modulesList) {
-      module.hide = !(module.title.toLowerCase().search(searchTerm) > -1);
+      module.hide = !(module.title.toLowerCase().search(searchTerm.toLowerCase()) > -1);
     }
   }
 
@@ -35,7 +38,11 @@ export class HomePage implements OnInit {
       component: SettingsComponent
     });
     await settingsModal.present();
-    settingsModal.onWillDismiss().then(() => console.log('Settings closed'));
+  }
+
+  async openSearchBar() {
+    this.searchActive = true;
+    setTimeout(() => this.searchBar.setFocus(), 100);
   }
 
   // Sorts an array of objects by the provided property

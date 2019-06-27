@@ -5,14 +5,14 @@
       <ion-card-header>
         <ion-card-title>Metadata</ion-card-title>
         <ion-card-subtitle>
-            <p>
-              Metadata is automatically pulled from the moduleData.service file when the constructor is called with the
-              associated id.
-            </p>
-              <p>
-              Metadata is visible in the header and in the information tab.
-            </p>
-          </ion-card-subtitle>
+          <p>
+            Metadata is automatically pulled from the moduleData.service file when the constructor is called with the
+            associated id.
+          </p>
+          <p>
+            Metadata is visible in the header and in the information tab.
+          </p>
+        </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         <!-- Title -->
@@ -25,8 +25,10 @@
           placeholder='this.metadata.longDescription: string'></ion-textarea>
         <!-- References -->
         <ion-label position="stacked" color="primary">this.metadata.references: Object[]</ion-label>
-        <ion-input clearInput type="text" [(ngModel)]='referenceDescription' placeholder='description: string'></ion-input>
-        <ion-input clearInput type="text" [(ngModel)]='referenceReferenceName' placeholder='referenceName: string'></ion-input>
+        <ion-input clearInput type="text" [(ngModel)]='referenceDescription' placeholder='description: string'>
+        </ion-input>
+        <ion-input clearInput type="text" [(ngModel)]='referenceReferenceName' placeholder='referenceName: string'>
+        </ion-input>
         <ion-input clearInput type="text" [(ngModel)]='referenceLink' placeholder='link: string'></ion-input>
         <ion-button (click)="addReference()">Add to this.metadata.references</ion-button>
       </ion-card-content>
@@ -38,19 +40,20 @@
       <ion-card-header>
         <ion-card-title>Results</ion-card-title>
         <ion-card-subtitle>
-            If displayedResult is not empty, results footer should show. Footer is clicable to show
-            displayedResultDescription
-          </ion-card-subtitle>
+          If displayedResult is not empty, results footer should show. Footer is clickable to show
+          displayedResultDescription
+        </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <!-- Result -->
+        <!-- Results -->
         <ion-label position="stacked" color="primary">this.metadata.displayedResult: string</ion-label>
-        <ion-input clearInput type="text" [(ngModel)]='this.displayedResult'
-          placeholder='this.displayedResult'></ion-input>
+        <ion-input clearInput type="text" [(ngModel)]='this.displayedResult' placeholder='this.displayedResult: string'>
+        </ion-input>
         <!-- Result Description -->
-        <ion-label position="stacked" color="primary">this.displayedResultDescription: string (html supported)</ion-label>
+        <ion-label position="stacked" color="primary">this.displayedResultDescription: string (html supported)
+        </ion-label>
         <ion-textarea clearInput type="text" [(ngModel)]='this.displayedResultDescription'
-          placeholder='this.displayedResultDescription'></ion-textarea>
+          placeholder='this.displayedResultDescription: string'></ion-textarea>
       </ion-card-content>
     </ion-card>
   </ion-col>
@@ -60,21 +63,55 @@
       <ion-card-header>
         <ion-card-title>Filters</ion-card-title>
         <ion-card-subtitle>
-            <p>updateFilter() is called when the filter button is dismissed and so the expected behaviour should be defined
-              under a function of this name in the module.</p>
-            <p>shownInFilter() returns checks the filter category for a matching filter name and returns true if it is
-              chekced (shown is true)</p>
-          </ion-card-subtitle>
+          <p>updateFilter() is called when the filter button is dismissed and so the expected behaviour should be
+            defined
+            under a function of this name in the module.</p>
+          <p>shownInFilter() returns checks the filter category for a matching filter name and returns true if it is
+            chekced (shown is true)</p>
+          <p>getSortByProperty() returns the property name of the active sortBy item</p>
+          <p>To add to filters, use this.addToFilter(); to add to sortByList, use addToSortByList()</p>
+          <p>To sort an array alphabetically by a property, use this.sortArrayByProperty()</p>
+        </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         <!-- Filters -->
-        <ion-label position="stacked" color="primary">this.filters: Object[]</ion-label>
-        <ion-input clearInput type="text" [(ngModel)]='filterCategory' placeholder='category: string'></ion-input>
-        <ion-input clearInput type="text" [(ngModel)]='filterName' placeholder='name: string'></ion-input>
-        <ion-input clearInput type="text" [(ngModel)]='filterShown' placeholder='shown: boolean (defaults to true)'>
-        </ion-input>
-        <ion-button (click)="addFilter()">Add to this.filters</ion-button>
+        <div>
+          <ion-label position="stacked" color="primary">this.filters: Object[]</ion-label>
+          <ion-input clearInput type="text" [(ngModel)]='filterCategory' placeholder='category: string'></ion-input>
+          <ion-input clearInput type="text" [(ngModel)]='filterName' placeholder='name: string'></ion-input>
+          <ion-input clearInput type="text" [(ngModel)]='filterShown' placeholder='shown: boolean (defaults to true)'>
+          </ion-input>
+          <ion-button (click)="addFilter()">Add to this.filters</ion-button>
+        </div>
+        <div>
+          <ion-label position="stacked" color="primary">this.sortByList: Object[]</ion-label>
+          <ion-input clearInput type="text" [(ngModel)]='sortByPropertyName' placeholder='propertyName: string'>
+          </ion-input>
+          <ion-input clearInput type="text" [(ngModel)]='sortByDisplayName' placeholder='displayName: string'>
+          </ion-input>
+          <ion-input clearInput type="text" [(ngModel)]='sortByActive' placeholder='active: boolean'></ion-input>
+          <ion-button (click)="addSortBy()">Add to this.sortByList</ion-button>
+        </div>
       </ion-card-content>
     </ion-card>
   </ion-col>
+   <!-- Search button/bar -->
+   <ion-col>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Search button/bar</ion-card-title>
+          <ion-card-subtitle>
+            <p>A search button is shown when this.searchbarPlaceholder is defined. It will also use
+              that value as the searchbar's placeholder. The text will be stored in this.searchbarText.
+              updateFilter() is run when input changes.
+            </p>
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- Filters -->
+            <ion-label position="stacked" color="primary">this.searchbarPlaceholder: string</ion-label>
+            <ion-input clearInput type="text" [(ngModel)]='this.searchbarPlaceholder' placeholder='this.searchbarPlaceholder: string'></ion-input>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
 </ion-content>

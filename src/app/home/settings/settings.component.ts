@@ -8,19 +8,13 @@ import { SettingsService } from 'src/app/dataServices/settings.service';
   styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit {
-  darkMode = this.settingsService.isDark;
-
   constructor(private modalController: ModalController,
-              private settingsService: SettingsService) { }
+              public settingsService: SettingsService) { }
 
   ngOnInit() {
   }
 
   dismiss(data?: any) {
     this.modalController.dismiss(data);
-  }
-
-  async toggleDarkMode() {
-    await this.settingsService.setDarkMode(this.darkMode);
   }
 }

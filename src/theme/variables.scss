@@ -75,12 +75,59 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
-  .dark-theme {
-  --ion-color-primary: #222428;
-  --ion-color-primary-rgb: 34, 34, 34;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #1e2023;
-  --ion-color-primary-tint: #383a3e;
+  --material-light-blue: #03A9F4;
+  --material-light-blue-rgb: 3,169,244;
+  --material-blue: #2196F3;
+  --material-blue-rgb: 33,150,243;
+  --material-light-green: #8BC34A;
+  --material-light-green-rgb: 139,195,74;
+  --material-green: #4CAF50;
+  --material-green-rgb: 76,175,80;
+  --material-purple: #9C27B0;
+  --material-purple-rgb: 156,39,176;
+  --material-pink: #E91E63;
+  --material-pink-rgb: 233,30,99;
+  --material-yellow: #FFEB3B;
+  --material-yellow-rgb: 255,235,59;
+  --material-orange: #FF5722;
+  --material-orange-rgb: 255,87,34;
+  --material-blue-grey: #607D8B;
+  --material-blue-grey-rgb: 96,125,139;
+  
+  .ion-color-light-blue {
+    --ion-color-base: var(--material-light-blue);
+    --ion-color-base-rgb: var(--material-light-blue-rgb);
+  }
+  .ion-color-blue {
+    --ion-color-base: var(--material-blue);
+    --ion-color-base-rgb: var(--material-blue-rgb);
+  }
+  .ion-color-light-green {
+    --ion-color-base: var(--material-light-green);
+    --ion-color-base-rgb: var(--material-light-green-rgb);
+  }
+  .ion-color-green {
+    --ion-color-base: var(--material-green);
+    --ion-color-base-rgb: var(--material-green-rgb);
+  }
+  .ion-color-purple {
+    --ion-color-base: var(--material-purple);
+    --ion-color-base-rgb: var(--material-purple-rgb);
+  }
+  .ion-color-pink {
+    --ion-color-base: var(--material-pink);
+    --ion-color-base-rgb: var(--material-pink-rgb);
+  }
+  .ion-color-yellow {
+    --ion-color-base: var(--material-yellow);
+    --ion-color-base-rgb: var(--material-yellow-rgb);
+  }
+  .ion-color-orange {
+    --ion-color-base: var(--material-orange);
+    --ion-color-base-rgb: var(--material-orange-rgb);
+  }
+  .ion-color-blue-grey {
+    --ion-color-base: var(--material-blue-grey);
+    --ion-color-base-rgb: var(--material-blue-grey-rgb);
   }
 }
