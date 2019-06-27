@@ -7,7 +7,7 @@
     <ion-list>
       <ion-radio-group [(ngModel)]="classScores[prognosis.category]" (ionChange)="radioChange()">
         <ion-item *ngFor="let class of ['A', 'B', 'C', 'D', 'X']" button
-          [class.highlighted]="classScores[prognosis.category]===class">
+          [class.highlighted]="classScores[prognosis.category]===class" lines='full'>
           <!-- Prognosis description -->
           <ion-label text-wrap>{{ prognosis[class] }}</ion-label>
           <!-- Invisible radio button (css) -->

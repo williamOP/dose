@@ -1,19 +1,30 @@
-<ion-header no-border>
-  <ion-toolbar color='primary' no-border>
+<ion-header>
+  <ion-toolbar>
     <!-- back button -->
-    <ion-buttons slot="start">
+    <ion-buttons [class.hidden]='searchActive' slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <!-- title -->
-    <ion-title>
+    <ion-title [class.hidden]='searchActive || loadedModule.searchbarText != ""'>
       {{ moduleActive ? loadedModule.metadata.title : "Module Viewer" }}
     </ion-title>
-    <!-- filter button -->
-    <ion-buttons *ngIf="loadedModule.filters && loadedModule.filters.length != 0" slot="end">
-      <ion-button (click)="presentFilter($event)">
+    <ion-buttons [class.hidden]='searchActive' slot="end">
+      <!-- search button -->
+        <ion-button *ngIf='loadedModule.searchbarPlaceholder != ""'
+                    [class.hidden]='loadedModule.searchbarText !== ""' (click)="openSearchBar()">
+            <ion-icon slot="icon-only" name="search"></ion-icon>
+          </ion-button>
+          <!-- filter button -->
+      <ion-button *ngIf='(loadedModule.sortByList && loadedModule.sortByList.length > 1) || 
+                          (loadedModule.filters && loadedModule.filters.length > 0)' (click)="presentFilter($event)">
         <ion-icon slot="icon-only" name="options"></ion-icon>
       </ion-button>
     </ion-buttons>
+    <!-- Search bar -->
+    <ion-searchbar [(ngModel)]="loadedModule.searchbarText" [class.hidden]='!searchActive && loadedModule.searchbarText === ""'
+                    (ionBlur)='searchActive = false' (ionFocus)='searchActive = true'
+                    (ionChange)='loadedModule.updateFilter()'
+                    [placeholder]='loadedModule.searchbarPlaceholder' animated=true></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -40,16 +51,14 @@
           References
         </ion-card-title>
       </ion-card-header>
-      <ion-card-content>
-        <ion-item *ngFor="let reference of loadedModule.metadata.references" button lines="full"
-          (click)="openLink(reference.link)">
-          <ion-label>
-            <h2>{{ reference.description }}</h2>
-            <p>{{ reference.referenceName }}</p>
-          </ion-label>
-          <!-- {{ reference.link }} -->
-        </ion-item>
-      </ion-card-content>
+      <ion-item *ngFor="let reference of loadedModule.metadata.references" button lines="full"
+        (click)="openLink(reference.link)">
+        <ion-label>
+          <h2>{{ reference.description }}</h2>
+          <p>{{ reference.referenceName }}</p>
+        </ion-label>
+        <!-- {{ reference.link }} -->
+      </ion-item>
     </ion-card>
   </div>
 </ion-content>

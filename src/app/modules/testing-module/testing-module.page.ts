@@ -17,6 +17,10 @@ export class TestingModulePage extends Module implements OnInit {
   filterName: string;
   filterShown: boolean;
 
+  sortByPropertyName: string;
+  sortByDisplayName: string;
+  sortByActive: boolean;
+
   constructor(private procedureService: ProcedureService) {
     super('test');
   }
@@ -35,6 +39,10 @@ export class TestingModulePage extends Module implements OnInit {
   }
 
   addFilter() {
-    this.addToFilter(this.filterCategory, this.filterName, this.filterShown)
+    this.addToFilter(this.filterCategory, this.filterName, this.filterShown);
+  }
+
+  addSortBy() {
+    this.addToSortByList(this.sortByPropertyName, this.sortByDisplayName, this.sortByActive);
   }
 }

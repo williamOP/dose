@@ -9,8 +9,6 @@ import { IonSearchbar } from '@ionic/angular';
   styleUrls: ['./success-rates.page.scss'],
 })
 export class SuccessRatesPage extends Module implements OnInit {
-  @ViewChild(IonSearchbar) searchBar: IonSearchbar;
-
   procedureList = this.procedureService.getProcedures();
 
   constructor(private procedureService: ProcedureService) {
@@ -22,13 +20,18 @@ export class SuccessRatesPage extends Module implements OnInit {
     for (const procedureType of new Set(this.procedureList.map(procedure => procedure.type))) {
       this.addToFilter('Field', procedureType);
     }
-    this.sortArrayByProperty(this.procedureList, 'name');
+    this.addToSortByList('name', 'Procedure Name', true);
+    this.addToSortByList('type', 'Field');
+    this.searchbarPlaceholder = 'Filter procedures';
   }
 
   updateFilter() {
+    // Sort Array
+    this.sortArrayByProperty(this.procedureList, this.getSortByProperty());
+
     for (const procedure of this.procedureList) {
       // Hide if searchbar does not match a procedure name
-      if (this.searchBar.value && !procedure.name.toLowerCase().includes(this.searchBar.value.toLowerCase())) {
+      if (this.searchbarText && !procedure.name.toLowerCase().includes(this.searchbarText.toLowerCase())) {
         procedure.hide = true;
       } else {
         // If the category is unticked, hide procedures of that category (unless already hidden)

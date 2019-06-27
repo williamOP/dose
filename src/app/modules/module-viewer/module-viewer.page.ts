@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Module } from '../module';
-import { IonRouterOutlet, PopoverController } from '@ionic/angular';
+import { IonRouterOutlet, PopoverController, IonSearchbar } from '@ionic/angular';
 import { FilterPopoverComponent } from './filter-popover/filter-popover.component';
 
 @Component({
@@ -10,9 +10,11 @@ import { FilterPopoverComponent } from './filter-popover/filter-popover.componen
 })
 export class ModuleViewerPage implements OnInit {
   @ViewChild(IonRouterOutlet) loadedModule: Module;
+  @ViewChild(IonSearchbar) searchBar: IonSearchbar;
   moduleActive = false;
   showResultDescription = false;
   activeView = 'primary';
+  searchActive = false;
 
   constructor(private popoverController: PopoverController) {
    }
@@ -23,7 +25,8 @@ export class ModuleViewerPage implements OnInit {
   async presentFilter(event: Event) {
     const popover = await this.popoverController.create({
       component: FilterPopoverComponent,
-      componentProps: {filters: this.loadedModule.filters},
+      componentProps: {filters: this.loadedModule.filters,
+                      sortByList: this.loadedModule.sortByList},
       event
     });
     await popover.present();
@@ -37,5 +40,10 @@ export class ModuleViewerPage implements OnInit {
 
   openLink(link) {
     window.open(link, '_system');
+  }
+
+  async openSearchBar() {
+    this.searchActive = true;
+    setTimeout(() => this.searchBar.setFocus(), 100);
   }
 }

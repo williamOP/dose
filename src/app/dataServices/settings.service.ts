@@ -21,9 +21,10 @@ export class SettingsService implements OnInit {
   }
 
   setDarkMode(isDark: boolean) {
-    this.storageService.store('isDark', isDark.toString());
+    this.isDark = isDark;
+    this.storageService.store('isDark', this.isDark.toString());
 
-    if (isDark) {
+    if (this.isDark) {
       this.themeService.setTheme('dark');
     } else {
       this.themeService.setTheme('none');

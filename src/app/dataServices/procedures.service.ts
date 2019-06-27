@@ -9,7 +9,8 @@ interface ProcedureStat {
 
 interface Procedure {
     name: string;                                          // procedure name
-    type: 'Prosthodontics' | 'Endodontics';               // field
+    type: 'Prosthodontics' | 'Endodontics' |
+    'Conservative Dentistry';                              // field
     procedureStats?: ProcedureStat[];
     procedureStatNote?: string;
     hide?: boolean;
@@ -17,7 +18,7 @@ interface Procedure {
 
 const procedureList: Procedure[] = [
     {
-        name: 'Resin Bonded Bridge',
+        name: 'Resin bonded bridge',
         type: 'Prosthodontics',
         procedureStats: [
             {type: 'Survival', years: 5, percentage: 83.6},
@@ -34,7 +35,7 @@ const procedureList: Procedure[] = [
         ]
     },
     {
-        name: 'Root Canal Treatment',
+        name: 'Root canal treatment',
         type: 'Endodontics',
     },
     {
@@ -48,7 +49,31 @@ const procedureList: Procedure[] = [
     {
         name: 'Crown',
         type: 'Prosthodontics',
-    }
+    },
+    {
+        name: 'Periradicular surgery',
+        type: 'Endodontics',
+    },
+    {
+        name: 'Bridge',
+        type: 'Prosthodontics',
+    },
+    {
+        name: 'Resin composite restoration',
+        type: 'Conservative Dentistry',
+    },
+    {
+        name: 'Amalgam restoration',
+        type: 'Conservative Dentistry',
+    },
+    {
+        name: 'Glass ionomer restoration',
+        type: 'Conservative Dentistry',
+    },
+    {
+        name: 'Fissure sealant',
+        type: 'Conservative Dentistry',
+    },
 ];
 
 @Injectable({providedIn: 'root'})
