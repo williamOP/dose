@@ -5,7 +5,7 @@ $procedures: (
 );
 
 @each $procedureType, $value in map-remove($procedures) {
-  ion-item[procedureType='#{$procedureType}'] {
+  [procedureType='#{$procedureType}'] {
     border-left: 4px solid $value;
   }
 }

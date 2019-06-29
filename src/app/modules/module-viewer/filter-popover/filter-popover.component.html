@@ -1,11 +1,12 @@
-<ion-header><ion-toolbar><ion-title>Filters</ion-title></ion-toolbar></ion-header>
+<ion-header no-border><ion-toolbar><ion-title>Filters</ion-title></ion-toolbar></ion-header>
 
+<ion-content>
 <!-- Sort by -->
-<ion-list *ngIf="sortByList.length > 1">
+<ion-list *ngIf="sortByList.length > 1"  (click)='updateModule()'>
   <ion-radio-group [(ngModel)]="sortByList[0].propertyName">
   <ion-list-header>SORT BY</ion-list-header>
   <div *ngFor="let sortByItem of this.sortByList" button>
-    <ion-item *ngIf="sortByItem.displayName !== 'CurrentSort'">
+    <ion-item *ngIf="sortByItem.displayName !== 'CurrentSort'" lines='full'>
       <ion-label> {{ sortByItem.displayName }}  </ion-label>
       <ion-radio slot="end" [value]="sortByItem.propertyName"></ion-radio>
       <!-- <ion-checkbox [(ngModel)]="filter.shown"></ion-checkbox> -->
@@ -15,12 +16,13 @@
 </ion-list>
 
 <!-- Filters -->
-<ion-list *ngFor="let category of filterCategories">
+<ion-list *ngFor="let category of filterCategories" (click)='updateModule()'>
   <ion-list-header>{{ category | uppercase }}</ion-list-header>
   <div *ngFor="let filter of this.filters" button>
-    <ion-item *ngIf="filter.category === category">
+    <ion-item *ngIf="filter.category === category" lines='full'>
       <ion-label> {{ filter.name }} </ion-label>
       <ion-checkbox [(ngModel)]="filter.shown"></ion-checkbox>
     </ion-item>
   </div>
 </ion-list>
+</ion-content>

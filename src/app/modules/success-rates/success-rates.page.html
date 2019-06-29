@@ -1,15 +1,18 @@
 <ion-content>
-    <div *ngFor="let procedure of procedureList">
-      <ion-item *ngIf="!procedure.hide" [attr.procedureType]="procedure.type.replace(' ', '-') | lowercase" lines='full'>
+  <ng-container *ngFor="let procedure of procedureList">
+    <ion-card *ngIf="!procedure.hide" [attr.procedureType]="procedure.type.replace(' ', '-') | lowercase">
+      <ion-item lines='none'>
         <ion-label text-wrap>
           <h2><b>{{ procedure.name }}</b></h2><br />
           <p *ngFor="let procedureStat of procedure.procedureStats">
             {{ procedureStat.type }}: {{ procedureStat.percentage }}% at {{ procedureStat.years }} years.
           </p>
           <ng-container *ngIf="procedure.procedureStatNote">
-            <br /><p>{{ procedure.procedureStatNote }}</p>
+            <br />
+            <p>{{ procedure.procedureStatNote }}</p>
           </ng-container>
         </ion-label>
       </ion-item>
-    </div>
+    </ion-card>
+  </ng-container>
 </ion-content>

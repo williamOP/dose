@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
     <!-- back button -->
     <ion-buttons [class.hidden]='searchActive' slot="start">
@@ -23,12 +23,21 @@
     <!-- Search bar -->
     <ion-searchbar [(ngModel)]="loadedModule.searchbarText" [class.hidden]='!searchActive && loadedModule.searchbarText === ""'
                     (ionBlur)='searchActive = false' (ionFocus)='searchActive = true'
-                    (ionChange)='loadedModule.updateFilter()'
+                    (ionChange)='loadedModule.updateFilter()' debounce='50'
                     [placeholder]='loadedModule.searchbarPlaceholder' animated=true></ion-searchbar>
   </ion-toolbar>
+    <!-- Tabs -->
+    <ion-segment [(ngModel)]='this.activeView' mode='md'>
+      <ion-segment-button value="primary" mode='md'> 
+        Calculator
+      </ion-segment-button>
+      <ion-segment-button value="information" mode='md'>
+        Information
+      </ion-segment-button>
+    </ion-segment>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
   <!-- Primary container is the module, hidden if not selected -->
   <div [class.hidden]="activeView !== 'primary'">
     <ion-router-outlet (activate)="onActivate($event)"></ion-router-outlet>
@@ -36,8 +45,9 @@
 
   <!-- Information container, hidden if not selected -->
   <div *ngIf="moduleActive && activeView === 'information'">
+    <ion-col>
     <ion-card *ngIf="loadedModule.metadata.longDescription">
-      <ion-card-header>
+      <ion-card-header color='fruit-blue-grey'>
         <ion-card-title>
           About
         </ion-card-title>
@@ -46,7 +56,7 @@
       </ion-card-content>
     </ion-card>
     <ion-card *ngIf="loadedModule.metadata.references">
-      <ion-card-header>
+      <ion-card-header color='fruit-blue-grey'>
         <ion-card-title>
           References
         </ion-card-title>
@@ -59,28 +69,21 @@
         </ion-label>
         <!-- {{ reference.link }} -->
       </ion-item>
+      <p></p>
     </ion-card>
-  </div>
+  </ion-col>
+  </div>  
 </ion-content>
 
-<ion-footer>
-  <!-- Results display -->
+<ion-footer no-border color='fruit-blue-grey'>
+  <!-- Result display -->
     <div *ngIf="loadedModule.displayedResult !== ''" (click)="showResultDescription = !showResultDescription">
-  <ion-item button color="primary">
+  <ion-item color="fruit-blue-grey" class='result' lines='none'>
     <ion-title [innerHTML]="loadedModule.displayedResult">
     </ion-title>
   </ion-item>
-  <ion-item *ngIf="showResultDescription" color="primary">
-    <div [innerHTML]="loadedModule.displayedResultDescription"></div>
+  <ion-item *ngIf="showResultDescription" color="fruit-blue-grey" lines='none'>
+    <div [innerHTML]="loadedModule.displayedResultDescription" class='result-description'></div>
   </ion-item>
   </div>
-  <!-- Tabs -->
-  <ion-segment [(ngModel)]='this.activeView' color='primary' mode='ios'>
-      <ion-segment-button value="primary" mode='md'> 
-        <ion-label>Calculator</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="information" mode='md'>
-        <ion-label>Information</ion-label>
-      </ion-segment-button>
-    </ion-segment>
 </ion-footer>
