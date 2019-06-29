@@ -26,7 +26,8 @@ export class ModuleViewerPage implements OnInit {
     const popover = await this.popoverController.create({
       component: FilterPopoverComponent,
       componentProps: {filters: this.loadedModule.filters,
-                      sortByList: this.loadedModule.sortByList},
+                      sortByList: this.loadedModule.sortByList,
+                      module: this.loadedModule},
       event
     });
     await popover.present();

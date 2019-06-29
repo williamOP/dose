@@ -23,25 +23,78 @@
     --ion-color-contrast: var(--ion-color-secondary-contrast);
 }
 
-ion-searchbar {
-    height: 24px !important;
+// Don't show element
+.hidden {
+    display: none;
+}
+// Highlight element
+.highlighted {
+    --background: var(--ion-color-tint);
+    --color: var(--ion-color-contrast);
+}
+// Hide radio buttons of a radio element
+ion-radio.radio-hide {
+    opacity: 0;
 }
 
-// ion-card {
-    // max-width: 600px;
-    // margin-left: auto !important;
-    // margin-right: auto !important;
-// }
-
+// Wider popover
 ion-popover .popover-wrapper .popover-content {
     width: 70vw;
     max-width: 500px;
 }
 
-.hidden {
-    display: none;
+// Card styling
+ion-card-header, ion-card-content {
+    padding-left: var(--ion-horizontal-padding) !important;
+    padding-right: var(--ion-horizontal-padding) !important;
 }
 
-// ion-header {
-//     position: static !important;
-// }
+ion-card-header {
+    display:inline-block;               // Allows header (background-)color to only span the length of the content (e.g. title)
+    border-radius: 0px 0px 20px 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+ion-card-header:not(.ion-color) {
+    background-color: inherit;   // if no header color is defined, the card color will define it
+}
+
+ion-card-content {
+    padding-top: 6% !important;
+    padding-bottom: 6% !important;
+    color: var(--ion-text-color);
+}
+
+ion-card {
+    box-shadow: none !important;
+    border-radius: 20px !important;
+    // margin: 0px !important;
+}
+
+// Searchbar styling
+.searchbar-input {
+    box-shadow: none !important;
+    border-radius: 15px;
+    border-radius: 15px !important;
+}
+
+// Label styling
+ion-label {
+    margin-top: 10px !important;
+    color: var(--ion-color-primary);
+}
+
+// Button styling
+ion-button {
+    --box-shadow: none;
+    --border-radius: 15px;
+    text-transform: none;
+}
+
+// Input styling
+ion-input, ion-textarea {
+    margin: 10px 0;
+    background-color: var(--ion-background-color) !important;
+    border-radius: 15px;
+}

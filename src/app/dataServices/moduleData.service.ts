@@ -65,7 +65,7 @@ const moduleLibrary: ModuleMetadata[] = [
             individual_teeth_-_a_comprehensive_approach'}
         ]
     },
-    {   title: 'Testing Playground',
+    {   title: 'Testing',
         id: 'test',
         shortDescription: 'Test tools',
         longDescription: `This module serves as documentation for the module viewer. The properties described can be \

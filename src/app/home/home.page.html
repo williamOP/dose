@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
     <!-- title -->
     <ion-title [class.hidden]='searchActive || searchbarText != ""'>
@@ -21,14 +21,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen='true'>
   <!-- Modules -->
-  <div *ngFor="let module of modulesList">
+  <ion-card *ngFor="let module of modulesList">
     <ion-item *ngIf="!module.hide" routerLink="{{ '/module/'+module.id }}" lines='none'>
       <ion-label>
         <h2>{{ module.title }}</h2>
         <p>{{ module.shortDescription }}</p>
       </ion-label>
     </ion-item>
-  </div>
+  </ion-card>
 </ion-content>
