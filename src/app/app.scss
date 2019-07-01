@@ -23,7 +23,7 @@
     --ion-color-contrast: var(--ion-color-secondary-contrast);
 }
 
-// Don't show element
+// Remove element
 .hidden {
     display: none;
 }
@@ -32,8 +32,8 @@
     --background: var(--ion-color-tint);
     --color: var(--ion-color-contrast);
 }
-// Hide radio buttons of a radio element
-ion-radio.radio-hide {
+// Make element invisible
+.invisible {
     opacity: 0;
 }
 
@@ -75,13 +75,11 @@ ion-card {
 // Searchbar styling
 .searchbar-input {
     box-shadow: none !important;
-    border-radius: 15px;
     border-radius: 15px !important;
 }
 
-// Label styling
-ion-label {
-    margin-top: 10px !important;
+// Label styling for input boxes
+ion-label:not(ion-label>ion-segment-button) {
     color: var(--ion-color-primary);
 }
 
@@ -97,4 +95,72 @@ ion-input, ion-textarea {
     margin: 10px 0;
     background-color: var(--ion-background-color) !important;
     border-radius: 15px;
+}
+
+// Segment styling for questionnairs
+.questionnaire ion-segment {
+    background-color: var(--ion-background-color);
+    border-radius: 15px;
+    height: 40px;
+    margin-bottom: 16px;
+  }
+  
+.questionnaire ion-segment-button.segment-button-checked {
+    background-color: var(--ion-color-base) !important;
+    color: var(--ion-color-contrast) !important;
+}
+
+.questionnaire ion-segment-button:not(.segment-button-checked) {
+    background-color: var(--ion-background-color) !important;
+}
+
+.questionnaire ion-segment-button {
+    min-height: 0px !important;
+    border-radius: 15px;
+    border: 5px solid var(--ion-background-color);
+    color: var(--ion-color-step-500) !important;
+    text-transform: none;
+}
+
+// Note styling
+ion-note {
+    background-color: var(--ion-color-step-150);
+    color: var(--ion-color-step-500);
+    border-radius: 15px;
+    margin: 12px 0px;
+    padding: 15px;
+    background-clip: border-box !important;
+    display: block;
+    position: relative;
+}
+
+ion-note:before {
+    content: '';
+	position: absolute;
+	top: 0;
+	left: 8%;
+	width: 0;
+	height: 0;
+	border: 12px solid transparent;
+	border-bottom-color: var(--ion-color-step-150);
+	border-top: 0;
+	border-left: 0;
+	margin-left: -6px;
+	margin-top: -12px;
+}
+
+// Card subtitle styling
+ion-card-subtitle {
+    text-align: center;
+    font-size: 125%;
+    font-weight: bold;
+    margin: 8px 0px;
+}
+
+.input-group {
+    border-radius: 12px;
+    padding: 12px 0px;
+    margin: 12px 0px;
+    border-top: 2px solid var(--ion-color-step-200);
+    border-bottom: 2px solid var(--ion-color-step-200);
 }

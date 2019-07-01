@@ -26,6 +26,8 @@ export class TestingModulePage extends Module implements OnInit {
   }
 
   ngOnInit() {
+    this.displayedResult = 'test';
+    this.displayedResultDescription = 'test test test';
   }
 
   addReference() {

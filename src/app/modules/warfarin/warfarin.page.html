@@ -1,0 +1,17 @@
+<ion-content>
+    <ion-col>
+        <ion-card>
+          <ion-card-header color='fruit-yellow'>
+            <ion-card-title>Patient data</ion-card-title>
+          </ion-card-header>
+          
+          <ion-card-content>
+              <p>Organise a blood test for INR within 24 hours before surgery.</p>
+              <p>Do not cease warfarin.</p>
+            <!-- INR -->
+            <ion-label position="stacked" color="primary">INR</ion-label>
+            <ion-input clearInput type="number" [(ngModel)]='this.inr' min="0" max='10' step='0.1'  (ionChange)="updateInr()"></ion-input>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+</ion-content>

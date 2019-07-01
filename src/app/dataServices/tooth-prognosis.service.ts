@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 interface ToothPrognosis {
     category: string;
+    id: number;
     A: string;
     B: string;
     C: string;
@@ -12,6 +13,7 @@ interface ToothPrognosis {
 const toothPrognosisList: ToothPrognosis[] = [
     {
         category: 'Periodontal health and alveolar support',
+        id: 1,
         A: `80% to 100% bone support. Can be easily maintained.`,
         B: `50% to 80% bone support, which can be well maintained with rigorous periodontal and
             maintenance therapy. Vertical defects or furcations that can be periodontally treated
@@ -28,6 +30,7 @@ const toothPrognosisList: ToothPrognosis[] = [
     },
     {
       category: 'Remaining tooth structure',
+      id: 2,
       A: `80% to 100% remaining sound coronal tooth structure. Can be easily restored.`,
       B: `50% to 80% remaining sound coronal tooth structure. Involved restorative procedures
           result in no infringement of biologic width, adequate ferrule, or good crown-root ratio and
@@ -43,6 +46,7 @@ const toothPrognosisList: ToothPrognosis[] = [
   },
   {
     category: 'Endodontic condition',
+    id: 3,
     A: `A tooth that can receive a straightforward primary endodontic treatment, or already has good
         endodontic therapy`,
     B: `A failing endodontic treatment with obvious causes of failure and that can  be predictably retreated,
@@ -54,6 +58,7 @@ const toothPrognosisList: ToothPrognosis[] = [
 },
 {
   category: 'Occlusal plane and tooth position',
+  id: 4,
   A: `A tooth that is in the correct occlusal plane and/or position, or one that is slightly deviated from
       ideal and may require minimal enameloplasty.`,
   B: `A tooth that is out of the occlusal plane and can be adjusted so that it functions within the correct
@@ -71,6 +76,7 @@ const toothPrognosisList: ToothPrognosis[] = [
 
 const prognosisInterpretation: ToothPrognosis = {
     category: 'Interpretation',
+    id: 0,
     A: `A tooth in this category is one that is considered to have a <b>good</b> prognosis. Such a tooth is
         assumed to have minimal risk of being lost in the foreseen future`,
     B: `A tooth in this category has a <b>fair</b> prognosis such that treatment outcome is considered

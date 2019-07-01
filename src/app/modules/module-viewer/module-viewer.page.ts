@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Module } from '../module';
 import { IonRouterOutlet, PopoverController, IonSearchbar } from '@ionic/angular';
 import { FilterPopoverComponent } from './filter-popover/filter-popover.component';
@@ -11,8 +11,11 @@ import { FilterPopoverComponent } from './filter-popover/filter-popover.componen
 export class ModuleViewerPage implements OnInit {
   @ViewChild(IonRouterOutlet) loadedModule: Module;
   @ViewChild(IonSearchbar) searchBar: IonSearchbar;
+  @ViewChild('resultTitle', {read: ElementRef}) resultTitleElement: ElementRef;
+
   moduleActive = false;
   showResultDescription = false;
+  resultTranslationY = '0px';
   activeView = 'primary';
   searchActive = false;
 
@@ -20,6 +23,11 @@ export class ModuleViewerPage implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  onActivate(evt: any) {
+    this.loadedModule = evt;
+    this.moduleActive = true;
   }
 
   async presentFilter(event: Event) {
@@ -32,11 +40,6 @@ export class ModuleViewerPage implements OnInit {
     });
     await popover.present();
     popover.onWillDismiss().then(() => this.loadedModule.updateFilter());
-  }
-
-  onActivate(evt: any) {
-    this.loadedModule = evt;
-    this.moduleActive = true;
   }
 
   openLink(link) {
