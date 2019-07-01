@@ -22,6 +22,14 @@ const routes: Routes = [
           {
             path: 'test',
             loadChildren: '../testing-module/testing-module.module#TestingModulePageModule'
+          },
+          {
+            path: 'warfarin',
+            loadChildren: '../warfarin/warfarin.module#WarfarinPageModule'
+          },
+          {
+            path: 'periodontitis-classification',
+            loadChildren: '../periodontitis-classification/periodontitis-classification.module#PeriodontitisClassificationPageModule'
           }
         ]
     }

@@ -1,6 +1,28 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+// Fonts
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/Montserrat-Medium.ttf');//mine
+}
+
+// @font-face {
+//   font-family: 'Montserrat';
+//   font-style: normal;
+//   font-weight: bold;
+//   src: url('../assets/fonts/Montserrat-Bold.ttf');//mine
+// }
+
+// @font-face {
+//   font-family: 'Montserrat';
+//   font-style: normal;
+//   font-weight: lighter;
+//   src: url('../assets/fonts/Montserrat-Light.ttf');//mine
+// }
+
 /** Ionic CSS Variables **/
 :root {
   /** default theme **/

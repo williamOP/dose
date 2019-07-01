@@ -19,12 +19,12 @@ export interface ModuleMetadata {
 const moduleLibrary: ModuleMetadata[] = [
     {   title: 'Lethal Dose',
         id: 'anaesthetics',
-        shortDescription: 'Calculate max dose for drugs.'
+        shortDescription: 'Calculate max dose for drugs'
     },
     {
         title: 'Procedure Outcomes',
         id: 'success-rates',
-        shortDescription: 'Survival and failure rates of procedures.',
+        shortDescription: 'Survival and failure rates of procedures',
         references: [
             {description: 'Resin bonded bridge survival rates',
              referenceName: `Balasubramaniam, G. (2017). Predictability
@@ -71,6 +71,62 @@ const moduleLibrary: ModuleMetadata[] = [
         longDescription: `This module serves as documentation for the module viewer. The properties described can be \
 accessed by any module that extends the Module class`
     },
+    {
+        title: 'Warfarin Guidelines',
+        id: 'warfarin',
+        shortDescription: 'Minor oral surgery guidelines for patients taking warfarin',
+        longDescription: `<b>Tranaxemic acid mouthwash protocol</b><br /><br />
+                        On the day of surgery:
+                        <ul>
+                        <li>Check INR (INR must be 2.2 to 4.0).</li>
+                        <li>Administer antibiotic prophylaxis if indicated.</li>
+                        <li>Obtain a bottle of 4.8% tranexamic acid mouthwash.</li>
+                        </ul>
+                        During surgery (for extraction of teeth only):
+                        <ul>
+                        <li>After teeth have been extracted, irrigate sockets with tranexamic acid mouthwash using a
+                        disposable syringe.</li>
+                        <li>Fill the socket with loosely packed haemostatic agent.</li>
+                        <li>Place one suture per socket</li>
+                        <li>Ask the patient to bite on a gauze pack soaked in tranexamic acid mouthwash.</li>
+                        </ul>
+                        After surgery:
+                        <ul>
+                        <li>Give the patient tranexamic acid mouthwash with instructions on use (10 ml rinsed in mouth
+                        for 2 minutes, 4 times daily for 2 to 5 days).</li>
+                        <li>Arrange review dental appointment for 2 days after the procedure.</li>
+                        </ul>
+                        Review appointment (2 days after the procedure):
+                        <ul>
+                        <li>Check for bleeding, pain, delayed healing or infection, and treat as necessary.</li>
+                        </ul>
+                        Review the patient again in 1 to 2 weeks to check healing has occurred.<br /><br />
+                        <b>INR</b><br /><br />
+                        International normalised ratio evaluates the extrinsic pathway of coagulation. A high INR
+                        indicates a risk of bleeding while a low INR suggests a risk of developing a clot. <br /><br />
+                        The normal range for a healthy person is 0.8–1.2 and for people on warfarin, an INR of 2.0–3.0 is
+                        usually targeted. A higher INR may be targeted in particular situations such as those with a mechanical
+                        heart valve. <br /><br />`,
+        references: [
+            {description: 'Warfarin Guidelines',
+            referenceName: `Therapeutic Guidelines - Oral and Dental: version 2`,
+            link: 'https://tgldcdp.tg.org.au/guideLine?guidelinePage=Oral+and+Dental&frompage=etgcomplete'}
+        ]
+    },
+    {   title: 'Periodontitis Classification',
+        id: 'periodontitis-classification',
+        shortDescription: 'Staging and grading of periodontitis',
+        longDescription: `<b>Periodontitis</b><br /><br />
+                        A periodontitis case is defined as either: (1) interdental CAL at ≥2 non-adjacent teeth, or
+                        (2) buccal/lingual CAL ≥3 mm with pocketing ≥3 mm at ≥2 teeth. The observed CAL must also not
+                        be ascribable to non-periodontal causes.`,
+        references: [
+            {description: 'Staging and grading framework',
+                referenceName: `Tonetti, M., Greenwell, H. and Kornman, K. (2018). Staging and grading of periodontitis:
+                Framework and proposal of a new classification and case definition. Journal of Clinical Periodontology,
+                45, pp.S149-S161.`,
+            link: 'https://doi.org/10.1111/jcpe.12945'}
+        ]}
 ];
 
 @Injectable({providedIn: 'root'})
