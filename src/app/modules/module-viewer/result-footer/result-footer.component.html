@@ -1,0 +1,16 @@
+<ion-footer no-border color='fruit-blue-grey' [class.hidden]="resultTitle === ''">
+  <!-- Result display -->
+  <div (click)="showResultDescription = !showResultDescription" class='result'>
+    <ion-item color="fruit-blue-grey" class='result' lines='none'>
+      <ion-title [innerHTML]="resultTitle">
+      </ion-title>
+      <ion-icon *ngIf="resultDescription && !showResultDescription" slot="end"
+        name="arrow-up" mode='ios'></ion-icon>
+      <ion-icon *ngIf="resultDescription && showResultDescription" slot="end"
+        name="arrow-down" mode='ios'></ion-icon>
+    </ion-item>
+    <ion-item [class.hidden]="!showResultDescription || !resultDescription" color="fruit-blue-grey" lines='none'>
+      <div [innerHTML]="resultDescription" class='result-description'></div>
+    </ion-item>
+  </div>
+</ion-footer>

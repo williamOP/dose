@@ -14,7 +14,6 @@ export class ModuleViewerPage implements OnInit {
   @ViewChild('resultTitle', {read: ElementRef}) resultTitleElement: ElementRef;
 
   moduleActive = false;
-  showResultDescription = false;
   resultTranslationY = '0px';
   activeView = 'primary';
   searchActive = false;
