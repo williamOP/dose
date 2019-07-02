@@ -1,12 +1,12 @@
 <ion-header no-border>
-  <ion-toolbar>
+  <ion-toolbar #titleToolbar class='title-toolbar' (swipe)=handleTitleSwipe($event)>
     <!-- back button -->
     <ion-buttons [class.hidden]='searchActive' slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <!-- title -->
-    <ion-title [class.hidden]='searchActive || loadedModule.searchbarText != ""'>
-      {{ moduleActive ? loadedModule.metadata.title : "Module Viewer" }}
+    <ion-title #title [class.hidden]='searchActive || loadedModule.searchbarText != ""' (click)='toggleExpandTitle()'>
+      <span [class.expand-title]='expandTitle'>{{ moduleActive ? loadedModule.metadata.title : "Module Viewer" }}</span>
     </ion-title>
     <ion-buttons [class.hidden]='searchActive' slot="end">
       <!-- search button -->
@@ -37,7 +37,7 @@
   </ion-segment>
 </ion-header>
 
-<ion-content fullscreen class='module-viewer' [class.no-result]="loadedModule.displayedResult === ''">
+<ion-content class='module-viewer'>
   <!-- Primary container is the module, hidden if not selected -->
   <div [class.hidden]="activeView !== 'primary'">
     <ion-router-outlet (activate)="onActivate($event)"></ion-router-outlet>
@@ -76,19 +76,6 @@
   </div>
 </ion-content>
 
-<ion-footer no-border color='fruit-blue-grey' [class.hidden]="loadedModule.displayedResult === ''">
-  <!-- Result display -->
-  <div (click)="showResultDescription = !showResultDescription">
-    <ion-item color="fruit-blue-grey" class='result' lines='none'>
-      <ion-title [innerHTML]="loadedModule.displayedResult">
-      </ion-title>
-      <ion-icon *ngIf="loadedModule.displayedResultDescription !== '' && !showResultDescription" slot="end"
-        name="arrow-up" mode='ios' class='result-icon'></ion-icon>
-      <ion-icon *ngIf="loadedModule.displayedResultDescription !== '' && showResultDescription" slot="end"
-        name="arrow-down" mode='ios' class='result-icon'></ion-icon>
-    </ion-item>
-    <ion-item [class.hidden]="!showResultDescription || !loadedModule.displayedResultDescription" color="fruit-blue-grey" lines='none'>
-      <div [innerHTML]="loadedModule.displayedResultDescription" class='result-description'></div>
-    </ion-item>
-  </div>
-</ion-footer>
+<app-result-footer [resultTitle]='loadedModule.displayedResult'
+[resultDescription]='loadedModule.displayedResultDescription'>
+</app-result-footer>

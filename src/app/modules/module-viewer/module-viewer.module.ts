@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { ModuleViewerPage } from './module-viewer.page';
 import { FilterPopoverComponent } from './filter-popover/filter-popover.component';
+import { ResultFooterComponent } from './result-footer/result-footer.component';
 
 @NgModule({
   imports: [
@@ -15,8 +16,8 @@ import { FilterPopoverComponent } from './filter-popover/filter-popover.componen
     IonicModule,
     ModuleViewerRoutingModule
     ],
-  declarations: [ModuleViewerPage, FilterPopoverComponent],
-  entryComponents: [FilterPopoverComponent]
+  declarations: [ModuleViewerPage, FilterPopoverComponent, ResultFooterComponent],
+  entryComponents: [FilterPopoverComponent, ResultFooterComponent]
 })
 export class ModuleViewerPageModule {
   constructor() {}

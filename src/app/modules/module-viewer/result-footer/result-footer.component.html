@@ -1,0 +1,15 @@
+<ion-item-group #content color='fruit-blue-grey'
+(click)="this.showResultDescription = !this.showResultDescription"
+(swipe)=handleSwipe($event)>
+  <!-- Title -->
+  <ion-item #title class='result-title' color="fruit-blue-grey" lines='none'>
+    <ion-title [innerHTML]="resultTitle">
+    </ion-title>
+    <ion-icon *ngIf="resultDescription" slot="end" name="arrow-up" mode='ios' [class.rotate180]='showResultDescription'>
+    </ion-icon>
+  </ion-item>
+  <!-- Description -->
+  <ion-item #description class='result-description' color="fruit-blue-grey" lines='none'>
+    <p [innerHTML]="resultDescription"></p>
+  </ion-item>
+</ion-item-group>

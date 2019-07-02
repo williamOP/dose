@@ -176,25 +176,25 @@
               <ion-label>&gt;1.0</ion-label>
             </ion-segment-button>
           </ion-segment>
-          <!-- Case phenotype -->
-          <ion-label position="stacked" color="fruit-purple">Case phenotype (destruction/biofilm)</ion-label>
-          <ion-segment [(ngModel)]='casePhenotype' color='fruit-purple'>
-            <ion-segment-button value="below">
-              <ion-label>Below</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="commensurate">
-              <ion-label>Commensurate</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="exceeds">
-              <ion-label>Exceeds</ion-label>
-            </ion-segment-button>
-          </ion-segment>
-          <ion-note>The level of destruction compared to the level of biofilm deposits.
-            Select Exceeds if specific clinical patterns suggestive of rapid progression and/or
-            early onset disease (e.g. molar/incisor pattern; lack of expected response to
-            standard bacterial control therapies).
-          </ion-note>
         </div>
+        <!-- Case phenotype -->
+        <ion-label position="stacked" color="fruit-purple">Case phenotype (destruction/biofilm)</ion-label>
+        <ion-segment [(ngModel)]='casePhenotype' color='fruit-purple'>
+          <ion-segment-button value="below">
+            <ion-label>Below</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="commensurate">
+            <ion-label>Commensurate</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="exceeds">
+            <ion-label>Exceeds</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+        <ion-note>The level of destruction compared to the level of biofilm deposits.
+          Select Exceeds if specific clinical patterns suggestive of rapid progression and/or
+          early onset disease (e.g. molar/incisor pattern; lack of expected response to
+          standard bacterial control therapies).
+        </ion-note>
       </ion-card-content>
     </ion-card>
 

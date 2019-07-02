@@ -64,6 +64,6 @@ export class PeriodontitisClassificationPage extends Module implements OnInit, D
     } else {
       this.grade = '';
     }
-    this.displayedResult = this.distribution + this.stage + this.grade;
+    setTimeout(() => this.displayedResult = this.distribution + this.stage + this.grade);
   }
 }
