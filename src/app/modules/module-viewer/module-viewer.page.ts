@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Module } from '../module';
 import { IonRouterOutlet, PopoverController, IonSearchbar } from '@ionic/angular';
 import { FilterPopoverComponent } from './filter-popover/filter-popover.component';
+import anime from 'animejs/lib/anime.es.js';
 
 @Component({
   selector: 'app-module-viewer',
@@ -9,14 +10,15 @@ import { FilterPopoverComponent } from './filter-popover/filter-popover.componen
   styleUrls: ['./module-viewer.page.scss'],
 })
 export class ModuleViewerPage implements OnInit {
+  @ViewChild('titleToolbar', {read: ElementRef}) titleToolbar: ElementRef;
+  @ViewChild('title', {read: ElementRef}) title: ElementRef;
   @ViewChild(IonRouterOutlet) loadedModule: Module;
   @ViewChild(IonSearchbar) searchBar: IonSearchbar;
-  @ViewChild('resultTitle', {read: ElementRef}) resultTitleElement: ElementRef;
 
   moduleActive = false;
-  resultTranslationY = '0px';
   activeView = 'primary';
   searchActive = false;
+  expandTitle = false;
 
   constructor(private popoverController: PopoverController) {
    }
@@ -43,6 +45,33 @@ export class ModuleViewerPage implements OnInit {
 
   openLink(link) {
     window.open(link, '_system');
+  }
+
+  toggleExpandTitle() {
+    const initialTitleHeight = this.title.nativeElement.scrollHeight;
+    const initialTitleToolbarHeight = this.titleToolbar.nativeElement.scrollHeight;
+    let finalTitleHeight: number;
+    this.expandTitle = !this.expandTitle;
+    let padding = 0;
+    setTimeout(() => {
+      finalTitleHeight = this.title.nativeElement.scrollHeight;
+      if (finalTitleHeight > initialTitleHeight) {
+        padding = 12;
+      }
+      anime({
+        targets: '.title-toolbar',
+        height: initialTitleToolbarHeight + finalTitleHeight - initialTitleHeight,
+        paddingTop: padding + 'px',
+        easing: 'linear',
+        duration: 100
+      });
+    });
+  }
+
+  handleTitleSwipe(evt: any) {
+    if ((!this.expandTitle && evt.direction === 16) || (this.expandTitle && evt.direction === 8)) {
+      this.toggleExpandTitle();
+    }
   }
 
   async openSearchBar() {

@@ -1,12 +1,12 @@
 <ion-header no-border>
-  <ion-toolbar>
+  <ion-toolbar #titleToolbar class='title-toolbar' (swipe)=handleTitleSwipe($event)>
     <!-- back button -->
     <ion-buttons [class.hidden]='searchActive' slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <!-- title -->
-    <ion-title [class.hidden]='searchActive || loadedModule.searchbarText != ""'>
-      {{ moduleActive ? loadedModule.metadata.title : "Module Viewer" }}
+    <ion-title #title [class.hidden]='searchActive || loadedModule.searchbarText != ""' (click)='toggleExpandTitle()'>
+      <span [class.expand-title]='expandTitle'>{{ moduleActive ? loadedModule.metadata.title : "Module Viewer" }}</span>
     </ion-title>
     <ion-buttons [class.hidden]='searchActive' slot="end">
       <!-- search button -->

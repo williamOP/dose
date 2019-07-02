@@ -232,8 +232,9 @@
   --ion-color-shade: #c58c37;
   --ion-color-tint: #e3a951;
 }
+  --fruit-blue-grey: #353A47;
  .ion-color-fruit-blue-grey { 
-  --ion-color-base: #353A47;
+  --ion-color-base: var(--fruit-blue-grey);
   --ion-color-base-rgb: 53,58,71;
   --ion-color-contrast: #ffffff;
   --ion-color-contrast-rgb: 255,255,255;

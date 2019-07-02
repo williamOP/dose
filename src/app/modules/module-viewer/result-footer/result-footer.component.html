@@ -1,16 +1,15 @@
-<ion-footer no-border color='fruit-blue-grey' [class.hidden]="resultTitle === ''">
-  <!-- Result display -->
-  <div (click)="showResultDescription = !showResultDescription" class='result'>
-    <ion-item color="fruit-blue-grey" class='result' lines='none'>
-      <ion-title [innerHTML]="resultTitle">
-      </ion-title>
-      <ion-icon *ngIf="resultDescription && !showResultDescription" slot="end"
-        name="arrow-up" mode='ios'></ion-icon>
-      <ion-icon *ngIf="resultDescription && showResultDescription" slot="end"
-        name="arrow-down" mode='ios'></ion-icon>
-    </ion-item>
-    <ion-item [class.hidden]="!showResultDescription || !resultDescription" color="fruit-blue-grey" lines='none'>
-      <div [innerHTML]="resultDescription" class='result-description'></div>
-    </ion-item>
-  </div>
-</ion-footer>
+<ion-item-group #content color='fruit-blue-grey'
+(click)="this.showResultDescription = !this.showResultDescription"
+(swipe)=handleSwipe($event)>
+  <!-- Title -->
+  <ion-item #title class='result-title' color="fruit-blue-grey" lines='none'>
+    <ion-title [innerHTML]="resultTitle">
+    </ion-title>
+    <ion-icon *ngIf="resultDescription" slot="end" name="arrow-up" mode='ios' [class.rotate180]='showResultDescription'>
+    </ion-icon>
+  </ion-item>
+  <!-- Description -->
+  <ion-item #description class='result-description' color="fruit-blue-grey" lines='none'>
+    <p [innerHTML]="resultDescription"></p>
+  </ion-item>
+</ion-item-group>
