@@ -10,7 +10,6 @@ import anime from 'animejs/lib/anime.es.js';
   styleUrls: ['./module-viewer.page.scss'],
 })
 export class ModuleViewerPage implements OnInit {
-  @ViewChild('titleToolbar', {read: ElementRef}) titleToolbar: ElementRef;
   @ViewChild('title', {read: ElementRef}) title: ElementRef;
   @ViewChild(IonRouterOutlet) loadedModule: Module;
   @ViewChild(IonSearchbar) searchBar: IonSearchbar;
@@ -49,21 +48,21 @@ export class ModuleViewerPage implements OnInit {
 
   toggleExpandTitle() {
     const initialTitleHeight = this.title.nativeElement.scrollHeight;
-    const initialTitleToolbarHeight = this.titleToolbar.nativeElement.scrollHeight;
     let finalTitleHeight: number;
     this.expandTitle = !this.expandTitle;
     let padding = 0;
     setTimeout(() => {
       finalTitleHeight = this.title.nativeElement.scrollHeight;
       if (finalTitleHeight > initialTitleHeight) {
-        padding = 12;
+        padding = 8;
       }
       anime({
         targets: '.title-toolbar',
-        height: initialTitleToolbarHeight + finalTitleHeight - initialTitleHeight,
+        height: '+=(finalTitleHeight - initialTitleHeight)',
         paddingTop: padding + 'px',
-        easing: 'linear',
-        duration: 100
+        paddingBottom: padding + 'px',
+        easing: 'easeOutCubic',
+        duration: 200
       });
     });
   }
