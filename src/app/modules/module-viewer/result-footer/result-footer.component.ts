@@ -37,7 +37,7 @@ export class ResultFooterComponent implements OnInit, DoCheck {
       anime({
         targets: 'ion-item-group',
         height: desiredHeight,
-        duration: 400,
+        duration: 500,
         easing: 'easeOutElastic(1, 0.8)'
       });
       this.currentHeight = desiredHeight;
@@ -45,12 +45,9 @@ export class ResultFooterComponent implements OnInit, DoCheck {
   }
 
   handleSwipe(evt: any) {
-    console.log(evt.direction);
-    console.log(evt.overallVelocityY);
-    console.log(evt.velocityY);
-    if (this.resultDescription && !this.showResultDescription && evt.direction === 8) {
+    if (evt.direction === 8) {
       this.showResultDescription = true;
-    } else if (this.resultDescription && this.showResultDescription && evt.direction === 16) {
+    } else if (evt.direction === 16) {
       this.showResultDescription = false;
     }
   }
