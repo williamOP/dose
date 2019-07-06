@@ -1,0 +1,147 @@
+<ion-content>
+  <ion-col class="questionnaire">
+    <!-- Patient data -->
+    <ion-card>
+      <ion-card-header color='fruit-yellow'>
+        <ion-card-title>Patient data</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Age -->
+        <ion-label position="stacked" color="fruit-yellow">Age</ion-label>
+        <ion-input clearInput type="number" [(ngModel)]='patientAge' min="0" max="120"></ion-input>
+        <!-- Total teeth -->
+        <ion-label position="stacked" color="fruit-yellow">Total teeth</ion-label>
+        <ion-input clearInput type="number" [(ngModel)]='totalTeeth' min="0" max="36" (ionChange)="updateDentalData()">
+        </ion-input>
+        <!-- Sites/tooth -->
+        <ion-label position="stacked" color="fruit-yellow">Sites per tooth</ion-label>
+        <ion-segment [(ngModel)]='sitesPerTooth' color='fruit-yellow' (ionChange)="updateDentalData()">
+          <ion-segment-button value="2">
+            <ion-label>2</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="4">
+            <ion-label>4</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="6">
+            <ion-label>6</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+        <!-- SystGen -->
+        <ion-label position="stacked" color="fruit-yellow">Systemic or general factors</ion-label>
+        <ion-segment [(ngModel)]='systGenFactors' color='fruit-yellow'>
+          <ion-segment-button value="No factors">
+            <ion-label>No</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Systemic factors">
+            <ion-label>Yes</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+        <ion-note>
+          Diabetes type I or II, IL-1 polymorphism, or stress.
+        </ion-note>
+        <!-- Smoking -->
+        <div class="input-group">
+          <ion-label position="stacked" color="fruit-yellow">Smoking Status</ion-label>
+          <ion-segment [(ngModel)]='smokingStatus' color='fruit-yellow'>
+            <ion-segment-button value="Non-smoker">
+              <ion-label>Non-smoker</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="Former smoker">
+              <ion-label>Former smoker</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <ion-card-subtitle>OR</ion-card-subtitle>
+          <ion-label position="stacked" color="fruit-yellow">Cigarretes/day</ion-label>
+          <ion-segment [(ngModel)]='smokingStatus' color='fruit-yellow'>
+            <ion-segment-button value="Occasional smoker">
+              <ion-label>1-10</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="Smoker">
+              <ion-label>11-20</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="Heavy smoker">
+              <ion-label>&gt;20</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header color='fruit-light-green'>
+        <ion-card-title>Dental data</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- BOP -->
+        <ion-label position="stacked" color="fruit-light-green">BOP sites</ion-label>
+        <ion-input clearInput type="number" [(ngModel)]='bopSites' min="0" [max]="totalSites"></ion-input>
+        <!-- PPD -->
+        <ion-label position="stacked" color="fruit-light-green">Sites with pocket depths ≥5mm</ion-label>
+        <ion-input clearInput type="number" [(ngModel)]='deepPockets' min="0" [max]="totalSites"></ion-input>
+        <!-- Tooth loss -->
+        <ion-label position="stacked" color="fruit-light-green">Tooth loss (from a total of 28)</ion-label>
+        <ion-input clearInput type="number" [(ngModel)]='teethLost' min="0" [max]="32"></ion-input>
+        <!-- Bone loss -->
+        <ion-label position="stacked" color="fruit-light-green">Bone loss %</ion-label>
+        <ion-input clearInput type="number" [(ngModel)]='boneLoss' min="0" [max]="100"></ion-input>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header color='fruit-orange'>
+        <ion-card-title>Graph</ion-card-title>
+      </ion-card-header>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="360" height="420" viewBox="-20 0 400 420">
+        <!-- Graph fills -->
+        <polygon class="hexagon high" points="180,60 50.1,135.1 50.1,284.9 180,360 309.9,284.9 309.9,135.1 " />
+        <polygon class="hexagon moderate" points="180,90 76.1,150 76.1,270 180,330 283.9,270 283.9,150 " />
+        <polygon class="hexagon low" points="180,150 128.1,180 128.1,240 180,270 231.9,240 231.9,180 " />
+        <!-- Status fill -->
+        <polygon class="status fill" points="180,210 180,210 180,210 180,210 180,210 180,210" />
+        <!-- Graph hexagons -->
+        <polygon class="hexagon marker" points="180,60 50.1,135.1 50.1,284.9 180,360 309.9,284.9 309.9,135.1 " />
+        <polygon class="hexagon marker" points="180,90 76.1,150 76.1,270 180,330 283.9,270 283.9,150 " />
+        <polygon class="hexagon marker" points="180,120 102.1,165.1 102.1,254.9 180,300 257.9,254.9 257.9,165.1 " />
+        <polygon class="hexagon marker" points="180,150 128.1,180 128.1,240 180,270 231.9,240 231.9,180 " />
+        <polygon class="hexagon marker" points="180,180 154,195.1 154,224.9 180,240 206,224.9 206,195.1 " />
+        <!-- Graph Labels -->
+        <text transform="matrix(1 0 0 1 167 45)" class="label">BOP</text>        
+        <text transform="matrix(1 0 0 1 -4 120)" class="label">Environment</text>
+        <text transform="matrix(1 0 0 1 292 120)" class="label">PPD ≥5 mm</text>
+        <text transform="matrix(1 0 0 1 3 305)" class="label">Systemic</text>
+        <text transform="matrix(1 0 0 1 300 305)" class="label">Tooth Loss</text>
+        <text transform="matrix(1 0 0 1 142 375)" class="label">Bone loss/age</text>
+        <!-- Status stroke -->
+        <polygon class="status stroke" points="180,210 180,210 180,210 180,210 180,210 180,210" />
+        <!-- Graph lines -->
+        <line class="line" x1="180" y1="210" x2="180" y2="60" />
+        <line class="line" x1="180" y1="210" x2="50.1" y2="135.1" />
+        <line class="line" x1="180" y1="210" x2="50.1" y2="284.9" />
+        <line class="line" x1="180" y1="210" x2="180" y2="360" />
+        <line class="line" x1="180" y1="210" x2="309.9" y2="284.9" />
+        <line class="line" x1="180" y1="210" x2="309.9" y2="135.1" />
+        <!-- Status text holders -->
+        <rect class ="bop text-holder" x="180" y="210" height="3" width="3" rx="8"/>
+        <rect class ="ppd text-holder" x="180" y="210" height="3" width="3" rx="8"/>
+        <rect class ="tooth-loss text-holder" x="180" y="210" height="3" width="3" rx="8"/>
+        <rect class ="bone-loss text-holder" x="180" y="210" height="3" width="3" rx="8"/>
+        <rect class ="syst-gen text-holder" x="180" y="210" height="3" width="3" rx="8"/>
+        <rect class ="environment text-holder" x="180" y="210" height="3" width="3" rx="8"/>
+        <!-- Status dots -->
+        <rect class ="bop dot" x="180" y="210" height="3" width="3" rx="8"/>
+        <rect class ="ppd dot" x="180" y="210" height="3" width="3" rx="8"/>
+        <rect class ="tooth-loss dot" x="180" y="210" height="3" width="3" rx="8"/>
+        <rect class ="bone-loss dot" x="180" y="210" height="3" width="3" rx="8"/>
+        <rect class ="syst-gen dot" x="180" y="210" height="3" width="3" rx="8"/>
+        <rect class ="environment dot" x="180" y="210" height="3" width="3" rx="8"/>
+        <!-- Status text -->
+        <text id="bop" class="bop text" x="180" y="210">{{ bopPercentage | number:'1.0-0' }}%</text>
+        <text id="ppd" class="ppd text" x="180" y="210">{{ deepPocketPercentage | number:'1.0-0' }}%</text>
+        <text id="tooth-loss" class="tooth-loss text" x="180" y="210">{{ teethLost | number:'1.0-0'}}</text>
+        <text id="bone-loss" class="bone-loss text" x="180" y="210">{{ boneLossForAge | number:'1.0-1'}}%</text>
+        <text id="syst-gen" class="syst-gen text" x="180" y="210">{{ systGenFactors }}</text>
+        <text id="environment" class="environment text" x="180" y="210">{{ smokingStatus }}</text>        
+      </svg>
+    </ion-card>
+  </ion-col>
+</ion-content>

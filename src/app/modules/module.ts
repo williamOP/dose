@@ -1,5 +1,6 @@
 import { ModuleDataService, ModuleMetadata } from '../dataServices/moduleData.service';
-import { AfterContentInit } from '@angular/core';
+import { AfterContentInit, ViewChild } from '@angular/core';
+import { IonContent } from '@ionic/angular';
 
 
 export interface Filter {
@@ -15,6 +16,7 @@ export interface SortByItem {
 
 // Having a shared Module class allows the module viewer to access commonly used information
 export class Module implements AfterContentInit {
+    @ViewChild(IonContent) content: IonContent;
     metadata: ModuleMetadata;                   // Simple information for Module
     sortByList: SortByItem[] = [{propertyName: '', displayName: 'CurrentSort'}];
         // List of properties that can be sorted by as well as how that property will be displayed to the user
