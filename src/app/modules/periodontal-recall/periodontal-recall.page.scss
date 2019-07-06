@@ -1,0 +1,63 @@
+svg {
+    display: block;
+    margin:auto;
+}
+
+.hexagon {
+    stroke: #353A47;
+    stroke-width: 1.5;
+}
+
+.low {
+    fill: #afdea6;
+}
+
+.moderate {
+    fill: #e9bb77;
+}
+
+.high {
+    fill: #cd8371;
+}
+
+.marker {
+    fill-opacity: 0;
+}
+
+.line {
+    stroke: #353A47;
+    stroke-width: 1.5;
+}
+
+.status.stroke{
+    stroke: #71a667;
+    stroke-width: 3;
+    fill-opacity: 0;
+}
+
+.status.fill{
+    fill: #99d58e;
+    fill-opacity: 1;
+}
+
+rect {
+    stroke: #7db772;
+    stroke-width: 6;
+}
+
+.text-holder {
+    fill: var(--ion-item-background);
+    stroke-width: 2;
+}
+
+.text {
+    font-size: 11px;
+    font-family: var(--ion-font-family);
+    fill: var(--ion-item-background);
+}
+
+.label {
+    font-size: 11px;
+    font-family: var(--ion-font-family);
+    fill: #353A47;
+}

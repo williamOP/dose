@@ -30,6 +30,10 @@ const routes: Routes = [
           {
             path: 'periodontitis-classification',
             loadChildren: '../periodontitis-classification/periodontitis-classification.module#PeriodontitisClassificationPageModule'
+          },
+          {
+            path: 'periodontal-recall',
+            loadChildren: '../periodontal-recall/periodontal-recall.module#PeriodontalRecallPageModule'
           }
         ]
     }

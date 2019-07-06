@@ -28,7 +28,7 @@
     display: none;
 }
 // Highlight element
-.highlighted {
+.item-radio-checked {
     --background: var(--ion-color-tint);
     --color: var(--ion-color-contrast);
 }
@@ -120,6 +120,21 @@ ion-input, ion-textarea {
     border: 5px solid var(--ion-background-color);
     color: var(--ion-color-step-500) !important;
     text-transform: none;
+}
+
+ion-card.vertical-segment {
+    background-color: var(--ion-background-color) !important;
+}
+
+.vertical-segment ion-item:not(.item-radio-checked) {
+    --background: var(--ion-background-color) !important;
+    color: var(--ion-color-step-500) !important;
+}
+
+.vertical-segment ion-item.item-radio-checked {
+    --background: var(--ion-color-base) !important;
+    border-radius: 20px;
+    border: 5px solid var(--ion-background-color);
 }
 
 // Note styling

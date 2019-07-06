@@ -37,7 +37,7 @@ const moduleLibrary: ModuleMetadata[] = [
         ]
     },
     {
-        title: 'Tooth Classification and Prognosis',
+        title: 'Tooth Classification & Prognosis',
         id: 'prognosis',
         shortDescription: 'Individual tooth classification and prognosis',
         longDescription: `Each tooth is evaluated for each of the 4 criteria independently. The level
@@ -126,7 +126,21 @@ accessed by any module that extends the Module class`
                 Framework and proposal of a new classification and case definition. Journal of Clinical Periodontology,
                 45, pp.S149-S161.`,
             link: 'https://doi.org/10.1111/jcpe.12945'}
-        ]}
+        ]},
+    {   title: 'Periodontal risk & recall',
+        id: 'periodontal-recall',
+        shortDescription: 'Risk and recall calculator for periodontitis patients.',
+        longDescription: `A low PRA patient has all parameters within the low-risk categories or - at the most - one
+                        parameter in themoderate-risk category. <br /><br /> A moderate PRA patient has at least two
+                        parameters in the moderate category, but at most one parameter in the high-risk category.
+                        <br /><br /> A high PRA patient has at least two parameters in the high-risk category.`,
+        references: [
+            {description: 'Risk graph and algorithm',
+                referenceName: `Lang, N. and Tonetti, M. (2003). eriodontal risk assessment (PRA) for patients in
+                supportive periodontal therapy (SPT). Oral Health Prev Dent, 1, pp.7-16.`,
+            link: 'https://dx.doi.org/10.3290/j.ohpd.a8216'}
+        ]
+        }
 ];
 
 @Injectable({providedIn: 'root'})

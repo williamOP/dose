@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'prognosis', loadChildren: './modules/prognosis/prognosis.module#PrognosisPageModule' },
   { path: 'testing-module', loadChildren: './modules/testing-module/testing-module.module#TestingModulePageModule' },
   { path: 'warfarin', loadChildren: './modules/warfarin/warfarin.module#WarfarinPageModule' },  { path: 'periodontitis-classification', loadChildren: './modules/periodontitis-classification/periodontitis-classification.module#PeriodontitisClassificationPageModule' },
+  { path: 'periodontal-recall', loadChildren: './modules/periodontal-recall/periodontal-recall.module#PeriodontalRecallPageModule' },
 
 ];
 

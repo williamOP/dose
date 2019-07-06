@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Module } from '../module';
 import { ToothPrognosisService } from 'src/app/dataServices/tooth-prognosis.service';
-import { IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-prognosis',
@@ -10,8 +9,6 @@ import { IonContent } from '@ionic/angular';
 })
 
 export class PrognosisPage extends Module implements OnInit {
-  @ViewChild(IonContent) content: IonContent;
-
   prognosisList = this.toothPrognosisService.getToothPrognosisList();
   classScores = {};
 
