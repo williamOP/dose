@@ -1,18 +1,7 @@
-// Tabs
-ion-segment {
-  height: 32px;
-}
-ion-segment-button{
-  max-width: 50vw !important;
-  min-height: 0px;
-  --indicator-color-checked: none !important;
-  background-color: var(--ion-toolbar-background) !important;
-}
-
-ion-segment-button.segment-button-checked {
-  background-color: var(--ion-toolbar-background) !important;
-  color: var(--ion-text-color) !important;
-}
-ion-segment-button:not(.segment-button-checked) {
-  color: var(--ion-color-step-300) !important;
+app-title-bar {
+  position:fixed;
+  z-index:1000;
+  top:0;
+  left:0;
+  width: 100%;
 }

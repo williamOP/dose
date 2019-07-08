@@ -1,10 +1,12 @@
-<ion-toolbar #titleToolbar class='title-toolbar'>
+<div class='header' #header id='header'>
+  <ion-toolbar #titleToolbar class='title-toolbar'>
     <!-- back button -->
     <ion-buttons [class.hidden]='searchActive' slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <!-- title -->
-    <ion-title #title [class.hidden]='searchActive || loadedModule.searchbarText != ""' (click)='expandTitle = !expandTitle'>
+    <ion-title #title [class.hidden]='searchActive || loadedModule.searchbarText != ""'
+      (click)='expandTitle = !expandTitle'>
       <span [class.expand-title]='expandTitle'>{{ moduleActive ? loadedModule.metadata.title : "Module Viewer" }}</span>
     </ion-title>
     <ion-buttons [class.hidden]='searchActive' slot="end">
@@ -25,3 +27,13 @@
       (ionFocus)='searchActive = true' (ionChange)='loadedModule.updateFilter()' debounce='50'
       [placeholder]='loadedModule.searchbarPlaceholder' animated=true></ion-searchbar>
   </ion-toolbar>
+  <!-- Tabs -->
+  <ion-segment [(ngModel)]='activeView' mode='md'>
+    <ion-segment-button value="primary" mode='md'>
+      Calculator
+    </ion-segment-button>
+    <ion-segment-button value="information" mode='md'>
+      Information
+    </ion-segment-button>
+  </ion-segment>
+</div>

@@ -1,24 +1,16 @@
-<ion-header no-border>
-  <app-title-bar [loadedModule]="loadedModule" [moduleActive]='moduleActive' [content]='loadedModule.content'></app-title-bar>
-  <!-- Tabs -->
-  <ion-segment [(ngModel)]='this.activeView' mode='md'>
-    <ion-segment-button value="primary" mode='md'>
-      Calculator
-    </ion-segment-button>
-    <ion-segment-button value="information" mode='md'>
-      Information
-    </ion-segment-button>
-  </ion-segment>
-</ion-header>
+<app-title-bar [loadedModule]="loadedModule" [moduleActive]='moduleActive'
+[content]='loadedModule.content'></app-title-bar>
+  
 
 <ion-content class='module-viewer'>
   <!-- Primary container is the module, hidden if not selected -->
-  <div [class.hidden]="activeView !== 'primary'">
-    <ion-router-outlet (activate)="onActivate($event)"></ion-router-outlet>
+  <div [class.hidden]="titleBar.activeView !== 'primary'">
+    <ion-router-outlet (activate)="onActivate($event)" class='module'></ion-router-outlet>
   </div>
 
   <!-- Information container, hidden if not selected -->
-  <div *ngIf="moduleActive && activeView === 'information'">
+  <div *ngIf="moduleActive && titleBar.activeView === 'information'">
+    <ion-row>
     <ion-col>
       <!-- About -->
       <ion-card *ngIf="loadedModule.metadata.longDescription" id="about-card">
@@ -47,6 +39,7 @@
         <p></p>
       </ion-card>
     </ion-col>
+  </ion-row>
   </div>
 </ion-content>
 

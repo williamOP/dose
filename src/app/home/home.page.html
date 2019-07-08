@@ -23,12 +23,20 @@
 
 <ion-content fullscreen='true'>
   <!-- Modules -->
-  <ion-card *ngFor="let module of modulesList">
-    <ion-item *ngIf="!module.hide" routerLink="{{ '/module/'+module.id }}" lines='none'>
-      <ion-label>
-        <h2>{{ module.title }}</h2>
-        <p>{{ module.shortDescription }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ng-container *ngFor="let module of modulesList">
+          <ion-card *ngIf="!module.hide">
+            <ion-item routerLink="{{ '/module/'+module.id }}" lines='none'>
+              <ion-label>
+                <h2>{{ module.title }}</h2>
+                <p>{{ module.shortDescription }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-card>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
