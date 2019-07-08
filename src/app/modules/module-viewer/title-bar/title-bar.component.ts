@@ -16,13 +16,14 @@ export class TitleBarComponent implements OnInit {
 
   @ViewChild(IonSearchbar) searchBar: IonSearchbar;
   @ViewChild('title', {read: ElementRef}) title: ElementRef;
-  @ViewChild(IonToolbar, {read: ElementRef}) titleToolbar: ElementRef;
+  @ViewChild('header', {read: ElementRef}) header: ElementRef;
 
+  activeView = 'primary';
   searchActive = false;
   expandTitle = false;
   hidden = false;
-  scrollTriggerDistance = 20;
-  currentHeight: number;
+  scrollTriggerVelocity = 0.3;
+  currentTranslation: number;
   standardHeight: number;
 
   constructor(private popoverController: PopoverController) { }
@@ -31,14 +32,15 @@ export class TitleBarComponent implements OnInit {
   }
 
   onActivate() {
-    this.standardHeight = this.titleToolbar.nativeElement.scrollHeight;
-    this.currentHeight = this.standardHeight;
+    this.standardHeight = this.header.nativeElement.scrollHeight;
+    this.currentTranslation = this.standardHeight;
 
     this.content.ionScroll.subscribe(scrollEvent => {
-      if (!this.hidden && scrollEvent.detail.deltaY > this.scrollTriggerDistance &&
-        scrollEvent.detail.currentY > 100) {
+      if (!this.hidden && scrollEvent.detail.velocityY > this.scrollTriggerVelocity &&
+        scrollEvent.detail.currentY > 30) {
         this.hidden = true;
-      } else if (this.hidden && scrollEvent.detail.deltaY < -this.scrollTriggerDistance) {
+      } else if ((this.hidden && scrollEvent.detail.velocityY < -this.scrollTriggerVelocity) ||
+        scrollEvent.detail.currentY < 30 || this.activeView !== 'primary') {
         this.hidden = false;
       }
       this.animateTitleToolbar();
@@ -58,24 +60,24 @@ export class TitleBarComponent implements OnInit {
   }
 
   async animateTitleToolbar() {
-    let targetHeight = this.currentHeight;
+    let translation = this.currentTranslation;
 
     if (this.hidden) {
-      targetHeight = 0;
+      translation = -this.standardHeight;
     } else {
-      targetHeight = this.standardHeight;
+      translation = 0;
     }
 
-    if (targetHeight !== this.currentHeight) {
+    if (translation !== this.currentTranslation) {
       setTimeout(() => {
         anime({
-          targets: '.title-toolbar',
-          height: targetHeight,
+          targets: 'app-title-bar',
+          translateY: translation,
           easing: 'easeOutCubic',
           duration: 300
         });
       });
-      this.currentHeight = targetHeight;
+      this.currentTranslation = translation;
     }
   }
 

@@ -3,3 +3,27 @@
 .expand-title {
     white-space: normal;
   }
+
+// Tabs
+ion-segment {
+  height: 32px;
+  --ion-color-primary: var(--ion-text-color) !important;
+}
+ion-segment-button{
+  max-width: 50vw !important;
+  min-height: 0px;
+  --indicator-color-checked: none !important;
+  background-color: var(--ion-toolbar-background) !important;
+}
+
+ion-segment-button.segment-button-checked {
+  background-color: var(--ion-toolbar-background) !important;
+  color: var(--ion-text-color) !important;
+}
+ion-segment-button:not(.segment-button-checked) {
+  color: var(--ion-color-step-300) !important;
+}
+
+div.segment-button-indicator {
+  display: none !important;
+}

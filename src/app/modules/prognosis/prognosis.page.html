@@ -1,19 +1,23 @@
 <ion-content [scrollEvents]="true">
-  <ion-col>
-  <ion-card *ngFor="let prognosis of prognosisList" color="fruit-blue" [id]='prognosis.id'>
-    <ion-card-header>
-      <!-- i.e. perio/restorative/endo/occlusal -->
-      <ion-card-title> {{ prognosis.category }} </ion-card-title>
-    </ion-card-header>
-      <ion-radio-group [(ngModel)]="classScores[prognosis.category]" (ionChange)="radioChange(prognosis.id)">
-        <ion-item *ngFor="let class of ['A', 'B', 'C', 'D', 'X']" button lines='full'>
-          <!-- Prognosis description -->
-          <ion-label text-wrap>{{ prognosis[class] }}</ion-label>
-          <!-- Invisible radio button (css) -->
-          <ion-radio slot="end" [value]="class" class='invisible'></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-      <p></p>
-  </ion-card>
-</ion-col>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let prognosis of prognosisList" [id]='prognosis.id'>
+        <ion-card color="fruit-blue">
+          <ion-card-header>
+            <!-- i.e. perio/restorative/endo/occlusal -->
+            <ion-card-title> {{ prognosis.category }} </ion-card-title>
+          </ion-card-header>
+          <ion-radio-group [(ngModel)]="classScores[prognosis.category]" (ionChange)="radioChange(prognosis.id)">
+            <ion-item *ngFor="let class of ['A', 'B', 'C', 'D', 'X']" button lines='full'>
+              <!-- Prognosis description -->
+              <ion-label text-wrap>{{ prognosis[class] }}</ion-label>
+              <!-- Invisible radio button (css) -->
+              <ion-radio slot="end" [value]="class" class='invisible'></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+          <p></p>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

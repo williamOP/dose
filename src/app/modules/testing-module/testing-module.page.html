@@ -1,110 +1,184 @@
 <ion-content>
   <!-- Metadata -->
-  <ion-col>
-    <ion-card>
-      <ion-card-header color='fruit-pink'>
-        <ion-card-title>Metadata</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>
-          Metadata is automatically pulled from the moduleData.service file when the constructor is called with the
-          associated id.
-        </p>
-        <p>
-          Metadata is visible in the header and in the information tab.
-        </p>
-        <!-- Title -->
-        <ion-label position="stacked">this.metadata.title: string</ion-label>
-        <ion-input clearInput type="text" [(ngModel)]='this.metadata.title' placeholder='this.metadata.title: string'>
-        </ion-input>
-        <!-- Long description-->
-        <ion-label position="stacked">this.metadata.longDescription: string (html supported)</ion-label>
-        <ion-textarea clearInput type="text" [(ngModel)]='this.metadata.longDescription'
-          placeholder='this.metadata.longDescription: string'></ion-textarea>
-        <!-- References -->
-        <ion-label position="stacked">this.metadata.references: Object[]</ion-label>
-        <ion-input clearInput type="text" [(ngModel)]='referenceDescription' placeholder='description: string'>
-        </ion-input>
-        <ion-input clearInput type="text" [(ngModel)]='referenceReferenceName' placeholder='referenceName: string'>
-        </ion-input>
-        <ion-input clearInput type="text" [(ngModel)]='referenceLink' placeholder='link: string'></ion-input>
-        <ion-button (click)="addReference()" color='fruit-pink'>Add to this.metadata.references</ion-button>
-      </ion-card-content>
-    </ion-card>
-  </ion-col>
-  <!-- Results -->
-  <ion-col>
-    <ion-card>
-      <ion-card-header color='fruit-blue'>
-        <ion-card-title>Results</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>If displayedResult is not empty, results footer should show. Footer is clickable to show
-        displayedResultDescription.</p>
-        <!-- Results -->
-        <ion-label position="stacked">this.metadata.displayedResult: string</ion-label>
-        <ion-input clearInput type="text" [(ngModel)]='this.displayedResult' placeholder='this.displayedResult: string'>
-        </ion-input>
-        <!-- Result Description -->
-        <ion-label position="stacked">this.displayedResultDescription: string (html supported)
-        </ion-label>
-        <ion-textarea clearInput type="text" [(ngModel)]='this.displayedResultDescription'
-          placeholder='this.displayedResultDescription: string'></ion-textarea>
-      </ion-card-content>
-    </ion-card>
-  </ion-col>
-  <!-- Filters -->
-  <ion-col>
-    <ion-card>
-      <ion-card-header color='fruit-yellow'>
-        <ion-card-title>Filters</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>updateFilter() is called when the filter button is dismissed and so the expected behaviour should be
-          defined
-          under a function of this name in the module.</p>
-        <p>shownInFilter() returns checks the filter category for a matching filter name and returns true if it is
-          chekced (shown is true)</p>
-        <p>getSortByProperty() returns the property name of the active sortBy item</p>
-        <p>To add to filters, use this.addToFilter(); to add to sortByList, use addToSortByList()</p>
-        <p>To sort an array alphabetically by a property, use this.sortArrayByProperty()</p>
-        <!-- Filters -->
-        <div>
-          <ion-label position="stacked">this.filters: Object[]</ion-label>
-          <ion-input clearInput type="text" [(ngModel)]='filterCategory' placeholder='category: string'></ion-input>
-          <ion-input clearInput type="text" [(ngModel)]='filterName' placeholder='name: string'></ion-input>
-          <ion-input clearInput type="text" [(ngModel)]='filterShown' placeholder='shown: boolean (defaults to true)'>
-          </ion-input>
-          <ion-button (click)="addFilter()" color='fruit-yellow'>Add to this.filters</ion-button>
-        </div>
-        <div>
-          <ion-label position="stacked">this.sortByList: Object[]</ion-label>
-          <ion-input clearInput type="text" [(ngModel)]='sortByPropertyName' placeholder='propertyName: string'>
-          </ion-input>
-          <ion-input clearInput type="text" [(ngModel)]='sortByDisplayName' placeholder='displayName: string'>
-          </ion-input>
-          <ion-input clearInput type="text" [(ngModel)]='sortByActive' placeholder='active: boolean'></ion-input>
-          <ion-button (click)="addSortBy()" color='fruit-yellow'>Add to this.sortByList</ion-button>
-        </div>
-      </ion-card-content>
-    </ion-card>
-  </ion-col>
-  <!-- Search button/bar -->
-  <ion-col>
-    <ion-card>
-      <ion-card-header color='fruit-light-blue'>
-        <ion-card-title>Search button/bar</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>A search button is shown when this.searchbarPlaceholder is defined. It will also use
-          that value as the searchbar's placeholder. The text will be stored in this.searchbarText.
-          updateFilter() is run when input changes.
-        </p>
-        <!-- Filters -->
-        <ion-label position="stacked">this.searchbarPlaceholder: string</ion-label>
-        <ion-input clearInput type="text" [(ngModel)]='this.searchbarPlaceholder'
-          placeholder='this.searchbarPlaceholder: string'></ion-input>
-      </ion-card-content>
-    </ion-card>
-  </ion-col>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header color='fruit-pink'>
+            <ion-card-title>Metadata</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>
+              Metadata is automatically pulled from the moduleData.service file when the constructor is called with the
+              associated id.
+            </p>
+            <p>
+              Metadata is visible in the header and in the information tab.
+            </p>
+            <!-- Title -->
+            <ion-label position="stacked" color='fruit-pink'>this.metadata.title: string</ion-label>
+            <ion-input clearInput type="text" [(ngModel)]='this.metadata.title'
+              placeholder='this.metadata.title: string'>
+            </ion-input>
+            <!-- Long description-->
+            <ion-label position="stacked" color='fruit-pink'>this.metadata.longDescription: string (html supported)</ion-label>
+            <ion-textarea clearInput type="text" [(ngModel)]='this.metadata.longDescription'
+              placeholder='this.metadata.longDescription: string'></ion-textarea>
+            <!-- References -->
+            <ion-label position="stacked" color='fruit-pink'>this.metadata.references: Object[]</ion-label>
+            <ion-input clearInput type="text" [(ngModel)]='referenceDescription' placeholder='description: string'>
+            </ion-input>
+            <ion-input clearInput type="text" [(ngModel)]='referenceReferenceName' placeholder='referenceName: string'>
+            </ion-input>
+            <ion-input clearInput type="text" [(ngModel)]='referenceLink' placeholder='link: string'></ion-input>
+            <ion-button (click)="addReference()" color='fruit-pink'>Add to this.metadata.references</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- Results -->
+      <ion-col>
+        <ion-card>
+          <ion-card-header color='fruit-blue'>
+            <ion-card-title>Results</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>If displayedResult is not empty, results footer should show. Footer is clickable to show
+              displayedResultDescription.</p>
+            <!-- Results -->
+            <ion-label position="stacked" color='fruit-blue'>this.metadata.displayedResult: string</ion-label>
+            <ion-input clearInput type="text" [(ngModel)]='this.displayedResult'
+              placeholder='this.displayedResult: string'>
+            </ion-input>
+            <!-- Result Description -->
+            <ion-label position="stacked" color='fruit-blue'>this.displayedResultDescription: string (html supported)
+            </ion-label>
+            <ion-textarea clearInput type="text" [(ngModel)]='this.displayedResultDescription'
+              placeholder='this.displayedResultDescription: string'></ion-textarea>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- Filters -->
+      <ion-col>
+        <ion-card>
+          <ion-card-header color='fruit-yellow'>
+            <ion-card-title>Filters</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>updateFilter() is called when the filter button is dismissed and so the expected behaviour should be
+              defined
+              under a function of this name in the module.</p>
+            <p>shownInFilter() returns checks the filter category for a matching filter name and returns true if it is
+              chekced (shown is true)</p>
+            <p>getSortByProperty() returns the property name of the active sortBy item</p>
+            <p>To add to filters, use this.addToFilter(); to add to sortByList, use addToSortByList()</p>
+            <p>To sort an array alphabetically by a property, use this.sortArrayByProperty()</p>
+            <!-- Filters -->
+            <div>
+              <ion-label position="stacked" color='fruit-yellow'>this.filters: Object[]</ion-label>
+              <ion-input clearInput type="text" [(ngModel)]='filterCategory' placeholder='category: string'></ion-input>
+              <ion-input clearInput type="text" [(ngModel)]='filterName' placeholder='name: string'></ion-input>
+              <ion-input clearInput type="text" [(ngModel)]='filterShown'
+                placeholder='shown: boolean (defaults to true)'>
+              </ion-input>
+              <ion-button (click)="addFilter()" color='fruit-yellow'>Add to this.filters</ion-button>
+            </div>
+            <div>
+              <ion-label position="stacked" color='fruit-yellow'>this.sortByList: Object[]</ion-label>
+              <ion-input clearInput type="text" [(ngModel)]='sortByPropertyName' placeholder='propertyName: string'>
+              </ion-input>
+              <ion-input clearInput type="text" [(ngModel)]='sortByDisplayName' placeholder='displayName: string'>
+              </ion-input>
+              <ion-input clearInput type="text" [(ngModel)]='sortByActive' placeholder='active: boolean'></ion-input>
+              <ion-button (click)="addSortBy()" color='fruit-yellow'>Add to this.sortByList</ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- Search button/bar -->
+      <ion-col>
+        <ion-card>
+          <ion-card-header color='fruit-light-blue'>
+            <ion-card-title>Search button/bar</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>A search button is shown when this.searchbarPlaceholder is defined. It will also use
+              that value as the searchbar's placeholder. The text will be stored in this.searchbarText.
+              updateFilter() is run when input changes.
+            </p>
+            <!-- Filters -->
+            <ion-label position="stacked" color='fruit-light-blue'>this.searchbarPlaceholder: string</ion-label>
+            <ion-input clearInput type="text" [(ngModel)]='this.searchbarPlaceholder'
+              placeholder='this.searchbarPlaceholder: string'></ion-input>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- Colors -->
+      <ion-col>
+        <ion-card>
+          <ion-card-header color='fruit-purple'>
+              <ion-card-title>Colour reference</ion-card-title>
+            </ion-card-header>
+          <ion-card-content>
+              <p>These colours can be used in html tags as color=[colour] when available, or in css by using var(--[colour]);
+              </p>
+              <p>Favour fruit colours over material colours</p>
+            </ion-card-content>
+          <ion-card-header color='fruit-orange'>
+            <ion-card-title>fruit-orange</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='fruit-light-green'>
+            <ion-card-title>fruit-light-green</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='fruit-yellow'>
+            <ion-card-title>fruit-yellow</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='fruit-blue-grey'>
+            <ion-card-title>fruit-blue-grey</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='fruit-blue'>
+            <ion-card-title>fruit-blue</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='fruit-light-blue'>
+            <ion-card-title>fruit-light-blue</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='fruit-purple'>
+            <ion-card-title>fruit-purple</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='fruit-light-pink'>
+            <ion-card-title>fruit-light-pink</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='fruit-pink'>
+            <ion-card-title>fruit-pink</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='material-light-blue'>
+            <ion-card-title>material-light-blue</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='material-blue'>
+            <ion-card-title>material-blue</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='material-light-green'>
+            <ion-card-title>material-light-green</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='material-green'>
+            <ion-card-title>material-green</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='material-purple'>
+            <ion-card-title>material-purple</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='material-pink'>
+            <ion-card-title>material-pink</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='material-yellow'>
+            <ion-card-title>material-yellow</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='material-orange'>
+            <ion-card-title>material-orange</ion-card-title>
+          </ion-card-header>
+          <ion-card-header color='material-blue-grey'>
+            <ion-card-title>material-blue-grey</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
