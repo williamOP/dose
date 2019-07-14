@@ -1,7 +1,8 @@
 $procedures: (
-  endodontics: var(--fruit-orange),
+  endodontics: var(--fruit-red),
   prosthodontics: var(--fruit-blue),
   conservative-dentistry: var(--fruit-yellow),
+  oral-surgery: var(--fruit-light-green)
 );
 
 @each $procedureType, $value in map-remove($procedures) {

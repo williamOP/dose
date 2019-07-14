@@ -4,6 +4,8 @@
 import { Injectable, OnInit } from '@angular/core';
 import { StorageService } from './storage.service';
 import { ThemeService } from './theme.service';
+import { Plugins, StatusBarStyle, Capacitor } from '@capacitor/core';
+const { StatusBar } = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +28,18 @@ export class SettingsService implements OnInit {
 
     if (this.isDark) {
       this.themeService.setTheme('dark');
+      // Dark background, light icons/text
+      if (Capacitor.isPluginAvailable('StatusBar')) {
+        StatusBar.setBackgroundColor({color: '#1d1d1d'});
+        StatusBar.setStyle({style: StatusBarStyle.Dark});
+    }
     } else {
       this.themeService.setTheme('none');
+      // Light background, dark icons/text
+      if (Capacitor.isPluginAvailable('StatusBar')) {
+        StatusBar.setStyle({style: StatusBarStyle.Light});
+        StatusBar.setBackgroundColor({color: '#ffffff'});
+      }
     }
   }
 
@@ -35,6 +47,8 @@ export class SettingsService implements OnInit {
   async applySettingsFromStorage() {
     // Dark mode
     this.isDark = JSON.parse(await this.storageService.retrieve('isDark'));
-    this.setDarkMode(this.isDark);
+    if (this.isDark !== null) {
+      this.setDarkMode(this.isDark);
+    }
   }
 }

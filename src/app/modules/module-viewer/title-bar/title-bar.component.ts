@@ -32,7 +32,7 @@ export class TitleBarComponent implements OnInit {
   }
 
   onActivate() {
-    this.standardHeight = this.header.nativeElement.scrollHeight;
+    setTimeout(this.standardHeight = this.header.nativeElement.scrollHeight);
     this.currentTranslation = this.standardHeight;
 
     this.content.ionScroll.subscribe(scrollEvent => {
@@ -74,11 +74,16 @@ export class TitleBarComponent implements OnInit {
           targets: 'app-title-bar',
           translateY: translation,
           easing: 'easeOutCubic',
-          duration: 300
+          duration: 400
         });
       });
       this.currentTranslation = translation;
     }
+  }
+
+  test(evt: any) {
+    console.log('ca');
+    console.log(evt);
   }
 
   async openSearchBar() {

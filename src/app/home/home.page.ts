@@ -2,7 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModuleDataService } from '../dataServices/moduleData.service';
 import { ModalController, IonSearchbar } from '@ionic/angular';
 import { SettingsComponent } from './settings/settings.component';
-import { SettingsService } from '../dataServices/settings.service';
+import { SettingsService } from '../dataServices/settings.service'
+import { Plugins, AppState } from '@capacitor/core';
+const { App } = Plugins;
 
 @Component({
   selector: 'app-home',
@@ -25,6 +27,7 @@ export class HomePage implements OnInit {
     // Sorts Modules alphatetically by title
     this.sortArrayByProperty(this.modulesList, 'title');
     this.settingsService.applySettingsFromStorage();
+    App.addListener('backButton', () => App.exitApp());
   }
 
   filterList(searchTerm: string) {

@@ -24,7 +24,8 @@
     <!-- Search bar -->
     <ion-searchbar [(ngModel)]="loadedModule.searchbarText"
       [class.hidden]='!searchActive && loadedModule.searchbarText === ""' (ionBlur)='searchActive = false'
-      (ionFocus)='searchActive = true' (ionChange)='loadedModule.updateFilter()' debounce='50'
+      (ionFocus)='searchActive = true' (ionChange)='loadedModule.updateFilter()' (search)='$event.target.blur()'
+      debounce='50'
       [placeholder]='loadedModule.searchbarPlaceholder' animated=true></ion-searchbar>
   </ion-toolbar>
   <!-- Tabs -->

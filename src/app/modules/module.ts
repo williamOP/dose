@@ -39,7 +39,6 @@ export class Module implements AfterContentInit {
 
     // Run by module viewer when the filter updates
     updateFilter() {
-        console.log ('updateFilter() not defined for this module.');
     }
 
     // adds a filter
@@ -47,7 +46,7 @@ export class Module implements AfterContentInit {
             this.filters.push({category, name, shown});
     }
 
-    // Returns true if filters match provided filterCategory, filterName, and shown is true.th
+    // Returns true if filters match provided filterCategory in that filterName, and shown is true.
     shownInFilter(filterCategory: string, filterName: string): boolean {
         return (this.filters.filter((filter) =>
         filter.category === filterCategory && filter.name === filterName && filter.shown === true).length !== 0);
