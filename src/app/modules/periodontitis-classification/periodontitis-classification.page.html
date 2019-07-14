@@ -4,15 +4,15 @@
       <ion-col>
         <!-- Staging severity -->
         <ion-card>
-          <ion-card-header color='fruit-orange'>
+          <ion-card-header color='fruit-red'>
             <ion-card-title>Staging: severity</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <div class="input-group">
               <!-- CAL -->
-              <ion-label position="stacked" color="fruit-orange">Interdental CAL at site of greatest loss (mm)
+              <ion-label position="stacked" color="fruit-red">Interdental CAL at site of greatest loss (mm)
               </ion-label>
-              <ion-segment [(ngModel)]='calOrBoneLoss' color='fruit-orange'>
+              <ion-segment [(ngModel)]='calOrBoneLoss' color='fruit-red'>
                 <ion-segment-button value="1-2mm">
                   <ion-label>1 to 2</ion-label>
                 </ion-segment-button>
@@ -25,8 +25,8 @@
               </ion-segment>
               <ion-card-subtitle>OR</ion-card-subtitle>
               <!-- Radiographic bone loss -->
-              <ion-label position="stacked" color="fruit-orange">Radiographic bone loss</ion-label>
-              <ion-segment [(ngModel)]='calOrBoneLoss' color='fruit-orange'>
+              <ion-label position="stacked" color="fruit-red">Radiographic bone loss</ion-label>
+              <ion-segment [(ngModel)]='calOrBoneLoss' color='fruit-red'>
                 <ion-segment-button value="15-%">
                   <ion-label>&lt;15%</ion-label>
                 </ion-segment-button>
@@ -39,8 +39,8 @@
               </ion-segment>
             </div>
             <!-- Tooth loss -->
-            <ion-label position="stacked" color="fruit-orange">Teeth lost</ion-label>
-            <ion-segment [(ngModel)]='toothLoss' color='fruit-orange'>
+            <ion-label position="stacked" color="fruit-red">Teeth lost</ion-label>
+            <ion-segment [(ngModel)]='toothLoss' color='fruit-red'>
               <ion-segment-button value="0">
                 <ion-label>0</ion-label>
               </ion-segment-button>
@@ -56,14 +56,14 @@
 
         <!-- Staging complexity -->
         <ion-card>
-          <ion-card-header color='fruit-orange'>
+          <ion-card-header color='fruit-red'>
             <ion-card-title>Staging: complexity</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
             <!-- Maximum probing depth -->
-            <ion-label position="stacked" color="fruit-orange">Maximum probing depth (mm)</ion-label>
-            <ion-segment [(ngModel)]='maximumProbingDepth' color='fruit-orange'>
+            <ion-label position="stacked" color="fruit-red">Maximum probing depth (mm)</ion-label>
+            <ion-segment [(ngModel)]='maximumProbingDepth' color='fruit-red'>
               <ion-segment-button value="4-">
                 <ion-label>≤4</ion-label>
               </ion-segment-button>
@@ -74,8 +74,8 @@
                 <ion-label>≥6</ion-label>
               </ion-segment-button>
             </ion-segment>
-            <ion-label position="stacked" color="fruit-orange">Pattern of bone loss</ion-label>
-            <ion-segment [(ngModel)]='boneLossPattern' color='fruit-orange'>
+            <ion-label position="stacked" color="fruit-red">Pattern of bone loss</ion-label>
+            <ion-segment [(ngModel)]='boneLossPattern' color='fruit-red'>
               <ion-segment-button value="horizontal">
                 <ion-label>Mostly horizontal</ion-label>
               </ion-segment-button>
@@ -83,8 +83,8 @@
                 <ion-label>Vertical ≥3 mm</ion-label>
               </ion-segment-button>
             </ion-segment>
-            <ion-label position="stacked" color="fruit-orange">Stage II or III furcation involvement</ion-label>
-            <ion-segment [(ngModel)]='furcationInvolvement' color='fruit-orange'>
+            <ion-label position="stacked" color="fruit-red">Stage II or III furcation involvement</ion-label>
+            <ion-segment [(ngModel)]='furcationInvolvement' color='fruit-red'>
               <ion-segment-button value="no">
                 <ion-label>No</ion-label>
               </ion-segment-button>
@@ -92,8 +92,8 @@
                 <ion-label>Yes</ion-label>
               </ion-segment-button>
             </ion-segment>
-            <ion-label position="stacked" color="fruit-orange">Ridge defect</ion-label>
-            <ion-segment [(ngModel)]='ridgeDefect' color='fruit-orange'>
+            <ion-label position="stacked" color="fruit-red">Ridge defect</ion-label>
+            <ion-segment [(ngModel)]='ridgeDefect' color='fruit-red'>
               <ion-segment-button value="no/mild">
                 <ion-label>None/Mild</ion-label>
               </ion-segment-button>
@@ -104,9 +104,9 @@
                 <ion-label>Severe</ion-label>
               </ion-segment-button>
             </ion-segment>
-            <ion-label position="stacked" color="fruit-orange">Need for complex rehabilitation
+            <ion-label position="stacked" color="fruit-red">Need for complex rehabilitation
             </ion-label>
-            <ion-segment [(ngModel)]='complexRehab' color='fruit-orange'>
+            <ion-segment [(ngModel)]='complexRehab' color='fruit-red'>
               <ion-segment-button value="no">
                 <ion-label>No</ion-label>
               </ion-segment-button>
@@ -123,14 +123,14 @@
 
         <!-- Staging distribution -->
         <ion-card>
-          <ion-card-header color='fruit-orange'>
+          <ion-card-header color='fruit-red'>
             <ion-card-title>Staging: distribution</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
             <!-- Maximum probing depth -->
-            <ion-label position="stacked" color="fruit-orange">Teeth involved</ion-label>
-            <ion-segment [(ngModel)]='distribution' color='fruit-orange'>
+            <ion-label position="stacked" color="fruit-red">Teeth involved</ion-label>
+            <ion-segment [(ngModel)]='distribution' color='fruit-red'>
               <ion-segment-button value="Localised ">
                 <ion-label>&lt;30%</ion-label>
               </ion-segment-button>

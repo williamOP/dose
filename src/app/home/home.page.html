@@ -16,7 +16,7 @@
     </ion-buttons>
     <!-- Search bar -->
     <ion-searchbar [(ngModel)]="searchbarText" [class.hidden]='!searchActive && searchbarText === ""'
-      (ionBlur)='searchActive = false' (ionFocus)='searchActive = true' debounce='50'
+      (ionBlur)='searchActive = false' (ionFocus)='searchActive = true' debounce='50' (search)='$event.target.blur()'
       (ionChange)='filterList($event.srcElement.value)' placeholder='Search Tools' animated=true></ion-searchbar>
   </ion-toolbar>
 </ion-header>

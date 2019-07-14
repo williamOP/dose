@@ -33,7 +33,17 @@ const moduleLibrary: ModuleMetadata[] = [
             {description: 'Implant survival rates',
             referenceName: `Howe, M., Keys, W. and Richards, D. (2019). Long-term (10-year) dental implant
             survival: A systematic review and sensitivity meta-analysis. Journal of Dentistry, 84, pp.9-21.`,
-            link: 'https://doi.org/10.1016/j.jdent.2019.03.008'}
+            link: 'https://doi.org/10.1016/j.jdent.2019.03.008'},
+            {description: 'Autotransplantation survival rates',
+             referenceName: `Abela, S., Murtadha, L., Bister, D., Andiappan, M. and Kwok, J. (2019). Survival
+             probability of dental autotransplantation of 366 teeth over 34 years within a hospital setting
+             in the United Kingdom. European Journal of Orthodontics.`,
+            link: 'https://doi.org/10.1093/ejo/cjz012'},
+            {description: 'Crown, amalgam, composite, glass ionomer survival rates',
+             referenceName: `Burke, F. and Lucarotti, P. (2018). The ultimate guide to restoration longevity
+             in England and Wales. Part 5: crowns: time to next intervention and to extraction of the restored
+             tooth. British Dental Journal, 225(1), pp.33-48.`,
+            link: 'https://doi.org/10.1038/sj.bdj.2018.523'},
         ]
     },
     {

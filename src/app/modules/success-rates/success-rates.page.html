@@ -6,9 +6,11 @@
           <ion-item lines='none'>
             <ion-label text-wrap>
               <h2><b>{{ procedure.name }}</b></h2><br />
-              <p *ngFor="let procedureStat of procedure.procedureStats">
-                {{ procedureStat.type }}: {{ procedureStat.percentage }}% at {{ procedureStat.years }} years.
-              </p>
+              <ng-container *ngFor="let procedureStat of procedure.procedureStats">
+                <p *ngIf="!procedureStat.hide">
+                  {{ procedureStat.type }}: {{ procedureStat.percentage }}% at {{ procedureStat.years }} years.
+                </p>
+              </ng-container>
               <ng-container *ngIf="procedure.procedureStatNote">
                 <br />
                 <p>{{ procedure.procedureStatNote }}</p>
