@@ -34,6 +34,10 @@ const routes: Routes = [
           {
             path: 'periodontal-recall',
             loadChildren: '../periodontal-recall/periodontal-recall.module#PeriodontalRecallPageModule'
+          },
+          {
+            path: 'rdctmd',
+            loadChildren: '../rdctmd/rdctmd.module#RdctmdPageModule'
           }
         ]
     }

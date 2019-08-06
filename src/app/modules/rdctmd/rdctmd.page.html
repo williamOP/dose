@@ -1,0 +1,458 @@
+<ion-content>
+  <ion-grid class="questionnaire">
+    <ion-row>
+      <!-- History column -->
+      <ion-col>
+        <!-- Symptom Questionnaire: pain -->
+        <ion-card>
+          <ion-card-header color='fruit-blue'>
+            <ion-card-title>Pain</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <!-- SQ1 -->
+            <div>
+              <ion-label position="stacked" color="fruit-blue">Have you ever had pain in your jaw, temple, in the ear,
+                or
+                in front of the ear on either side?
+              </ion-label>
+              <ion-segment [(ngModel)]='sq1' color='fruit-blue'>
+                <ion-segment-button value="0">
+                  <ion-label>No</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>Yes</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </div>
+
+            <!-- SQ3 -->
+            <div [class.hidden]='!(sq1 && sq1!=="0")'>
+              <ion-label position="stacked" color="fruit-blue">In the last 30 days, which of the following best
+                describes any pain in the jaw, temple, in the ear, or in front of the ear on either side?
+              </ion-label>
+              <ion-card color='fruit-blue' class='vertical-segment'>
+                <ion-radio-group [(ngModel)]='sq3'>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>No pain</ion-label>
+                    <ion-radio slot="end" value='0' class='invisible'></ion-radio>
+                  </ion-item>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>Pain comes and goes</ion-label>
+                    <ion-radio slot="end" value='1' class='invisible'></ion-radio>
+                  </ion-item>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>Pain is constant</ion-label>
+                    <ion-radio slot="end" value='2' class='invisible'></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-card>
+            </div>
+
+            <!-- SQ4 -->
+            <div [class.hidden]='!(sq1 && sq1!=="0" && sq3 && sq3!=="0")'>
+              <ion-label position="stacked" color="fruit-blue">In the last 30 days, did any of the following activites
+                change any pain (that is, make it better or make it worse) in your jaw, temple, in the ear, or in front
+                of the ear on either side?
+                <br />
+                <br />• Chewing hard or tough food
+                <br />• Opening your mouth, or moving your jaw forward or to the side
+                <br />• Jaw habits such as holding teeth together, clenching/grinding teeth, or chewing gum
+                <br />• Other jaw activities such as talking, kissing, or yawning
+              </ion-label>
+              <ion-segment [(ngModel)]='sq4' color='fruit-blue'>
+                <ion-segment-button value="0">
+                  <ion-label>No</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>Yes</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Symptom Questionnaire: headache -->
+        <ion-card>
+          <ion-card-header color='fruit-blue'>
+            <ion-card-title>Headache</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <!-- SQ5 -->
+            <div>
+              <ion-label position="stacked" color="fruit-blue">In the last 30 days, have you had any headaches that
+                included the temple areas of your head?
+              </ion-label>
+              <ion-segment [(ngModel)]='sq5' color='fruit-blue'>
+                <ion-segment-button value="0">
+                  <ion-label>No</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>Yes</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </div>
+
+            <!-- SQ7 -->
+            <div [class.hidden]='!(sq5 && sq5!=="0")'>
+              <ion-label position="stacked" color="fruit-blue">In the last 30 days, did any of the following activites
+                change any headache (that is, make it better or make it worse) in your temple area on either side?
+                <br />
+                <br />• Chewing hard or tough food
+                <br />• Opening your mouth, or moving your jaw forward or to the side
+                <br />• Jaw habits such as holding teeth together, clenching/grinding teeth, or chewing gum
+                <br />• Other jaw activities such as talking, kissing, or yawning
+              </ion-label>
+              <ion-segment [(ngModel)]='sq7' color='fruit-blue'>
+                <ion-segment-button value="0">
+                  <ion-label>No</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>Yes</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Symptom Questionnaire: Jaw Joint Noises -->
+        <ion-card>
+          <ion-card-header color='fruit-blue'>
+            <ion-card-title>Jaw Joint Noises</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <!-- SQ8 -->
+            <div>
+              <ion-label position="stacked" color="fruit-blue">In the last 30 days, have you had any jaw joing noise(s)
+                when you moved or used your jaw?
+              </ion-label>
+              <ion-segment [(ngModel)]='sq8' color='fruit-blue'>
+                <ion-segment-button value="0">
+                  <ion-label>No</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>Yes</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Symptom Questionnaire: closed locking of the jaw -->
+        <ion-card>
+          <ion-card-header color='fruit-blue'>
+            <ion-card-title>Closed Locking of the Jaw</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <!-- SQ9 -->
+            <div>
+              <ion-label position="stacked" color="fruit-blue">Have you ever had your jaw lock or catch, even for a
+                moment, so that it would not open all the way?
+              </ion-label>
+              <ion-segment [(ngModel)]='sq9' color='fruit-blue'>
+                <ion-segment-button value="0">
+                  <ion-label>No</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>Yes</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </div>
+
+            <!-- SQ10 -->
+            <div [class.hidden]='!(sq9 && sq9!=="0")'>
+              <ion-label position="stacked" color="fruit-blue">Was your jaw lock or catch severe enough to limit your
+                jaw opening and interfere with your ability to eat?
+              </ion-label>
+              <ion-segment [(ngModel)]='sq10' color='fruit-blue'>
+                <ion-segment-button value="0">
+                  <ion-label>No</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>Yes</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </div>
+
+            <!-- SQ11 -->
+            <div [class.hidden]='!(sq9 && sq9!=="0")'>
+              <ion-label position="stacked" color="fruit-blue">In the last 30 days, did your jaw lock so you could not
+                open all the way even for a moment, and then unlock so you could open all the way?
+              </ion-label>
+              <ion-segment [(ngModel)]='sq11' color='fruit-blue'>
+                <ion-segment-button value="0">
+                  <ion-label>No</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>Yes</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </div>
+
+            <!-- SQ12 -->
+            <div [class.hidden]='!(sq9 && sq9!=="0" && sq11 && sq11!=="0")'>
+              <ion-label position="stacked" color="fruit-blue">Is your jaw currently locked or limited so that your jaw
+                will not open all the way?
+              </ion-label>
+              <ion-segment [(ngModel)]='sq12' color='fruit-blue'>
+                <ion-segment-button value="0">
+                  <ion-label>No</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>Yes</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <!-- Examination column -->
+      <ion-col>
+        <!-- Pain-Related TMD and Headache -->
+        <ion-card [class.hidden]='!(sq3 && sq3!=="0" && sq4 && sq4!=="0")'>
+          <ion-card-header color='fruit-red'>
+            <ion-card-title>Pain-Related TMD and Headache</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <!-- E1a -->
+            <div [class.hidden]='!(sq3 && sq3!=="0" && sq4 && sq4!=="0")'>
+              <ion-label position="stacked" color="fruit-red">Confirm location of pain by palpation
+              </ion-label>
+              <ion-card color='fruit-red' class='vertical-segment'>
+                <ion-radio-group [(ngModel)]='e1a'>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>No</ion-label>
+                    <ion-radio slot="end" value='0' class='invisible'></ion-radio>
+                  </ion-item>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>Masticatory muscles</ion-label>
+                    <ion-radio slot="end" value='mm' class='invisible'></ion-radio>
+                  </ion-item>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>TMJ</ion-label>
+                    <ion-radio slot="end" value='tmj' class='invisible'></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-card>
+              <ion-note>
+                Bilaterally palpate the following areas: temporalis, preauricular, masseter, posterior/submandibular.
+              </ion-note>
+            </div>
+
+
+            <div [class.hidden]='!(e1a && e1a!=="0")'>
+              <!-- E4 -->
+              <ion-label position="stacked" color="fruit-red">Familiar pain from jaw opening
+              </ion-label>
+              <ion-card color='fruit-red' class='vertical-segment'>
+                <ion-radio-group [(ngModel)]='e4'>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>No familiar pain</ion-label>
+                    <ion-radio slot="end" value='0' class='invisible'></ion-radio>
+                  </ion-item>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>Familiar pain at masticatory muscles</ion-label>
+                    <ion-radio slot="end" value='mm' class='invisible'></ion-radio>
+                  </ion-item>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>Familiar pain at TMJ</ion-label>
+                    <ion-radio slot="end" value='tmj' class='invisible'></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-card>
+              <ion-note>
+                Ask the patient to open their mouth as wide as they can.
+                Using moderate pressure, push the mouth open further. Ask the patient to identify all the areas where
+                pain was experienced. Ask if the pain is 'familiar' to the pain they have experienced in the last 30
+                days in the same region. Confirm the location of pain by palpation.
+              </ion-note>
+
+              <!-- E5 -->
+              <div [class.hidden]='!(e1a==="tmj")'>
+                <ion-label position="stacked" color="fruit-red">Familiar pain from jaw horizontal movement
+                </ion-label>
+                <ion-card color='fruit-red' class='vertical-segment'>
+                  <ion-radio-group [(ngModel)]='e5'>
+                    <ion-item button lines='none'>
+                      <ion-label text-wrap>No familiar pain</ion-label>
+                      <ion-radio slot="end" value='0' class='invisible'></ion-radio>
+                    </ion-item>
+                    <ion-item button lines='none'>
+                      <ion-label text-wrap>Familiar pain at masticatory muscles</ion-label>
+                      <ion-radio slot="end" value='mm' class='invisible'></ion-radio>
+                    </ion-item>
+                    <ion-item button lines='none'>
+                      <ion-label text-wrap>Familiar pain at TMJ</ion-label>
+                      <ion-radio slot="end" value='tmj' class='invisible'></ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                </ion-card>
+                <ion-note>
+                  Ask the patient to move their jaw as far as they can to the right and left. Ask the patient to their
+                  jaw as far as they can forward. Ask the patient to identify all the areas where pain was experienced.
+                  Ask if the pain is 'familiar' to the pain they have experienced in the last 30 days in the same
+                  region. Confirm the location of pain by palpation.
+                </ion-note>
+              </div>
+
+              <!-- E9 -->
+              <ion-label position="stacked" color="fruit-red">Familiar pain from palpation
+              </ion-label>
+              <ion-card color='fruit-red' class='vertical-segment'>
+                <ion-radio-group [(ngModel)]='e9'>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>No familiar pain</ion-label>
+                    <ion-radio slot="end" value='0' class='invisible'></ion-radio>
+                  </ion-item>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>Familiar pain at masticatory muscles</ion-label>
+                    <ion-radio slot="end" value='mm' class='invisible'></ion-radio>
+                  </ion-item>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>Familiar pain at TMJ</ion-label>
+                    <ion-radio slot="end" value='tmj' class='invisible'></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-card>
+              <ion-note>
+                Palpate the muscles of mastication and the TMJ for 5 seconds at each region. Ask if the pain is
+                'familiar' to the pain they have experienced in the last 30 days in the same region.
+              </ion-note>
+            </div>
+
+            <!-- E9 Referred -->
+            <div [class.hidden]='!(e1a==="mm" && (e4==="mm" || e9==="mm"))'>
+              <ion-label position="stacked" color="fruit-red">Extension of pain
+              </ion-label>
+              <ion-card color='fruit-red' class='vertical-segment'>
+                <ion-radio-group [(ngModel)]='e9extension'>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>No</ion-label>
+                    <ion-radio slot="end" value='0' class='invisible'></ion-radio>
+                  </ion-item>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>Extension of pain beyond area of stimulation</ion-label>
+                    <ion-radio slot="end" value='beyondStimulation' class='invisible'></ion-radio>
+                  </ion-item>
+                  <ion-item button lines='none'>
+                    <ion-label text-wrap>Extension of pain beyond muscle boundary</ion-label>
+                    <ion-radio slot="end" value='beyondMuscle' class='invisible'></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-card>
+            </div>
+
+            <!-- Headache attributed to TMD -->
+            <div [class.hidden]='!(sq5 && sq5!=="0" && sq7 && sq7!=="0" &&
+            e1a && e1a!=="0" && (e4!=="0" || e5!=="0" || e9!=="0"))'>
+              <ion-label position="stacked" color="fruit-red">Headache attributed to TMD
+              </ion-label>
+              <ion-segment [(ngModel)]='headachetmd' color='fruit-red'>
+                <ion-segment-button value="0">
+                  <ion-label>No</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>Yes</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+              <ion-note>
+                Confirm headache in temporalis area by palpating. Confirm if familiar headache from: jaw opening or
+                excursive movement. Headache not better accounted for by another headache diagnosis.
+              </ion-note>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Intra-articular and Degenerative Joint Disorders -->
+        <ion-card>
+          <ion-card-header color='fruit-red'>
+            <ion-card-title>Intra-articular and Degenerative Joint Disorders</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <!-- E4C -->
+            <div [class.hidden]='!(sq9 && sq9!=="0" && sq10 && sq10!=="0")'>
+              <ion-label position="stacked" color="fruit-red">Maximum assisted opening
+              </ion-label>
+              <ion-segment [(ngModel)]='e4c' color='fruit-red'>
+                <ion-segment-button value="0">
+                  <ion-label>≥40 mm</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>&lt;40 mm</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+              <ion-note>
+                Ask the patient to open. Using moderate pressure, push the mouth open further. Measure the interincisal
+                distance between the maxillary and mandibular teeth.
+              </ion-note>
+            </div>
+
+            <div [class.hidden]='(sq9 && sq9!=="0" && sq10 && sq10!=="0")'>
+              <!-- E6 -->
+              <ion-label position="stacked" color="fruit-red">Noise during opening and closing
+              </ion-label>
+              <ion-segment [(ngModel)]='e6' color='fruit-red'>
+                <ion-segment-button value="0">
+                  <ion-label>No</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>Yes</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+              <ion-note>
+                Detected by the patient or examiner.
+              </ion-note>
+
+              <!-- E7 -->
+              <ion-label position="stacked" color="fruit-red">Noise during lateral and protrusive movements
+              </ion-label>
+              <ion-segment [(ngModel)]='e7' color='fruit-red'>
+                <ion-segment-button value="0">
+                  <ion-label>No</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>Yes</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+              <ion-note>
+                Detected by the patient or examiner.
+              </ion-note>
+            </div>
+
+            <div [class.hidden]='!((e6 && e6=="1") || (e7 && e7 ==="1") || (sq8 && sq8==="1"))'>
+              <!-- Crepitus -->
+              <ion-label position="stacked" color="fruit-red">Crepitus detected by examiner during opening, closing, lateral, or protrusive movements
+              </ion-label>
+              <ion-segment [(ngModel)]='crepitus' color='fruit-red'>
+                <ion-segment-button value="0">
+                  <ion-label>No</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="1">
+                  <ion-label>Yes</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+              </div>
+
+            <!-- E8 -->
+            <div [class.hidden]='!(!(sq9==="1" && sq10==="1") && e6==="1" && sq11==="1" && sq12==="1")'>
+            <ion-label position="stacked" color="fruit-red">Maneuver required to open mouth
+            </ion-label>
+            <ion-segment [(ngModel)]='e8' color='fruit-red'>
+              <ion-segment-button value="0">
+                <ion-label>No</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="1">
+                <ion-label>Yes</ion-label>
+              </ion-segment-button>
+            </ion-segment>
+            <ion-note>
+              Ask the patient if they can 'unlock' their jaw
+            </ion-note>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

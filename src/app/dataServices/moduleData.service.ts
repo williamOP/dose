@@ -139,7 +139,7 @@ accessed by any module that extends the Module class`
         ]},
     {   title: 'Periodontal Risk & Recall',
         id: 'periodontal-recall',
-        shortDescription: 'Risk and recall calculator for periodontitis patients.',
+        shortDescription: 'Risk and recall calculator for periodontitis patients',
         longDescription: `A low PRA patient has all parameters within the low-risk categories or - at the most - one
                         parameter in themoderate-risk category. <br /><br /> A moderate PRA patient has at least two
                         parameters in the moderate category, but at most one parameter in the high-risk category.
@@ -150,7 +150,21 @@ accessed by any module that extends the Module class`
                 supportive periodontal therapy (SPT). Oral Health Prev Dent, 1, pp.7-16.`,
             link: 'https://dx.doi.org/10.3290/j.ohpd.a8216'}
         ]
-        }
+        },
+        {
+            title: 'Temporomandibular Disorder',
+            id: 'rdctmd',
+            shortDescription: 'Diagnostic Criteria for Temporomandibular Disorders',
+            longDescription: `The Diagnostic Criteria for Temporomandibular Disorders is intended for use in both
+                            clinical settings and applied research settings.
+                            `,
+            references: [
+                {description: 'TMD Assessment/Diagnosis documents',
+                referenceName: `Ohrbach R, editor. Diagnostic Criteria for Temporomandibular Disorders: Assessment
+                Instruments. Version 15May2016.`,
+                link: 'https://ubwp.buffalo.edu/rdc-tmdinternational/tmd-assessmentdiagnosis/dc-tmd/'}
+            ]
+        },
 ];
 
 @Injectable({providedIn: 'root'})

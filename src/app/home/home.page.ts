@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModuleDataService } from '../dataServices/moduleData.service';
-import { ModalController, IonSearchbar } from '@ionic/angular';
+import { ModalController, IonSearchbar, NavController } from '@ionic/angular';
 import { SettingsComponent } from './settings/settings.component';
-import { SettingsService } from '../dataServices/settings.service'
-import { Plugins, AppState } from '@capacitor/core';
+import { SettingsService } from '../dataServices/settings.service';
+import { Plugins } from '@capacitor/core';
+import { PluginListenerHandle } from '@capacitor/core/dist/esm/web/network';
 const { App } = Plugins;
 
 @Component({
@@ -13,6 +14,7 @@ const { App } = Plugins;
 })
 export class HomePage implements OnInit {
   @ViewChild(IonSearchbar) searchBar: IonSearchbar;
+  backButtonListener: PluginListenerHandle;
 
   searchActive = false;
   searchbarText = '';
@@ -27,7 +29,15 @@ export class HomePage implements OnInit {
     // Sorts Modules alphatetically by title
     this.sortArrayByProperty(this.modulesList, 'title');
     this.settingsService.applySettingsFromStorage();
-    App.addListener('backButton', () => App.exitApp());
+
+  }
+
+  ionViewDidEnter() {
+    this.backButtonListener = App.addListener('backButton', () => App.exitApp());
+  }
+
+  ionViewWillLeave() {
+    this.backButtonListener.remove();
   }
 
   filterList(searchTerm: string) {
