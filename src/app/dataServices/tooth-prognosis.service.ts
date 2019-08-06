@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 interface ToothPrognosis {
     category: string;
-    id: number;
+    id: number;                     // used to guide autoscrolling
     A: string;
     B: string;
     C: string;

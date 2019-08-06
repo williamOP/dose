@@ -17,7 +17,7 @@
               (ionChange)="updateDentalData()">
             </ion-input>
             <!-- Sites/tooth -->
-            <ion-label position="stacked" color="fruit-yellow">Sites per tooth</ion-label>
+            <ion-label position="stacked" color="fruit-yellow">Sites measured per tooth</ion-label>
             <ion-segment [(ngModel)]='sitesPerTooth' color='fruit-yellow' (ionChange)="updateDentalData()">
               <ion-segment-button value="2">
                 <ion-label>2</ion-label>
@@ -78,10 +78,10 @@
           </ion-card-header>
           <ion-card-content>
             <!-- BOP -->
-            <ion-label position="stacked" color="fruit-light-green">BOP sites</ion-label>
+            <ion-label position="stacked" color="fruit-light-green">BOP sites (out of {{ totalSites }})</ion-label>
             <ion-input clearInput type="number" [(ngModel)]='bopSites' min="0" [max]="totalSites"></ion-input>
             <!-- PPD -->
-            <ion-label position="stacked" color="fruit-light-green">Sites with pocket depths ≥5mm</ion-label>
+            <ion-label position="stacked" color="fruit-light-green">Sites with pocket depths ≥5mm (out of {{ totalSites }})</ion-label>
             <ion-input clearInput type="number" [(ngModel)]='deepPockets' min="0" [max]="totalSites"></ion-input>
             <!-- Tooth loss -->
             <ion-label position="stacked" color="fruit-light-green">Tooth loss (from a total of 28)</ion-label>
